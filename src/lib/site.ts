@@ -20,14 +20,25 @@ export const site = {
     // (e.g. hello@avenor.xxx) before going live.
     email: "avenor.system@gmail.com",
     phone: "+977-XX-XXXXXXX", // PLACEHOLDER — replace
-    whatsapp: "+977-XXXXXXXXXX", // PLACEHOLDER — replace
-    location: "Lalitpur, Nepal", // PLACEHOLDER — confirm/replace
+    whatsapp: "+977-XXXXXXXXXX", // PLACEHOLDER — replace (display only)
+    // Digits only, country code, no "+" — used to build wa.me links.
+    // TODO: replace with the real WhatsApp number.
+    whatsappNumber: "9779800000000",
+    location: "Kathmandu, Nepal", // PLACEHOLDER — confirm/replace
   },
   social: {
     instagram: "https://instagram.com/avenor", // PLACEHOLDER — replace
     facebook: "https://facebook.com/avenor", // PLACEHOLDER — replace
   },
 } as const;
+
+/** Default prefilled message for WhatsApp deep links. */
+export const whatsappDefaultText = "Hi Avenor, I'd like a system audit.";
+
+/** Build a wa.me deep link with a prefilled message. */
+export function whatsappLink(text: string = whatsappDefaultText): string {
+  return `https://wa.me/${site.contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
+}
 
 export const nav = [
   { label: "Demo", href: "#demo" },

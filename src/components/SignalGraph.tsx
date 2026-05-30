@@ -88,19 +88,25 @@ export default function SignalGraph({
             <defs>
               <linearGradient id="sigStroke" x1="0" y1="1" x2="1" y2="0">
                 <stop offset="0" stopColor="#3B82F6" />
+                <stop offset="0.55" stopColor="#6366F1" />
                 <stop offset="1" stopColor="#8B5CF6" />
               </linearGradient>
               <linearGradient id="sigArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#3B82F6" stopOpacity="0.20" />
+                <stop offset="0" stopColor="#3B82F6" stopOpacity="0.22" />
                 <stop offset="1" stopColor="#3B82F6" stopOpacity="0" />
               </linearGradient>
+              <filter id="sigGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="5" />
+              </filter>
             </defs>
 
-            {/* axis grid — present immediately so the panel never looks blank */}
-            <g stroke="rgba(255,255,255,0.05)" strokeWidth="1">
+            {/* dashed axis grid — present immediately so the panel never looks blank */}
+            <g stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="2 7">
               {[90, 175, 260, 345].map((y) => (
                 <line key={y} x1="0" y1={y} x2={W} y2={y} />
               ))}
+            </g>
+            <g stroke="rgba(255,255,255,0.04)" strokeWidth="1">
               {[180, 360, 540].map((x) => (
                 <line key={x} x1={x} y1="0" x2={x} y2={H} />
               ))}
@@ -115,7 +121,21 @@ export default function SignalGraph({
               transition={{ duration: dur(0.9), delay: dur(1.1) }}
             />
 
-            {/* signal line draw */}
+            {/* soft glow under the line */}
+            <motion.path
+              d={linePath}
+              fill="none"
+              stroke="url(#sigStroke)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              filter="url(#sigGlow)"
+              opacity="0.45"
+              initial={{ pathLength: reduce ? 1 : 0 }}
+              animate={{ pathLength: play ? 1 : 0 }}
+              transition={{ duration: dur(1.8), ease: "easeInOut" }}
+            />
+
+            {/* crisp signal line */}
             <motion.path
               d={linePath}
               fill="none"
@@ -126,6 +146,18 @@ export default function SignalGraph({
               animate={{ pathLength: play ? 1 : 0 }}
               transition={{ duration: dur(1.8), ease: "easeInOut" }}
             />
+
+            {/* live signal pulse travelling the path (real-time feel) */}
+            {play && !reduce && (
+              <g>
+                <circle r="11" fill="#A78BFA" opacity="0.22">
+                  <animateMotion dur="4.5s" begin="0.6s" repeatCount="indefinite" path={linePath} />
+                </circle>
+                <circle r="4" fill="#A78BFA">
+                  <animateMotion dur="4.5s" begin="0.6s" repeatCount="indefinite" path={linePath} />
+                </circle>
+              </g>
+            )}
 
             {/* axis labels — present immediately so the panel reads as live from frame 1 */}
             <g>
@@ -166,8 +198,17 @@ export default function SignalGraph({
                     }
                   />
                 )}
-                <circle cx={n.x} cy={n.y} r="10" fill={n.hot ? "#8B5CF6" : "#3B82F6"} opacity="0.18" />
+                <circle cx={n.x} cy={n.y} r="11" fill={n.hot ? "#8B5CF6" : "#3B82F6"} opacity="0.16" />
                 <circle cx={n.x} cy={n.y} r="4.5" fill={n.hot ? "#A78BFA" : "#60A5FA"} />
+                <circle
+                  cx={n.x}
+                  cy={n.y}
+                  r="4.5"
+                  fill="none"
+                  stroke={n.hot ? "#A78BFA" : "#60A5FA"}
+                  strokeOpacity="0.45"
+                  strokeWidth="1"
+                />
               </motion.g>
             ))}
           </svg>

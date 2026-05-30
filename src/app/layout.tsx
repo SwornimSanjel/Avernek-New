@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
 import QuickActions from "@/components/QuickActions";
+import AmbientGlow from "@/components/AmbientGlow";
 import "./globals.css";
 
 const sora = Sora({
@@ -74,6 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <JsonLd />
         <SiteShell>{children}</SiteShell>
+        {/* Painted above the opaque section backgrounds (corner-only, ultra-low
+            opacity) but below the navbar / floating button (higher z-index). */}
+        <AmbientGlow />
+        {/* Single floating assistant button — opens audit / demo / WhatsApp. */}
         <QuickActions />
       </body>
     </html>

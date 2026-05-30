@@ -22,7 +22,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-ink/85 backdrop-blur-md"
+          ? "border-b border-white/10 bg-ink/80 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.8)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -35,20 +35,37 @@ export default function Navbar() {
           <Logo tone="ivory" />
         </motion.div>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        {/* Underline-reveal nav (distinct, editorial — no pill container) */}
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           {nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="rounded px-1 py-0.5 text-sm font-medium text-ivory/80 transition-colors duration-200 hover:text-accent-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="group relative py-1 text-sm font-medium text-ivory/70 transition-colors duration-200 hover:text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               {item.label}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -bottom-px left-1/2 h-px w-0 -translate-x-1/2 rounded-full bg-accent-grad transition-all duration-300 group-hover:w-full"
+              />
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <LinkButton href="#contact">Book a system audit</LinkButton>
+        <div className="hidden items-center gap-4 md:flex">
+          <span aria-hidden className="h-5 w-px bg-white/10" />
+          <LinkButton href="#contact">
+            Book a system audit
+            <svg viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5" aria-hidden>
+              <path
+                d="M4 10h11M11 6l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </LinkButton>
         </div>
 
         <button

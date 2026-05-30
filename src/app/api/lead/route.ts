@@ -88,7 +88,15 @@ async function verifyTurnstile(token: string | undefined, ip: string): Promise<b
 
 async function forwardLead(lead: Omit<LeadPayload, "company_website" | "turnstileToken">) {
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  if (!webhookUrl) {
+    // Missing config: the lead is validated and the user sees success, but it is
+    // NOT delivered anywhere. Make this loud for developers. See .env.example.
+    console.warn(
+      "[lead] LEAD_WEBHOOK_URL is not set — submission was accepted but NOT forwarded. " +
+        "Set LEAD_WEBHOOK_URL (n8n/Make/Apps Script) to deliver leads. See .env.example.",
+    );
+    return;
+  }
   await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

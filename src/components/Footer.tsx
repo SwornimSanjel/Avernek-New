@@ -27,7 +27,7 @@ export default function Footer() {
           <p className="max-w-xs text-sm leading-relaxed text-slate">
             {site.tagline}
           </p>
-          <p className="text-sm text-slate">Avenor, Lalitpur, Nepal</p>
+          <p className="text-sm text-slate">Avenor · {site.contact.location}</p>
           <p className="text-xs uppercase tracking-[0.2em] text-slate/80">{site.category}</p>
         </div>
 

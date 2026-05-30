@@ -40,6 +40,23 @@
   .glass {
     @apply border border-white/10 bg-panel/60 backdrop-blur-sm;
   }
+
+  /* Avenor assistant — self-assembling line-art robot.
+     Base state is the FULLY-FORMED robot, so when motion is reduced (the
+     animation is disabled below) it simply shows the finished head. */
+  .ai-line {
+    stroke-dasharray: 130;
+    stroke-dashoffset: 0;
+    animation: aiDraw 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  .ai-pop {
+    opacity: 1;
+    animation: aiPop 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  .ai-settle {
+    transform-origin: 50% 50%;
+    animation: aiSettle 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
 }
 
 @layer utilities {
@@ -51,6 +68,51 @@
 
   .text-gradient {
     @apply bg-accent-grad bg-clip-text text-transparent;
+  }
+}
+
+/* Avenor assistant build loop — spin-and-form FAST (~0.9s), rest formed for a
+   short beat (~4.5s), then break apart with a fast spin-out and reform (~7s). */
+@keyframes aiDraw {
+  0% {
+    stroke-dashoffset: 130;
+  }
+  13%,
+  78% {
+    stroke-dashoffset: 0;
+  }
+  90%,
+  100% {
+    stroke-dashoffset: 130;
+  }
+}
+@keyframes aiPop {
+  0%,
+  11% {
+    opacity: 0;
+  }
+  18%,
+  78% {
+    opacity: 1;
+  }
+  87%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes aiSettle {
+  0% {
+    transform: rotate(-360deg) scale(0.35);
+  }
+  13%,
+  78% {
+    transform: rotate(0deg) scale(1);
+  }
+  90% {
+    transform: rotate(360deg) scale(0.35);
+  }
+  100% {
+    transform: rotate(-360deg) scale(0.35);
   }
 }
 

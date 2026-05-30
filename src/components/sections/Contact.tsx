@@ -6,7 +6,7 @@ import Container from "../Container";
 import ScrollReveal from "../ScrollReveal";
 import { ActionButton } from "../Button";
 import Turnstile from "../Turnstile";
-import { site } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -218,7 +218,30 @@ export default function Contact() {
               {/* Optional bot protection — renders only when configured */}
               <Turnstile />
 
-              {status === "error" && <p className="mt-4 text-sm text-red-400">{error}</p>}
+              {status === "error" && (
+                <div
+                  role="alert"
+                  className="mt-4 rounded-lg border border-red-400/30 bg-red-400/[0.06] p-3 text-sm"
+                >
+                  <p className="text-red-400">{error}</p>
+                  <p className="mt-1 text-slate">
+                    Trouble sending? You can{" "}
+                    <a
+                      href={whatsappLink("Hi Avenor, the audit form didn't go through. I'd like a system audit.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-accent-glow hover:underline"
+                    >
+                      message us on WhatsApp
+                    </a>{" "}
+                    or email{" "}
+                    <a href={`mailto:${site.contact.email}`} className="font-medium text-accent-glow hover:underline">
+                      {site.contact.email}
+                    </a>
+                    .
+                  </p>
+                </div>
+              )}
 
               <ActionButton type="submit" className="mt-6 w-full" disabled={status === "submitting"}>
                 {status === "submitting" ? "Sending…" : "Book my system audit"}

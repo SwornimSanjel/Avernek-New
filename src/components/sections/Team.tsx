@@ -28,75 +28,71 @@ function LinkedIn({ url, name }: { url?: string; name: string }) {
 }
 
 export default function Team() {
-  const lead = founders.find((f) => f.featured) ?? founders[0];
-  const rest = founders.filter((f) => f !== lead);
-
   return (
     <section className="bg-ink py-24 md:py-32">
       <Container>
         <SectionHeading
-          eyebrow="The team"
-          title="A small senior team. No hand-offs."
-          description="Every founding client works directly with the people who build and run their system."
+          eyebrow="Core team"
+          title="The minds behind the system."
+          description="A small, senior team. Every founding client works directly with the three of us — no hand-offs, no juniors."
         />
 
-        {/* Featured lead */}
-        <ScrollReveal className="mt-14">
-          <div className="relative overflow-hidden rounded-2xl border border-accent/30 bg-panel-light p-8 shadow-glow md:p-10">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-iris/15 blur-[90px]"
-            />
-            <div className="relative grid gap-6 md:grid-cols-[auto_1fr] md:items-center">
-              <div className="flex items-center gap-5">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-accent/15 font-display text-xl font-bold text-accent-glow">
-                  {initials(lead.name)}
-                </div>
-                <div>
-                  <span className="mb-1 inline-block rounded-full bg-accent/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-glow">
-                    Leads the business
-                  </span>
-                  <h3 className="font-display text-2xl font-bold text-ivory">{lead.name}</h3>
-                  <div className="flex items-center gap-3">
-                    <p className="text-sm font-medium text-accent">{lead.role}</p>
-                    <LinkedIn url={lead.linkedin} name={lead.name} />
-                  </div>
-                </div>
-              </div>
-
-              <p className="max-w-xl text-sm leading-relaxed text-silver">{lead.focus}</p>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Supporting leads */}
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {rest.map((person, i) => (
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {founders.map((person, i) => (
             <ScrollReveal
               key={person.name}
-              delay={i * 0.1}
-              className="rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40"
+              delay={i * 0.08}
+              className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-panel/50 p-7 transition-all duration-200 hover:-translate-y-0.5 ${
+                person.featured
+                  ? "border-accent/30 shadow-glow hover:border-accent/50"
+                  : "border-white/10 hover:border-accent/40"
+              }`}
             >
-              <div className="mb-4 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] font-display text-base font-bold text-silver">
+              {person.featured && (
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-iris/15 blur-[60px]"
+                />
+              )}
+
+              <div className="relative mb-5 flex items-center gap-4">
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border font-display text-base font-bold ${
+                    person.featured
+                      ? "border-white/10 bg-accent/15 text-accent-glow"
+                      : "border-white/10 bg-white/[0.03] text-silver"
+                  }`}
+                >
                   {initials(person.name)}
-                </div>
-                <div className="flex-1">
+                </span>
+                <div className="min-w-0">
                   <h3 className="font-display text-lg font-semibold text-ivory">{person.name}</h3>
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-sm font-medium text-accent">{person.role}</p>
-                    <LinkedIn url={person.linkedin} name={person.name} />
-                  </div>
+                  <span
+                    className={`mt-1 inline-flex rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                      person.featured
+                        ? "border-accent/30 bg-accent/[0.06] text-accent-glow"
+                        : "border-white/10 bg-white/[0.03] text-slate"
+                    }`}
+                  >
+                    {person.role}
+                  </span>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed text-slate">{person.focus}</p>
+
+              <p className="relative flex-1 text-sm leading-relaxed text-slate">{person.focus}</p>
+
+              {person.linkedin && (
+                <div className="relative mt-5">
+                  <LinkedIn url={person.linkedin} name={person.name} />
+                </div>
+              )}
             </ScrollReveal>
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-[58ch] text-center text-sm leading-relaxed text-slate">
-          We are taking on a small number of founding clients this quarter. Each one works directly
-          with the people above. Senior attention, no hand-offs.
+        <p className="mx-auto mt-10 max-w-[60ch] text-center text-sm leading-relaxed text-slate">
+          Three people, one system. The core team that designs, builds, and runs every Avenor setup
+          — and the people you actually talk to.
         </p>
       </Container>
     </section>

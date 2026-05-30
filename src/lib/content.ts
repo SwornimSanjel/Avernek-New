@@ -184,21 +184,22 @@ export type Founder = {
 export const founders: Founder[] = [
   {
     name: "Swornim Sanjel",
-    role: "Growth Operations",
-    focus: "Owns the client relationship and the results.",
+    role: "Business Lead",
+    focus:
+      "Leads growth, delivery, and client success — the link between the team, the work, and the businesses we build for.",
     featured: true,
     // linkedin: "https://www.linkedin.com/in/…", // TODO: add real URL to show the icon
   },
   {
     name: "Pragyan Maharjan",
-    role: "AI Automation Lead",
-    focus: "Builds and runs the automation engine.",
+    role: "AI & Automation Lead",
+    focus: "Builds the engine — the AI, integrations, and logic that make every system run.",
     // linkedin: "https://www.linkedin.com/in/…",
   },
   {
     name: "Sushant Sapkota",
-    role: "Creative and Content",
-    focus: "Turns the system into content that brings inquiries in.",
+    role: "Creative Lead",
+    focus: "Shapes how Avenor looks and sounds — turning systems into content that earns attention.",
     // linkedin: "https://www.linkedin.com/in/…",
   },
 ];
