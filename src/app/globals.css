@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-obsidian font-sans text-silver antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-ivory;
+  }
+
+  /* Consistent, visible keyboard focus on all links & buttons. */
+  a:focus-visible,
+  button:focus-visible {
+    @apply rounded outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+  }
+}
+
+@layer components {
+  /* Thin line-grid backdrop — used behind hero / command-center sections. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Glass / dashboard panel. */
+  .glass {
+    @apply border border-white/10 bg-panel/60 backdrop-blur-sm;
+  }
+}
+
+@layer utilities {
+  /* Thin, brand-tinted scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 #05060a;
+  }
+
+  .text-gradient {
+    @apply bg-accent-grad bg-clip-text text-transparent;
+  }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

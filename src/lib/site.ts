@@ -1,0 +1,39 @@
+/**
+ * Global site configuration.
+ *
+ * NOTE: Contact handles below are PLACEHOLDERS and must be replaced before
+ * launch. Only `email` is a real (temporary) starter address from the
+ * Avenor blueprint. See README "Replace before launch".
+ */
+export const site = {
+  name: "Avenor",
+  legalName: "Avenor",
+  tagline: "The inquiry system between your ads and your sales team.",
+  category: "AI Inquiry Systems for Growth-Focused Businesses",
+  description:
+    "Avenor builds the inquiry system that captures every customer inquiry, replies in seconds, qualifies real buyers, and routes them to your team around the clock.",
+  // Replace with the live domain before launch.
+  url: "https://avenor.example.com", // PLACEHOLDER — replace with real domain
+  flow: ["Capture", "Respond", "Qualify", "Nurture", "Follow Up", "Report"] as const,
+  contact: {
+    // LAUNCH TODO: replace this temporary Gmail with a proper domain email
+    // (e.g. hello@avenor.xxx) before going live.
+    email: "avenor.system@gmail.com",
+    phone: "+977-XX-XXXXXXX", // PLACEHOLDER — replace
+    whatsapp: "+977-XXXXXXXXXX", // PLACEHOLDER — replace
+    location: "Lalitpur, Nepal", // PLACEHOLDER — confirm/replace
+  },
+  social: {
+    instagram: "https://instagram.com/avenor", // PLACEHOLDER — replace
+    facebook: "https://facebook.com/avenor", // PLACEHOLDER — replace
+  },
+} as const;
+
+export const nav = [
+  { label: "Demo", href: "#demo" },
+  { label: "How it works", href: "#system" },
+  { label: "Use cases", href: "#industries" },
+  { label: "Proof", href: "#proof" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
+] as const;
