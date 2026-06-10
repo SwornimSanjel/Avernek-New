@@ -1,5 +1,5 @@
 /**
- * Avenor assistant — a clean line-art robot head (transparent body; only the
+ * Avernik assistant — a clean line-art robot head (transparent body; only the
  * outline strokes + glowing eyes are drawn, so the dark site shows through).
  *
  * The `.ai-line` / `.ai-pop` classes (defined in globals.css) make it draw /
@@ -13,7 +13,7 @@ type AiHeadProps = {
 const LINE = "#ECEEF4"; // ivory outline
 const EYE = "#60A5FA"; // accent-glow (brand electric blue)
 
-export default function AiHead({ className, title = "Avenor assistant" }: AiHeadProps) {
+export default function AiHead({ className, title = "Avernik assistant" }: AiHeadProps) {
   return (
     <svg
       viewBox="0 0 48 48"

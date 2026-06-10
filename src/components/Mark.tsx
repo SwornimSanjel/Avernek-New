@@ -1,8 +1,8 @@
 /**
- * The Avenor mark — the finalized "filter-A" glyph: two diverging legs forming an
+ * The Avernik mark — the finalized "filter-A" glyph: two diverging legs forming an
  * upward "A" with two rounded notches between them (the qualify / filter motif).
  *
- * Geometry taken from the finalized logo (avenor_filter_a_square.svg), cropped
+ * Geometry taken from the finalized logo (avernik_filter_a_square.svg), cropped
  * and centred into a square viewBox. Uses `currentColor` so the parent controls
  * the fill (ivory on the dark chips); the brand square's framing comes from the
  * chip/rounded-square containers that wrap this mark.
@@ -12,7 +12,7 @@ type MarkProps = {
   title?: string;
 };
 
-export default function Mark({ className, title = "Avenor" }: MarkProps) {
+export default function Mark({ className, title = "Avernik" }: MarkProps) {
   return (
     <svg
       viewBox="272 270 480 480"

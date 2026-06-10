@@ -9,7 +9,7 @@ type LogoProps = {
 };
 
 /**
- * Avenor lockup: the FILTER-A mark inside a rounded-square chip + wordmark.
+ * Avernik lockup: the FILTER-A mark inside a rounded-square chip + wordmark.
  * The chip gives the mark the premium "app icon" framing on dark surfaces.
  */
 export default function Logo({ tone = "ivory", className = "", href = "/" }: LogoProps) {
@@ -17,7 +17,7 @@ export default function Logo({ tone = "ivory", className = "", href = "/" }: Log
   return (
     <Link
       href={href}
-      aria-label="Avenor home"
+      aria-label="Avernik home"
       className={`group inline-flex items-center gap-2.5 ${className}`}
     >
       <span className="relative flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-panel-light shadow-card transition-colors duration-300 group-hover:border-accent/40">
@@ -28,7 +28,7 @@ export default function Logo({ tone = "ivory", className = "", href = "/" }: Log
         <Mark className="relative h-5 w-5 text-ivory" />
       </span>
       <span className={`font-display text-2xl font-bold tracking-[0.14em] ${wordmark}`}>
-        AVENOR
+        AVERNIK
       </span>
     </Link>
   );

@@ -17,23 +17,23 @@ const capabilities: Capability[] = [
   { to: 24, suffix: " / 7", sub: "Coverage while your team is offline or asleep." },
 ];
 
-/* Demo systems Avenor has built (illustrative — not client data). */
+/* Demo systems Avernik has built (illustrative — not client data). */
 const demoShots = [
   {
     // TODO: add real demo screenshots at these paths (public/proof/…)
     src: "/proof/demo-crm.png",
-    alt: "Demo CRM sheet built by Avenor showing captured and qualified inquiries",
+    alt: "Demo CRM sheet built by Avernik showing captured and qualified inquiries",
     label: "Demo CRM sheet",
   },
   {
     src: "/proof/demo-bot-education.png",
-    alt: "Demo AI assistant conversation built by Avenor for an education business",
+    alt: "Demo AI assistant conversation built by Avernik for an education business",
     label: "Demo bot conversation",
   },
 ];
 
 /*
- * Testimonials are intentionally EMPTY. Avenor is pre-revenue and onboarding
+ * Testimonials are intentionally EMPTY. Avernik is pre-revenue and onboarding
  * founding clients, so there are no real quotes yet. Drop a real, permissioned
  * testimonial into this array and the grid renders automatically — zero layout
  * work. Never invent quotes, names, or results.
@@ -85,7 +85,7 @@ function DemoShot({ src, alt, label }: { src: string; alt: string; label: string
         </span>
       </div>
       <figcaption className="mt-3 text-xs leading-relaxed text-slate">
-        Demo system built by Avenor — illustrative.
+        Demo system built by Avernik — illustrative.
       </figcaption>
     </figure>
   );
@@ -109,7 +109,7 @@ export default function Proof() {
           <Badge>Targets, not results</Badge>
         </ScrollReveal>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate">
-          These are the design targets every Avenor system is built and tuned to hit — not averaged
+          These are the design targets every Avernik system is built and tuned to hit — not averaged
           client outcomes.
         </p>
 
@@ -173,7 +173,7 @@ export default function Proof() {
             </span>
           </div>
 
-          <p className="relative mt-5 text-sm font-medium text-slate">— The Avenor team</p>
+          <p className="relative mt-5 text-sm font-medium text-slate">— The Avernik team</p>
         </ScrollReveal>
 
         {/* ── Block C — Founding-client frame ────────────────────────────── */}

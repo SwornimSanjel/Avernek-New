@@ -41,7 +41,7 @@
     @apply border border-white/10 bg-panel/60 backdrop-blur-sm;
   }
 
-  /* Avenor assistant — self-assembling line-art robot.
+  /* Avernik assistant — self-assembling line-art robot.
      Base state is the FULLY-FORMED robot, so when motion is reduced (the
      animation is disabled below) it simply shows the finished head. */
   .ai-line {
@@ -71,7 +71,7 @@
   }
 }
 
-/* Avenor assistant build loop — spin-and-form FAST (~0.9s), rest formed for a
+/* Avernik assistant build loop — spin-and-form FAST (~0.9s), rest formed for a
    short beat (~4.5s), then break apart with a fast spin-out and reform (~7s). */
 @keyframes aiDraw {
   0% {

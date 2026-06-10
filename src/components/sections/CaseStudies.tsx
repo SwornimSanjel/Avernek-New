@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/content";
 /**
  * Real proof section — case studies / outcomes.
  *
- * Renders NOTHING while `caseStudies` is empty (Avenor has no clients yet).
+ * Renders NOTHING while `caseStudies` is empty (Avernik has no clients yet).
  * This keeps the structure ready: once a real, permissioned case study is added
  * to content.ts, this section appears automatically with no redesign.
  *

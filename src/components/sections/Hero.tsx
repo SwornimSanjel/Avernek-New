@@ -56,7 +56,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.22 }}
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-silver"
         >
-          Avenor captures every inquiry, replies in seconds, qualifies real buyers, and hands your
+          Avernik captures every inquiry, replies in seconds, qualifies real buyers, and hands your
           team a clear follow-up list. Around the clock.
         </motion.p>
 

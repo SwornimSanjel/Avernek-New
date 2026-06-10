@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Avenor — dark / futuristic "AI command center" direction.
+        // Avernik — dark / futuristic "AI command center" direction.
         obsidian: "#05060A", // deepest / near-black background
         ink: "#080910", // base background
         // Legacy aliases kept so existing utility names map to the obsidian panels.

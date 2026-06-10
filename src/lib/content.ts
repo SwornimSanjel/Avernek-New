@@ -1,5 +1,5 @@
 /**
- * Outward-facing content for the Avenor marketing site.
+ * Outward-facing content for the Avernik marketing site.
  *
  * Public language uses the sales-friendly flow:
  *   Capture → Respond → Qualify → Nurture → Follow Up → Report
@@ -86,7 +86,7 @@ export type Package = {
 export const packages: Package[] = [
   {
     id: "core",
-    name: "Avenor Core",
+    name: "Avernik Core",
     tier: "Basic Inquiry System",
     summary: "For businesses that need faster replies and simple inquiry tracking.",
     whoFor: "Teams starting to handle inquiries seriously.",
@@ -101,7 +101,7 @@ export const packages: Package[] = [
   },
   {
     id: "growth",
-    name: "Avenor Growth",
+    name: "Avernik Growth",
     tier: "Main Operating Package",
     summary: "For businesses that want qualification, CRM visibility and follow-up priority.",
     whoFor: "Teams that want qualified conversations, not just replies.",
@@ -118,7 +118,7 @@ export const packages: Package[] = [
   },
   {
     id: "scale",
-    name: "Avenor Scale",
+    name: "Avernik Scale",
     tier: "Full Growth System",
     summary: "For businesses ready for stronger campaigns, reporting and optimisation.",
     whoFor: "Higher-volume teams optimising reach and follow-up.",
@@ -135,7 +135,7 @@ export const packages: Package[] = [
 ];
 
 export const packagesNote =
-  "Packages are recommended after a system audit, based on your inquiry volume, ad activity, and follow-up process. Sales depend on your offer, pricing, follow-up, and market demand. Avenor strengthens the inquiry system that supports those outcomes.";
+  "Packages are recommended after a system audit, based on your inquiry volume, ad activity, and follow-up process. Sales depend on your offer, pricing, follow-up, and market demand. Avernik strengthens the inquiry system that supports those outcomes.";
 
 export type Faq = { question: string; answer: string };
 
@@ -158,7 +158,7 @@ export const faqs: Faq[] = [
   {
     question: "Who owns the lead data?",
     answer:
-      "You do, 100%. Your customer data and CRM log stay yours. Avenor uses the data only for reporting and optimisation while we work together.",
+      "You do, 100%. Your customer data and CRM log stay yours. Avernik uses the data only for reporting and optimisation while we work together.",
   },
   {
     question: "What if the AI isn't sure of an answer?",
@@ -168,7 +168,7 @@ export const faqs: Faq[] = [
   {
     question: "We already have staff replying. How does this help?",
     answer:
-      "Avenor gives your team a clearer path from inquiry to conversation: instant first replies, an organised inbox, and a priority view of who to call first. Their time goes to the prospects most likely to convert.",
+      "Avernik gives your team a clearer path from inquiry to conversation: instant first replies, an organised inbox, and a priority view of who to call first. Their time goes to the prospects most likely to convert.",
   },
 ];
 
@@ -205,7 +205,7 @@ export const founders: Founder[] = [
   {
     name: "Sushant Sapkota",
     role: "Creative Lead",
-    focus: "Shapes how Avenor looks and sounds — turning systems into content that earns attention.",
+    focus: "Shapes how Avernik looks and sounds — turning systems into content that earns attention.",
     photo: "/team/sushant.webp",
     // linkedin: "https://www.linkedin.com/in/…",
   },
@@ -269,12 +269,12 @@ export const serviceGroups: ServiceGroup[] = [
 
 /** Expectation-setting line for the footer — honest about what we do and don't promise. */
 export const legalNote =
-  "Avenor improves inquiry handling, tracking, qualification, and reporting. We do not guarantee sales or revenue.";
+  "Avernik improves inquiry handling, tracking, qualification, and reporting. We do not guarantee sales or revenue.";
 
 /**
  * Real proof — case studies / outcomes.
  *
- * INTENTIONALLY EMPTY. Avenor has no clients yet, so we show nothing here
+ * INTENTIONALLY EMPTY. Avernik has no clients yet, so we show nothing here
  * rather than inventing results. When a real, permissioned case study exists,
  * add an entry below and the CaseStudies section will render automatically —
  * no redesign needed. Never add fabricated numbers, logos or testimonials.

@@ -59,7 +59,7 @@ export default function Industries() {
         <SectionHeading
           eyebrow="Use cases"
           title="Built for businesses where every inquiry is worth real money."
-          description="If customers message before they buy, speed and follow-up decide who wins. Avenor is built for exactly that moment."
+          description="If customers message before they buy, speed and follow-up decide who wins. Avernik is built for exactly that moment."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

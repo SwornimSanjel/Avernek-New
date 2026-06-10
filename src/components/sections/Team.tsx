@@ -46,7 +46,7 @@ export default function Team() {
                 <div className="relative aspect-[3/4] w-full transform-gpu overflow-hidden [backface-visibility:hidden]">
                   <Image
                     src={person.photo}
-                    alt={`${person.name}, ${person.role} at Avenor`}
+                    alt={`${person.name}, ${person.role} at Avernik`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="transform-gpu object-cover transition-transform duration-700 ease-out will-change-transform [backface-visibility:hidden] group-hover:scale-[1.05]"
@@ -83,7 +83,7 @@ export default function Team() {
         </div>
 
         <p className="mx-auto mt-10 max-w-[60ch] text-center text-sm leading-relaxed text-slate">
-          Three people, one system. The core team that designs, builds, and runs every Avenor setup
+          Three people, one system. The core team that designs, builds, and runs every Avernik setup
           — and the people you actually talk to.
         </p>
       </Container>

@@ -1,8 +1,8 @@
 {
-  "name": "avenor-website",
+  "name": "avernik-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Avenor — AI Automation & Growth Systems Agency. Public marketing website.",
+  "description": "Avernik — AI Automation & Growth Systems Agency. Public marketing website.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

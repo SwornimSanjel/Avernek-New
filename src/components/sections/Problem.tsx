@@ -10,7 +10,7 @@ const without = [
   "Owners cannot see what happened",
 ];
 
-const withAvenor = [
+const withAvernik = [
   "Every inquiry is captured instantly",
   "Buyers get a reply in seconds",
   "Real buyers are qualified and scored",
@@ -53,10 +53,10 @@ export default function Problem() {
           <ScrollReveal delay={0.1} className="h-full">
             <div className="h-full rounded-2xl border border-accent/25 bg-accent/[0.06] p-8 shadow-glow transition-all duration-300 hover:-translate-y-1 hover:border-accent/45 hover:shadow-[0_0_90px_-18px_rgba(59,130,246,0.6)]">
               <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-semibold text-ivory">
-                <span className="text-accent-glow">With Avenor</span>
+                <span className="text-accent-glow">With Avernik</span>
               </h3>
               <ul className="flex flex-col gap-3">
-                {withAvenor.map((item) => (
+                {withAvernik.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-ivory/90">
                     <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-glow">
                       <svg viewBox="0 0 20 20" fill="none" className="h-2.5 w-2.5" aria-hidden>
@@ -78,7 +78,7 @@ export default function Problem() {
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center font-display text-lg font-medium text-ivory sm:text-xl">
-          Avenor gives your team a clear path{" "}
+          Avernik gives your team a clear path{" "}
           <span className="text-gradient">from inquiry to conversation</span>.
         </p>
       </Container>
