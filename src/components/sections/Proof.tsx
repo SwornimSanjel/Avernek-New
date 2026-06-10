@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import LogoMarquee from "../LogoMarquee";
 import CountUp from "../CountUp";
 import Mark from "../Mark";
+import BrowserFrame from "../BrowserFrame";
 
 /* ── Block A · Capability targets — DESIGN GOALS, not measured client results.
    Figures count up from 0 → target when scrolled into view. ─ */
@@ -17,18 +17,24 @@ const capabilities: Capability[] = [
   { to: 24, suffix: " / 7", sub: "Coverage while your team is offline or asleep." },
 ];
 
-/* Demo systems Avernik has built (illustrative — not client data). */
-const demoShots = [
+/* Selected work — real clients, shown as framed screenshots (no metrics).
+   Drop the real screenshots at the src paths below. */
+const selectedWork = [
   {
-    // TODO: add real demo screenshots at these paths (public/proof/…)
-    src: "/proof/demo-crm.png",
-    alt: "Demo CRM sheet built by Avernik showing captured and qualified inquiries",
-    label: "Demo CRM sheet",
+    name: "Sports Center Nepal",
+    sector: "Sports & fitness, Kathmandu",
+    url: "https://sportscenter.com.np/",
+    domain: "sportscenter.com.np",
+    src: "/proof/client-sportscenter.webp",
+    alt: "Sports Center Nepal website homepage",
   },
   {
-    src: "/proof/demo-bot-education.png",
-    alt: "Demo AI assistant conversation built by Avernik for an education business",
-    label: "Demo bot conversation",
+    name: "Mountain Routes",
+    sector: "Adventure travel, Nepal",
+    url: "https://mountainroutes.com/",
+    domain: "mountainroutes.com",
+    src: "/proof/client-mountainroutes.webp",
+    alt: "Mountain Routes website homepage",
   },
 ];
 
@@ -61,36 +67,6 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
-/*
- * Framed screenshot slot. The transparent placeholder PNG keeps the framed
- * label visible until a real (opaque) screenshot is dropped in at the same
- * path — so adding the real image later needs zero layout changes.
- */
-function DemoShot({ src, alt, label }: { src: string; alt: string; label: string }) {
-  return (
-    <figure>
-      <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-ink">
-        <div className="absolute inset-0 grid place-items-center px-4 text-center">
-          <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate/50">{label}</span>
-        </div>
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(min-width: 640px) 45vw, 90vw"
-          className="object-cover"
-        />
-        <span className="absolute left-3 top-3 z-10">
-          <Badge>Demo</Badge>
-        </span>
-      </div>
-      <figcaption className="mt-3 text-xs leading-relaxed text-slate">
-        Demo system built by Avernik — illustrative.
-      </figcaption>
-    </figure>
-  );
-}
-
 export default function Proof() {
   return (
     <section id="proof" className="scroll-mt-24 bg-navy-deep py-28 md:py-40">
@@ -98,7 +74,7 @@ export default function Proof() {
         <SectionHeading
           eyebrow="Proof"
           title="Built and working."
-          description="We are onboarding founding clients now. So instead of borrowed logos or invented numbers, here is exactly what the system does, what we have built, and what we promise."
+          description="We're early but we're not theoretical. Here's the work we've shipped and the standards every Avernik system is built to."
         />
 
         {/* ── Block A — Capability proof ─────────────────────────────────── */}
@@ -123,15 +99,6 @@ export default function Proof() {
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-slate">{c.sub}</p>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* Demo screenshots */}
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {demoShots.map((s, i) => (
-            <ScrollReveal key={s.src} delay={i * 0.08}>
-              <DemoShot src={s.src} alt={s.alt} label={s.label} />
             </ScrollReveal>
           ))}
         </div>
@@ -176,8 +143,35 @@ export default function Proof() {
           <p className="relative mt-5 text-sm font-medium text-slate">— The Avernik team</p>
         </ScrollReveal>
 
+        {/* ── Selected work — real clients, framed screenshots, no metrics ── */}
+        <ScrollReveal className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <h3 className="font-display text-lg font-semibold text-ivory">Selected work</h3>
+          <Badge>Live sites</Badge>
+        </ScrollReveal>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {selectedWork.map((c, i) => (
+            <ScrollReveal key={c.url} delay={i * 0.08}>
+              <BrowserFrame url={c.domain} src={c.src} alt={c.alt} />
+              <div className="mt-4 flex items-start justify-between gap-3">
+                <div>
+                  <h4 className="font-display text-lg font-semibold text-ivory">{c.name}</h4>
+                  <p className="mt-0.5 text-sm text-slate">{c.sector}</p>
+                </div>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 text-xs text-silver underline-offset-4 transition-colors hover:text-accent-glow hover:underline"
+                >
+                  Visit site ↗
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
         {/* ── Block C — Founding-client frame ────────────────────────────── */}
-        <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <ScrollReveal className="rounded-2xl border border-white/10 bg-panel/50 p-7">
             <h3 className="font-display text-lg font-semibold text-ivory">
               Founding clients, this quarter
