@@ -5,14 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
+import AmbientBackground from "../AmbientBackground";
 import { faqs } from "@/lib/content";
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-navy-deep py-28 md:py-40">
-      <Container>
+    <section
+      id="faq"
+      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40"
+    >
+      <AmbientBackground variant="subtle" />
+      <Container className="relative">
         <SectionHeading
           eyebrow="Questions"
           title="Straight answers to the questions we hear most"

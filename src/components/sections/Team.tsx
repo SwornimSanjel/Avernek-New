@@ -2,6 +2,7 @@ import Image from "next/image";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
+import AmbientBackground from "../AmbientBackground";
 import { founders } from "@/lib/content";
 
 /** LinkedIn link — renders only when a URL is provided. */
@@ -24,8 +25,9 @@ function LinkedIn({ url, name }: { url?: string; name: string }) {
 
 export default function Team() {
   return (
-    <section className="bg-ink py-28 md:py-40">
-      <Container>
+    <section className="relative overflow-hidden bg-ink py-28 md:py-40">
+      <AmbientBackground variant="subtle" />
+      <Container className="relative">
         <SectionHeading
           eyebrow="Core team"
           title="The minds behind the system."

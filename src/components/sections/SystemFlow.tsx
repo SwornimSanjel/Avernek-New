@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
-import GridPulse from "../GridPulse";
+import AmbientBackground from "../AmbientBackground";
 import { flowSteps } from "@/lib/content";
 
 export default function SystemFlow() {
@@ -19,11 +19,7 @@ export default function SystemFlow() {
 
   return (
     <section id="system" className="relative scroll-mt-24 overflow-hidden bg-ink py-28 md:py-40">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 h-[420px] w-[420px] rounded-full bg-iris/10 blur-[150px]"
-      />
-      <GridPulse className="opacity-50" />
+      <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
           eyebrow="How it works"

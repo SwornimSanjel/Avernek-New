@@ -4,15 +4,13 @@ import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import { LinkButton } from "../Button";
+import AmbientBackground from "../AmbientBackground";
 import { packages, packagesNote } from "@/lib/content";
 
 export default function Pricing() {
   return (
     <section id="pricing" className="relative scroll-mt-24 overflow-hidden bg-obsidian py-28 md:py-40">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/4 h-[360px] w-[620px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]"
-      />
+      <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Packages"

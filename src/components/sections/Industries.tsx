@@ -2,6 +2,7 @@ import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import { LinkButton } from "../Button";
+import AmbientBackground from "../AmbientBackground";
 import { industries, industriesNote } from "@/lib/content";
 
 /* Simple line icons, in the same order as `industries` in content.ts. */
@@ -54,8 +55,12 @@ const icons = [
 
 export default function Industries() {
   return (
-    <section id="industries" className="scroll-mt-24 bg-ink py-28 md:py-40">
-      <Container>
+    <section
+      id="industries"
+      className="relative scroll-mt-24 overflow-hidden bg-ink py-28 md:py-40"
+    >
+      <AmbientBackground variant="subtle" />
+      <Container className="relative">
         <SectionHeading
           eyebrow="Use cases"
           title="Built for businesses where every inquiry is worth real money."

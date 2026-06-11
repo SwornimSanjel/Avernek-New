@@ -7,7 +7,7 @@ import LogoMarquee from "../LogoMarquee";
 import CountUp from "../CountUp";
 import Mark from "../Mark";
 import BrowserFrame from "../BrowserFrame";
-import GridPulse from "../GridPulse";
+import AmbientBackground from "../AmbientBackground";
 
 /* ── Block A · Capability targets — DESIGN GOALS, not measured client results.
    Figures count up from 0 → target when scrolled into view. ─ */
@@ -71,7 +71,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 export default function Proof() {
   return (
     <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40">
-      <GridPulse className="opacity-40" />
+      <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Proof"

@@ -6,6 +6,7 @@ import Container from "../Container";
 import ScrollReveal from "../ScrollReveal";
 import { ActionButton } from "../Button";
 import Turnstile from "../Turnstile";
+import AmbientBackground from "../AmbientBackground";
 import { site, whatsappLink } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -68,8 +69,12 @@ export default function Contact() {
   const labelClass = "mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate";
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-navy-deep py-28 md:py-40">
-      <Container className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+    <section
+      id="contact"
+      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40"
+    >
+      <AmbientBackground variant="section" />
+      <Container className="relative grid gap-12 lg:grid-cols-[1fr_1.1fr]">
         <ScrollReveal className="flex flex-col gap-6">
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
             System audit

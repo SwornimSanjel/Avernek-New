@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Container from "../Container";
 import { LinkButton } from "../Button";
 import AiInbox from "../AiInbox";
-import GridPulse from "../GridPulse";
+import AmbientBackground from "../AmbientBackground";
 
 const fadeUp = {
   initial: { opacity: 0, y: 16 },
@@ -15,17 +15,8 @@ export default function Hero() {
   const reduce = useReducedMotion();
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-obsidian">
-      {/* background: faint grid + two capped radial glows */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-[0.35]" />
-      <GridPulse className="opacity-60" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[-10%] top-[6%] h-[520px] w-[560px] rounded-full bg-iris/12 blur-[150px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-[-12%] top-[38%] h-[420px] w-[460px] rounded-full bg-accent/10 blur-[150px]"
-      />
+      {/* Ambient light blooms + diagonal ray — the "neon in a dark room" finish. */}
+      <AmbientBackground variant="hero" />
 
       <Container className="relative flex flex-col items-center pt-28 pb-28 text-center sm:pt-32 md:pt-36 md:pb-40">
         {/* 1. Availability pill */}

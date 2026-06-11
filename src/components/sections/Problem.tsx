@@ -1,6 +1,7 @@
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
+import AmbientBackground from "../AmbientBackground";
 
 const without = [
   "Inquiries sit unseen in the inbox",
@@ -27,8 +28,9 @@ const capabilities = [
 
 export default function Problem() {
   return (
-    <section className="bg-navy-deep py-28 md:py-40">
-      <Container>
+    <section className="relative overflow-hidden bg-navy-deep py-28 md:py-40">
+      <AmbientBackground variant="subtle" />
+      <Container className="relative">
         <SectionHeading
           eyebrow="Where growth leaks"
           title="The deal is usually lost before sales ever sees it."
