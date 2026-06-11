@@ -72,11 +72,16 @@ export async function sendLeadNotification(lead: LeadFields): Promise<void> {
     </div>
   </div>`;
 
-  await resend.emails.send({
+  // The Resend SDK returns errors instead of throwing — check explicitly so a
+  // rejected send (bad sender, sandbox restrictions) is visible in the logs.
+  const { error } = await resend.emails.send({
     from,
     to,
     replyTo: lead.email,
     subject: `New audit request — ${lead.business}`,
     html,
   });
+  if (error) {
+    console.error("[lead] email notification rejected:", error.message);
+  }
 }
