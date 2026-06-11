@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="border-b border-white/10">
         <Container className="flex flex-col items-center gap-5 py-16 text-center md:py-20">
           <h2 className="max-w-2xl font-display text-3xl font-normal leading-[1.05] text-ivory sm:text-4xl">
-            Stop losing inquiries to <em className="italic text-accent-glow">slow replies.</em>
+            Stop losing inquiries to <em className="italic">slow replies.</em>
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-slate">
             Book a system audit — we&apos;ll map where speed and follow-up can improve.

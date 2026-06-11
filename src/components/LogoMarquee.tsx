@@ -35,7 +35,7 @@ export default function LogoMarquee() {
               className="flex shrink-0 items-center gap-10 text-xl font-medium tracking-tight text-silver/70 transition-colors duration-200 hover:text-ivory sm:text-2xl"
             >
               {name}
-              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3d5af1] shadow-[0_0_14px_rgba(61,90,241,0.48)]" />
+              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d5bff] shadow-[0_0_14px_rgba(45,91,255,0.48)]" />
             </span>
           )),
         )}

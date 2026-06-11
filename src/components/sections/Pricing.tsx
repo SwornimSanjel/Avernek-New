@@ -16,7 +16,7 @@ export default function Pricing() {
           eyebrow="Packages"
           title={
             <>
-              Three depths of the same <em className="italic text-accent-glow">system</em>
+              Three depths of the same <em className="italic">system</em>
             </>
           }
           description="Each package builds on the last — the audit picks the fit."
@@ -28,8 +28,8 @@ export default function Pricing() {
               <div
                 className={`border-sweep relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 md:p-8 ${
                   pkg.featured
-                    ? "border-[#3d5af1]/55 bg-[#0d1630]/85 hover:border-[#5b74f5]/70 lg:z-10 lg:scale-[1.04]"
-                    : "border-line bg-panel/40 hover:border-[#3d5af1]/42"
+                    ? "border-[#2d5bff]/55 bg-[#0a1126]/85 hover:border-[#4c70ff]/70 lg:z-10 lg:scale-[1.04]"
+                    : "border-line bg-panel/40 hover:border-[#2d5bff]/42"
                 }`}
               >
                 {pkg.featured && (
@@ -61,7 +61,7 @@ export default function Pricing() {
                 <ul className="mt-3 flex flex-1 flex-col gap-3">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-silver">
-                      <span className="mt-0.5 text-[#93a5ff]">✓</span>
+                      <span className="mt-0.5 text-[#6b8aff]">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}

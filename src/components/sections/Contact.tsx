@@ -81,7 +81,7 @@ export default function Contact() {
           </span>
           <h2 className="font-display text-4xl font-normal leading-[1.05] text-ivory sm:text-[3rem]">
             See where your inquiries are{" "}
-            <em className="italic text-accent-glow">leaking.</em>
+            <em className="italic">leaking.</em>
           </h2>
           <p className="text-base leading-relaxed text-slate">
             One short call to map how inquiries enter, how fast they get handled, and where they

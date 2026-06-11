@@ -150,7 +150,7 @@ export default function QuickActions() {
             not pasted on — diffuse, no hard circle/border */}
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(99,118,255,0.22),rgba(61,90,241,0.12)_45%,transparent_72%)] blur-md"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(96,130,255,0.22),rgba(45,91,255,0.12)_45%,transparent_72%)] blur-md"
         />
         <span className={`relative flex items-center justify-center ${open ? "" : "ai-settle"}`}>
           <AiHead className="h-12 w-12" />

@@ -11,7 +11,7 @@ type AiHeadProps = {
 };
 
 const LINE = "#ECEEF4"; // ivory outline
-const EYE = "#93A5FF"; // accent-glow (brand indigo-blue)
+const EYE = "#6B8AFF"; // accent-glow (brand indigo-blue)
 
 export default function AiHead({ className, title = "Avernik assistant" }: AiHeadProps) {
   return (

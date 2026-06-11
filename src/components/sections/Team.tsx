@@ -32,7 +32,7 @@ export default function Team() {
           eyebrow="Core team"
           title={
             <>
-              The minds behind the <em className="italic text-accent-glow">system.</em>
+              The minds behind the <em className="italic">system.</em>
             </>
           }
           description="Every founding client works directly with the three of us — no hand-offs, no juniors."

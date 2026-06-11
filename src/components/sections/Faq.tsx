@@ -23,7 +23,7 @@ export default function Faq() {
           title={
             <>
               Straight answers to the questions we hear{" "}
-              <em className="italic text-accent-glow">most</em>
+              <em className="italic">most</em>
             </>
           }
         />

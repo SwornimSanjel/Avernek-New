@@ -24,14 +24,14 @@ export default function Problem() {
           </span>
           <h2 className="mt-5 font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
             Marketing creates attention. Avernik makes sure it does not{" "}
-            <em className="italic text-accent-glow">leak.</em>
+            <em className="italic">leak.</em>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate sm:text-lg">
             The system after the click decides what your ad spend is worth.
           </p>
         </ScrollReveal>
 
-        <ScrollReveal className="mt-14 overflow-hidden rounded-2xl border border-line bg-[#0c1530]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+        <ScrollReveal className="mt-14 overflow-hidden rounded-2xl border border-line bg-[#091022]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
           <div className="grid grid-cols-2 border-b border-line text-sm font-medium text-ivory sm:text-base">
             <div className="bg-white/[0.015] px-4 py-5 sm:px-7">
               Traditional setup
@@ -51,7 +51,7 @@ export default function Problem() {
                   {without}
                 </div>
                 <div className="flex items-start gap-3 border-t border-white/[0.06] bg-accent/[0.055] px-4 py-5 text-sm leading-relaxed text-silver md:border-l md:border-t-0 md:border-accent-glow/[0.18] sm:px-7 sm:text-base">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/25 text-accent-glow shadow-[0_0_18px_rgba(99,118,255,0.28)]">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/25 text-accent-glow shadow-[0_0_18px_rgba(96,130,255,0.28)]">
                     <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3" aria-hidden>
                       <path
                         d="M4 10.5 8 14 16 6"

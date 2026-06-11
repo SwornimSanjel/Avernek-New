@@ -47,7 +47,7 @@ export default function WorkflowDemo() {
   return (
     <section
       id="demo"
-      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#101a3c_0%,#0a1228_42%,#060b1a_100%)] py-24 md:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#0c1430_0%,#060a1c_42%,#02040d_100%)] py-24 md:py-32"
     >
       {/* the one brighter, electric-blue "spotlight" section of the site */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-[0.22]" />
@@ -65,7 +65,7 @@ export default function WorkflowDemo() {
           title={
             <>
               Watch one inquiry move through the{" "}
-              <em className="italic text-accent-glow">system.</em>
+              <em className="italic">system.</em>
             </>
           }
           description="Illustrative demo: one message captured, answered, qualified, and flagged in seconds."
@@ -157,7 +157,7 @@ export default function WorkflowDemo() {
             <motion.div
               animate={{
                 opacity: at(6) ? 1 : 0.3,
-                borderColor: at(6) ? "rgba(61,90,241,0.55)" : "rgba(255,255,255,0.1)",
+                borderColor: at(6) ? "rgba(45,91,255,0.55)" : "rgba(255,255,255,0.1)",
               }}
               transition={{ duration: 0.3 }}
               className="flex items-center gap-3 rounded-2xl border bg-panel/60 p-4 backdrop-blur-sm"

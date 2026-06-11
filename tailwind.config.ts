@@ -20,22 +20,22 @@ const config: Config = {
         },
         panel: {
           DEFAULT: "rgb(var(--bg-card-rgb) / <alpha-value>)", // elevated panels
-          light: "#16224A",
+          light: "#131D44",
         },
         ivory: "rgb(var(--text-rgb) / <alpha-value>)", // headings / strong text
-        silver: "#C3CAE3", // body text — between text and muted
+        silver: "#BFC6E0", // body text — between text and muted
         slate: {
           DEFAULT: "rgb(var(--text-muted-rgb) / <alpha-value>)", // cool blue-grey muted
         },
-        // Primary: royal blue / indigo. No purple, no neon.
+        // Primary: vivid royal blue. Saturated, never pastel/sky.
         accent: {
           DEFAULT: "rgb(var(--primary-rgb) / <alpha-value>)",
-          glow: "#93A5FF", // light indigo for links / highlights on dark
+          glow: "#6B8AFF", // saturated light blue for links / highlights
         },
         // De-purpled: iris now leans blue so legacy usages stay in-palette.
         iris: {
-          DEFAULT: "#5B74F5",
-          glow: "#A8B6FF",
+          DEFAULT: "#4C70FF",
+          glow: "#8AA2FF",
         },
         // Gold — review stars ONLY. Never headings, CTAs or tags.
         gold: {
@@ -59,7 +59,7 @@ const config: Config = {
         card: "0 20px 50px -28px rgba(0, 0, 0, 0.7)",
       },
       backgroundImage: {
-        "accent-grad": "linear-gradient(120deg, #93A5FF 0%, #3D5AF1 60%, #3D5AF1 100%)",
+        "accent-grad": "linear-gradient(120deg, #6B8AFF 0%, #2D5BFF 60%, #2D5BFF 100%)",
         "ink-grad": "linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%)",
         "panel-grad": "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%)",
       },

@@ -84,18 +84,6 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-function Stars() {
-  return (
-    <span className="inline-flex items-center gap-0.5" aria-label="5 star rating">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-gold" aria-hidden>
-          <path d="M10 1.5l2.47 5.26 5.53.7-4.07 3.95.99 5.59L10 14.27 5.08 17l.99-5.59L2 7.46l5.53-.7L10 1.5z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
-
 function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: number }) {
   return (
     <div className="signal-card h-full rounded-2xl p-7 md:p-8">
@@ -119,12 +107,17 @@ function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: numb
 
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col rounded-3xl border border-line bg-panel p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-colors duration-200 hover:border-[rgba(61,90,241,0.45)] md:p-7">
-      <Stars />
-      <blockquote className="mt-4 line-clamp-2 text-sm leading-relaxed text-silver md:text-[15px]">
+    <figure className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-panel p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-colors duration-200 hover:border-[rgba(45,91,255,0.5)] md:p-7">
+      {/* faint blueprint grid, masked so it fades toward the card bottom */}
+      <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
+      {/* Mach33-style oversized quote mark */}
+      <span aria-hidden className="relative font-display text-6xl leading-[0.55] text-ivory">
+        &rdquo;
+      </span>
+      <blockquote className="relative mt-4 line-clamp-2 text-sm leading-relaxed text-silver md:text-[15px]">
         {t.quote}
       </blockquote>
-      <figcaption className="mt-auto flex items-center gap-3 pt-6">
+      <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
         <Image
           src={t.avatar}
           alt=""
@@ -150,7 +143,7 @@ export default function Proof() {
           eyebrow="Proof"
           title={
             <>
-              A system built for <em className="italic text-accent-glow">cleaner</em> inquiry
+              A system built for <em className="italic">cleaner</em> inquiry
               handling.
             </>
           }
@@ -185,7 +178,7 @@ export default function Proof() {
             Testimonials
           </span>
           <h3 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-normal leading-[1.05] text-ivory md:text-[2.5rem]">
-            What teams are <em className="italic text-accent-glow">saying</em> once Avernik
+            What teams are <em className="italic">saying</em> once Avernik
             handles the flow.
           </h3>
         </ScrollReveal>
@@ -200,10 +193,10 @@ export default function Proof() {
 
       </Container>
 
-      <div className="relative mt-20 overflow-hidden border-y border-line bg-[#081020]/60 py-10 md:mt-28 md:py-12">
+      <div className="relative mt-20 overflow-hidden border-y border-line bg-[#050814]/60 py-10 md:mt-28 md:py-12">
         <span
           aria-hidden
-          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3d5af1]/45 to-transparent"
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#2d5bff]/45 to-transparent"
         />
         <p className="relative mb-7 text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           Built on technology you already trust

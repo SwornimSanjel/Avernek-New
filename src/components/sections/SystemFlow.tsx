@@ -42,7 +42,7 @@ export default function SystemFlow() {
           <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
             <h2 className="max-w-xl font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
               Turn inquiries into booked{" "}
-              <em className="italic text-accent-glow">follow-up</em>
+              <em className="italic">follow-up</em>
             </h2>
 
             <p className="mt-5 max-w-sm text-base leading-relaxed text-slate">
