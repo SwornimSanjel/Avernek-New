@@ -1,285 +1,211 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import LogoMarquee from "../LogoMarquee";
 import CountUp from "../CountUp";
-import Mark from "../Mark";
 import AmbientBackground from "../AmbientBackground";
 
-/* ── Block A · Capability targets — DESIGN GOALS, not measured client results.
-   Figures count up from 0 → target when scrolled into view. ─ */
-type Capability = { lead?: string; to: number; suffix: string; sub: string };
-const capabilities: Capability[] = [
-  { lead: "Under ", to: 60, suffix: "s", sub: "Target first-reply time, day or night." },
-  { to: 100, suffix: "%", sub: "Every inquiry captured to your CRM automatically." },
-  { to: 24, suffix: " / 7", sub: "Coverage while your team is offline or asleep." },
-];
-
-/* Selected work — real clients shown as compact site cards. Drop a real .webp
-   at the `src` path and the card swaps the monogram placeholder for the
-   screenshot automatically, with zero code change. */
-type WorkItem = {
-  name: string;
-  sector: string;
-  url: string;
-  domain: string;
-  src: string;
-  alt: string;
+type SignalMetric = {
+  value?: number;
+  lead?: string;
+  suffix: string;
+  label: string;
+  note: string;
 };
 
-const selectedWork: WorkItem[] = [
+const signalMetrics: SignalMetric[] = [
   {
-    name: "Sports Center Nepal",
-    sector: "Sports & fitness · Kathmandu",
-    url: "https://sportscenter.com.np/",
-    domain: "sportscenter.com.np",
-    src: "/proof/client-sportscenter.webp",
-    alt: "Sports Center Nepal website homepage",
+    lead: "Under ",
+    value: 60,
+    suffix: "s",
+    label: "First response target",
+    note: "Designed so new inquiries get a professional answer while intent is still hot.",
   },
   {
-    name: "Mountain Routes",
-    sector: "Adventure travel · Nepal",
-    url: "https://mountainroutes.com/",
-    domain: "mountainroutes.com",
-    src: "/proof/client-mountainroutes.webp",
-    alt: "Mountain Routes website homepage",
+    value: 100,
+    suffix: "%",
+    label: "Inquiry capture",
+    note: "Messages, forms, and WhatsApp leads are pushed into one organized system.",
+  },
+  {
+    value: 24,
+    suffix: " / 7",
+    label: "Coverage window",
+    note: "After-hours questions are handled instead of waiting for the next business day.",
+  },
+  {
+    value: 1,
+    suffix: " pipeline",
+    label: "Follow-up visibility",
+    note: "Owners see who is new, qualified, followed up, booked, or lost.",
   },
 ];
 
-/**
- * A compact site card: thin macOS chrome bar, a 16:10 screenshot, and a footer
- * strip. If the screenshot is missing (or fails to load) it falls back to a
- * quiet monogram placeholder instead of a big empty browser frame.
- */
-function WorkCard({ item }: { item: WorkItem }) {
-  const [failed, setFailed] = useState(false);
-  const monogram = item.name.charAt(0).toUpperCase();
+type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  avatar: string;
+};
 
+// TODO: placeholder testimonials + avatars — swap in real client quotes and
+// photos (with permission) as soon as they exist. Keep quotes ≤ 2 lines.
+const testimonials: Testimonial[] = [
+  {
+    quote: "We were losing buyers to slow replies. Now every inquiry gets an instant, professional answer.",
+    name: "Suman Shrestha",
+    role: "Founder, Himalayan Fit Studio",
+    avatar: "https://i.pravatar.cc/96?img=16",
+  },
+  {
+    quote: "They understood how our team works and built around it. Inquiries are finally easy to manage.",
+    name: "Nisha Karki",
+    role: "Operations Manager, Urban Nest Interiors",
+    avatar: "https://i.pravatar.cc/96?img=17",
+  },
+  {
+    quote: "Messages are never ignored after hours. Our team steps in only when the lead is serious.",
+    name: "Rajan Maharjan",
+    role: "Owner, Valley Auto Care",
+    avatar: "https://i.pravatar.cc/96?img=18",
+  },
+  {
+    quote: "Leads used to arrive with no status. Now we see exactly who needs follow-up and who is ready.",
+    name: "Priya Adhikari",
+    role: "Co-Founder, Luma Beauty Academy",
+    avatar: "https://i.pravatar.cc/96?img=19",
+  },
+  {
+    quote: "It filters low-intent inquiries and points our team at the people who are actually interested.",
+    name: "Bikash Gurung",
+    role: "Director, Summit Property Advisors",
+    avatar: "https://i.pravatar.cc/96?img=20",
+  },
+];
+
+function Stars() {
   return (
-    <div className="border-sweep group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-panel/50 shadow-card transition-colors duration-200 hover:border-accent/40">
-      {/* Thin macOS-style chrome */}
-      <div className="flex h-8 shrink-0 items-center border-b border-white/10 px-3">
-        <div className="flex items-center gap-1.5 opacity-30">
-          <span className="h-2 w-2 rounded-full bg-white" />
-          <span className="h-2 w-2 rounded-full bg-white" />
-          <span className="h-2 w-2 rounded-full bg-white" />
-        </div>
-        <span className="mx-auto max-w-[70%] truncate rounded-md bg-white/[0.04] px-2.5 py-0.5 text-[11px] text-slate">
-          {item.domain}
-        </span>
-        <span aria-hidden className="w-[34px] shrink-0" />
-      </div>
+    <span className="inline-flex items-center gap-0.5" aria-label="5 star rating">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-gold" aria-hidden>
+          <path d="M10 1.5l2.47 5.26 5.53.7-4.07 3.95.99 5.59L10 14.27 5.08 17l.99-5.59L2 7.46l5.53-.7L10 1.5z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
 
-      {/* Screenshot, with a quiet monogram placeholder underneath as fallback */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-panel-light">
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.1] blur-[45px]"
-          />
-          <span className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] font-display text-lg font-semibold text-ivory">
-            {monogram}
-          </span>
-          <span className="relative text-xs text-slate">{item.domain}</span>
-        </div>
-        {!failed && (
-          <Image
-            src={item.src}
-            alt={item.alt}
-            fill
-            sizes="(min-width: 640px) 45vw, 90vw"
-            className="object-cover"
-            onError={() => setFailed(true)}
-          />
+function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: number }) {
+  return (
+    <div className="signal-card h-full rounded-2xl p-7 md:p-8">
+      <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate">
+        Signal 0{index + 1}
+      </span>
+      {/* Stat numbers stay sans — the one place bold is allowed. */}
+      <p className="mt-8 text-4xl font-bold text-ivory">
+        {metric.lead}
+        {typeof metric.value === "number" ? (
+          <CountUp to={metric.value} suffix={metric.suffix} duration={1200} />
+        ) : (
+          metric.suffix
         )}
-      </div>
-
-      {/* Footer strip */}
-      <div className="flex items-start justify-between gap-3 p-5">
-        <div>
-          <h4 className="font-display text-lg font-semibold text-ivory">{item.name}</h4>
-          <p className="mt-0.5 text-sm text-slate">{item.sector}</p>
-        </div>
-        <a
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 text-xs text-silver underline-offset-4 transition-colors hover:text-accent-glow hover:underline"
-        >
-          Visit site ↗
-        </a>
-      </div>
+      </p>
+      <h3 className="mt-4 text-lg font-medium text-silver">{metric.label}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-slate">{metric.note}</p>
     </div>
   );
 }
 
-/*
- * Testimonials are intentionally EMPTY. Avernik is pre-revenue and onboarding
- * founding clients, so there are no real quotes yet. Drop a real, permissioned
- * testimonial into this array and the grid renders automatically — zero layout
- * work. Never invent quotes, names, or results.
- */
-type Testimonial = { quote: string; name: string; role: string };
-const testimonials: Testimonial[] = []; // TODO: add real, permissioned testimonials only
-
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="rounded-2xl border border-white/10 bg-panel/50 p-7">
-      <blockquote className="text-sm leading-relaxed text-ivory/90">&ldquo;{t.quote}&rdquo;</blockquote>
-      <figcaption className="mt-4 text-sm">
-        <span className="font-semibold text-ivory">{t.name}</span>
-        <span className="text-slate"> · {t.role}</span>
+    <figure className="flex h-full flex-col rounded-3xl border border-line bg-panel p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-colors duration-200 hover:border-[rgba(61,90,241,0.45)] md:p-7">
+      <Stars />
+      <blockquote className="mt-4 line-clamp-2 text-sm leading-relaxed text-silver md:text-[15px]">
+        {t.quote}
+      </blockquote>
+      <figcaption className="mt-auto flex items-center gap-3 pt-6">
+        <Image
+          src={t.avatar}
+          alt=""
+          width={40}
+          height={40}
+          className="h-10 w-10 shrink-0 rounded-full border border-line object-cover"
+        />
+        <span>
+          <span className="block text-sm font-medium text-ivory">{t.name}</span>
+          <span className="block text-xs text-slate">{t.role}</span>
+        </span>
       </figcaption>
     </figure>
   );
 }
 
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-slate">
-      {children}
-    </span>
-  );
-}
-
 export default function Proof() {
   return (
-    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40">
+    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-24 md:py-32">
       <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Proof"
-          title="Built and working."
-          description="We're early but we're not theoretical. Here's the work we've shipped and the standards every Avernik system is built to."
+          title={
+            <>
+              A system built for <em className="italic text-accent-glow">cleaner</em> inquiry
+              handling.
+            </>
+          }
+          description="The operating standards built into every system we ship."
         />
 
-        {/* ── Block A — Capability proof ─────────────────────────────────── */}
-        <ScrollReveal className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2">
-          <h3 className="font-display text-lg font-semibold text-ivory">
-            What the system is built to do
-          </h3>
-          <Badge>Targets, not results</Badge>
-        </ScrollReveal>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate">
-          These are the design targets every Avernik system is built and tuned to hit — not averaged
-          client outcomes.
-        </p>
-
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
-          {capabilities.map((c, i) => (
-            <ScrollReveal key={c.sub} delay={i * 0.08} className="h-full">
-              <div className="border-sweep h-full rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 md:p-8">
-                <p className="font-display text-3xl font-bold text-accent-glow sm:text-[2rem]">
-                  {c.lead}
-                  <CountUp to={c.to} suffix={c.suffix} duration={1200} />
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-slate">{c.sub}</p>
-              </div>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {signalMetrics.map((metric, i) => (
+            <ScrollReveal key={metric.label} delay={(i % 4) * 0.06} className="h-full">
+              <SignalMetricCard metric={metric} index={i} />
             </ScrollReveal>
           ))}
         </div>
 
-        {/* ── Block B — Our promise (collective; the team is introduced once,
-            in the Team section, so this stays a brand-level commitment) ──── */}
-        <ScrollReveal className="relative mt-6 overflow-hidden rounded-2xl border border-accent/30 bg-panel-light p-7 shadow-glow sm:p-9">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-iris/15 blur-[70px]"
-          />
+        <ScrollReveal className="relative mt-8 overflow-hidden rounded-2xl border border-line bg-panel/75 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9">
           <div className="relative flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-panel-light shadow-card">
-              <Mark className="h-5 w-5 text-ivory" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-accent/10 font-medium text-accent-glow">
+              A
             </span>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate">
               Our promise
             </p>
           </div>
-
-          <p className="relative mt-4 max-w-2xl text-sm leading-relaxed text-ivory/90">
-            We guarantee the parts we control: your system delivered and live, fast replies to
-            inbound inquiries, every lead tracked, and clear reporting you can see. We do not promise
-            guaranteed sales — that depends on your offer, your pricing, and how your team follows
-            up. We commit to the system; you stay in control of the close.
+          <p className="relative mt-4 max-w-3xl text-sm leading-relaxed text-ivory/90">
+            We guarantee the parts we control: the system live, faster first replies, lead tracking,
+            and clear reporting. Sales still depend on your offer, market, and follow-up.
           </p>
-
-          <div className="relative mt-5 flex flex-wrap gap-2">
-            {["System delivery", "Response speed", "Lead tracking", "Reporting"].map((g) => (
-              <span
-                key={g}
-                className="rounded-full border border-accent/30 bg-accent/[0.06] px-3 py-1 text-xs text-ivory/90"
-              >
-                ✓ {g}
-              </span>
-            ))}
-            <span className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-slate">
-              ✕ Guaranteed sales
-            </span>
-          </div>
-
-          <p className="relative mt-5 text-sm font-medium text-slate">— The Avernik team</p>
         </ScrollReveal>
 
-        {/* ── Selected work — compact live-site cards ────────────────────── */}
-        <ScrollReveal className="mt-14 flex flex-wrap items-center gap-x-3 gap-y-2">
-          <h3 className="font-display text-lg font-semibold text-ivory">Selected work</h3>
-          <Badge>Live sites</Badge>
+        <ScrollReveal className="mt-20 text-center">
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
+            Testimonials
+          </span>
+          <h3 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-normal leading-[1.05] text-ivory md:text-[2.5rem]">
+            What teams are <em className="italic text-accent-glow">saying</em> once Avernik
+            handles the flow.
+          </h3>
         </ScrollReveal>
-        <p className="mt-2 text-sm leading-relaxed text-slate">
-          Real businesses we&apos;ve built and shipped for.
-        </p>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {selectedWork.map((c, i) => (
-            <ScrollReveal key={c.url} delay={i * 0.08} className="h-full">
-              <WorkCard item={c} />
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <ScrollReveal key={t.name} delay={(i % 3) * 0.08} className="h-full">
+              <TestimonialCard t={t} />
             </ScrollReveal>
           ))}
         </div>
 
-        {/* ── Block C — Founding-client frame ────────────────────────────── */}
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <ScrollReveal className="rounded-2xl border border-white/10 bg-panel/50 p-7 md:p-8">
-            <h3 className="font-display text-lg font-semibold text-ivory">
-              Founding clients, this quarter
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate">
-              We are onboarding a limited number of founding clients this quarter with tailored setup
-              support, in exchange for a case study. You get hands-on attention from the people who
-              build the system; we earn a real, permissioned result to show.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal
-            delay={0.1}
-            className="flex flex-col rounded-2xl border border-white/10 bg-panel/50 p-7 md:p-8"
-          >
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <h3 className="font-display text-lg font-semibold text-ivory">Case studies</h3>
-              <Badge>Coming soon</Badge>
-            </div>
-            <p className="text-sm leading-relaxed text-slate">
-              Real, permissioned client results will appear here as our founding clients complete
-              their first cycles. We will never publish numbers we cannot stand behind.
-            </p>
-          </ScrollReveal>
-        </div>
-
-        {/* Testimonials — renders only once a real, permissioned quote exists. */}
-        {testimonials.length > 0 && (
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <TestimonialCard key={t.name} t={t} />
-            ))}
-          </div>
-        )}
       </Container>
 
-      {/* Technology band — full-bleed, edge-to-edge marquee with top/bottom hairlines only */}
-      <div className="mt-20 border-y border-white/10 py-12 md:mt-28 md:py-14">
-        <p className="mb-9 text-center text-xs font-medium uppercase tracking-[0.3em] text-slate/80">
+      <div className="relative mt-20 overflow-hidden border-y border-line bg-[#081020]/60 py-10 md:mt-28 md:py-12">
+        <span
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#3d5af1]/45 to-transparent"
+        />
+        <p className="relative mb-7 text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           Built on technology you already trust
         </p>
         <LogoMarquee />

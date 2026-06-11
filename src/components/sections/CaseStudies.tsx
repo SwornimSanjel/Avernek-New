@@ -31,7 +31,7 @@ export default function CaseStudies() {
               className="flex h-full flex-col rounded-2xl border border-white/10 bg-panel/50 p-7"
             >
               <p className="text-xs uppercase tracking-wide text-slate">{cs.sector}</p>
-              <h3 className="mt-1 font-display text-lg font-semibold text-ivory">{cs.client}</h3>
+              <h3 className="mt-1 text-lg font-medium text-ivory">{cs.client}</h3>
               <p className="mt-3 text-sm text-slate">{cs.challenge}</p>
               <p className="mt-3 text-sm text-silver">{cs.whatWeDid}</p>
               <p className="mt-4 border-t border-white/10 pt-4 text-sm font-medium text-accent-glow">

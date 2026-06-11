@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "../Container";
 import { LinkButton } from "../Button";
@@ -11,49 +12,74 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
 };
 
+// TODO: placeholder avatars — swap for real client photos when available.
+const trustAvatars = [11, 12, 13, 14, 15].map(
+  (n) => `https://i.pravatar.cc/80?img=${n}`,
+);
+
+function Stars({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-0.5 ${className}`} aria-label="5 star rating">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-gold" aria-hidden>
+          <path d="M10 1.5l2.47 5.26 5.53.7-4.07 3.95.99 5.59L10 14.27 5.08 17l.99-5.59L2 7.46l5.53-.7L10 1.5z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
 /**
- * Hero — text-focused and atmospheric, Mach33-style: a large centered headline
- * vertically centered in a full-height near-black section, lit by ambient
- * blooms, a diagonal light-ray, and a slow drift of glowing particles. No
- * centerpiece graphic — the live messenger demo lives lower down in #demo.
+ * Hero — Mach33-style: a large centered editorial-serif headline vertically
+ * centered in a full-height deep-navy section, lit by a planet-horizon glow
+ * arc rising behind the content, a subtle starfield, and drifting particles.
  */
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-obsidian">
-      {/* Ambient light blooms + diagonal ray — the "neon in a dark room" finish. */}
+    <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-transparent">
       <AmbientBackground variant="hero" />
-      {/* Floating glow particles over the blooms. */}
-      <Particles className="opacity-70" />
+      <Particles className="opacity-60" count={70} />
 
-      <Container className="relative flex flex-col items-center py-32 text-center">
+      {/* Planet-horizon arc — a vast circle whose glowing top edge rises behind
+          the hero content; everything below the rim falls into deep navy. */}
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-[74%] h-[120rem] w-[240rem] -translate-x-1/2 rounded-[100%] bg-[#050a16] shadow-[0_-60px_160px_-20px_var(--primary-glow),inset_0_1px_0_rgba(147,165,255,0.4)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#060b1a] via-[#060b1a]/70 to-transparent"
+      />
+
+      <Container className="relative flex flex-col items-center py-32 text-center sm:py-36">
         {/* 1. Availability pill */}
         <motion.span
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-silver"
+          className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.22em] text-slate backdrop-blur-md"
         >
           <span className="h-1.5 w-1.5 animate-node rounded-full bg-accent-glow" />
-          Now onboarding founding clients
+          AI inquiry systems for always-on growth
         </motion.span>
 
-        {/* 2. H1 — larger now that it carries the hero alone */}
+        {/* 2. H1 — editorial serif, one italic phrase, no gradients */}
         <motion.h1
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.12 }}
-          className="mt-7 max-w-4xl font-display text-[2.25rem] font-bold leading-[1.08] tracking-tight text-ivory sm:text-[3rem] md:text-[3.6rem] lg:text-[4.25rem]"
+          className="mt-8 max-w-4xl font-display text-[2.7rem] font-normal leading-[1.05] text-ivory sm:text-[3.6rem] md:text-[4.4rem] lg:text-[5rem]"
         >
-          We answer, qualify and follow up on every inquiry —{" "}
-          <span className="text-gradient">even at 2 a.m.</span>
+          Every inquiry answered, qualified, and followed up by{" "}
+          <em className="italic text-accent-glow">future-ready AI.</em>
         </motion.h1>
 
-        {/* 3. Subhead */}
+        {/* 3. Subhead — one sentence */}
         <motion.p
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.22 }}
-          className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-silver sm:text-lg"
+          className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-slate sm:text-lg"
         >
-          Avernik captures every customer message, replies in seconds, scores intent, and hands
-          your team a clear follow-up list. Around the clock.
+          One AI system that answers, qualifies, and follows up every inquiry —
+          across every channel.
         </motion.p>
 
         {/* 4. CTA row */}
@@ -62,13 +88,49 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.32 }}
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <LinkButton href="#contact">Book a system audit</LinkButton>
+          <LinkButton href="#contact">
+            Book a system audit
+            <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden>
+              <path
+                d="M4 10h12m0 0-5-5m5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </LinkButton>
           <a
             href="#demo"
-            className="text-sm text-silver underline-offset-4 transition-colors hover:text-ivory hover:underline"
+            className="rounded-full border border-line bg-white/[0.03] px-5 py-3 text-sm font-medium text-silver transition-colors hover:border-accent/50 hover:text-ivory"
           >
-            See how it handles a live inquiry →
+            See the live inquiry flow
           </a>
+        </motion.div>
+
+        {/* 5. Trust row — avatars + stars + honest claim (no invented counts) */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.6, delay: 0.42 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-3"
+        >
+          <span className="flex -space-x-2.5">
+            {trustAvatars.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-full border-2 border-obsidian object-cover"
+                style={{ zIndex: trustAvatars.length - i }}
+              />
+            ))}
+          </span>
+          <span className="flex flex-col items-start gap-0.5">
+            <Stars />
+            <span className="text-xs text-slate">Trusted by growing businesses</span>
+          </span>
         </motion.div>
       </Container>
 
@@ -76,10 +138,16 @@ export default function Hero() {
       <a
         href="#demo"
         aria-label="Scroll to the live demo"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate/50 transition-colors duration-200 hover:text-slate motion-reduce:hidden"
+        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-slate/60 transition-colors duration-200 hover:text-slate motion-reduce:hidden"
       >
         <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 animate-bounce" aria-hidden>
-          <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M6 9l6 6 6-6"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.6"
+          />
         </svg>
       </a>
     </section>

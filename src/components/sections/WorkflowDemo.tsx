@@ -47,7 +47,7 @@ export default function WorkflowDemo() {
   return (
     <section
       id="demo"
-      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#0f1838_0%,#0a1024_42%,#06070f_100%)] py-28 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#101a3c_0%,#0a1228_42%,#060b1a_100%)] py-24 md:py-32"
     >
       {/* the one brighter, electric-blue "spotlight" section of the site */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-[0.22]" />
@@ -62,8 +62,13 @@ export default function WorkflowDemo() {
       <Container className="relative">
         <SectionHeading
           eyebrow="Live demo"
-          title="Watch one inquiry move through the system."
-          description="An illustrative example, not a real client chat. One message gets captured, answered, qualified, and flagged for follow-up in seconds."
+          title={
+            <>
+              Watch one inquiry move through the{" "}
+              <em className="italic text-accent-glow">system.</em>
+            </>
+          }
+          description="Illustrative demo: one message captured, answered, qualified, and flagged in seconds."
         />
 
         <div
@@ -127,7 +132,7 @@ export default function WorkflowDemo() {
                 <motion.span
                   animate={{ opacity: at(5) ? 1 : 0, scale: at(5) ? 1 : 0.8 }}
                   transition={{ duration: 0.25 }}
-                  className="rounded-full bg-gold/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-gold-glow"
+                  className="rounded-full bg-accent/20 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-accent-glow"
                 >
                   ● Hot
                 </motion.span>
@@ -152,16 +157,16 @@ export default function WorkflowDemo() {
             <motion.div
               animate={{
                 opacity: at(6) ? 1 : 0.3,
-                borderColor: at(6) ? "rgba(224,169,95,0.5)" : "rgba(255,255,255,0.1)",
+                borderColor: at(6) ? "rgba(61,90,241,0.55)" : "rgba(255,255,255,0.1)",
               }}
               transition={{ duration: 0.3 }}
               className="flex items-center gap-3 rounded-2xl border bg-panel/60 p-4 backdrop-blur-sm"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold/15 text-gold-glow">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/20 text-accent-glow">
                 !
               </span>
               <div>
-                <p className="text-sm font-semibold text-ivory">Owner alert</p>
+                <p className="text-sm font-medium text-ivory">Owner alert</p>
                 <p className="text-xs text-slate">Qualified lead, flagged for the team to call first.</p>
               </div>
             </motion.div>

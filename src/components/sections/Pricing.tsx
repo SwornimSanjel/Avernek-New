@@ -9,13 +9,17 @@ import { packages, packagesNote } from "@/lib/content";
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative scroll-mt-24 overflow-hidden bg-obsidian py-28 md:py-40">
+    <section id="pricing" className="relative scroll-mt-24 overflow-hidden bg-obsidian py-24 md:py-32">
       <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Packages"
-          title="Three depths of the same system"
-          description="Each package builds on the last. The right fit is recommended after a system audit, not guessed from a price tag."
+          title={
+            <>
+              Three depths of the same <em className="italic text-accent-glow">system</em>
+            </>
+          }
+          description="Each package builds on the last — the audit picks the fit."
         />
 
         <div className="mt-16 grid items-stretch gap-6 lg:grid-cols-3">
@@ -24,20 +28,20 @@ export default function Pricing() {
               <div
                 className={`border-sweep relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 md:p-8 ${
                   pkg.featured
-                    ? "border-accent/50 bg-panel-light shadow-glow hover:border-accent/70 lg:z-10 lg:scale-[1.04]"
-                    : "border-white/10 bg-panel/40 hover:border-accent/40"
+                    ? "border-[#3d5af1]/55 bg-[#0d1630]/85 hover:border-[#5b74f5]/70 lg:z-10 lg:scale-[1.04]"
+                    : "border-line bg-panel/40 hover:border-[#3d5af1]/42"
                 }`}
               >
                 {pkg.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent-grad px-4 py-1 text-xs font-semibold uppercase tracking-wide text-ivory shadow-glow">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-medium uppercase tracking-wide text-ivory">
                     Recommended
                   </span>
                 )}
 
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate">
                   {pkg.tier}
                 </span>
-                <h3 className="mt-2 font-display text-2xl font-bold text-ivory">{pkg.name}</h3>
+                <h3 className="mt-2 text-2xl font-medium text-ivory">{pkg.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate">{pkg.summary}</p>
 
                 <div className="mt-6 flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs">
@@ -51,13 +55,13 @@ export default function Pricing() {
                   </div>
                 </div>
 
-                <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate">
+                <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.18em] text-slate">
                   Key inclusions
                 </p>
                 <ul className="mt-3 flex flex-1 flex-col gap-3">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-silver">
-                      <span className="mt-0.5 text-accent-glow">✓</span>
+                      <span className="mt-0.5 text-[#93a5ff]">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}

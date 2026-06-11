@@ -20,14 +20,14 @@ export default function Logo({ tone = "ivory", className = "", href = "/" }: Log
       aria-label="Avernik home"
       className={`group inline-flex items-center gap-2.5 ${className}`}
     >
-      <span className="relative flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-panel-light shadow-card transition-colors duration-300 group-hover:border-accent/40">
+      <span className="relative flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-[#0d1630] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-colors duration-300 group-hover:border-[#3d5af1]/45">
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-[10px] bg-accent-grad opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-20"
+          className="pointer-events-none absolute inset-0 rounded-[10px] bg-[#3d5af1] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-15"
         />
         <Mark className="relative h-5 w-5 text-ivory" />
       </span>
-      <span className={`font-display text-2xl font-bold tracking-[0.14em] ${wordmark}`}>
+      <span className={`text-xl font-semibold tracking-[0.14em] ${wordmark}`}>
         AVERNIK
       </span>
     </Link>

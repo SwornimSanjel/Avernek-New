@@ -25,13 +25,17 @@ function LinkedIn({ url, name }: { url?: string; name: string }) {
 
 export default function Team() {
   return (
-    <section className="relative overflow-hidden bg-ink py-28 md:py-40">
+    <section className="relative overflow-hidden bg-ink py-24 md:py-32">
       <AmbientBackground variant="subtle" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Core team"
-          title="The minds behind the system."
-          description="A small, senior team. Every founding client works directly with the three of us — no hand-offs, no juniors."
+          title={
+            <>
+              The minds behind the <em className="italic text-accent-glow">system.</em>
+            </>
+          }
+          description="Every founding client works directly with the three of us — no hand-offs, no juniors."
         />
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -62,7 +66,7 @@ export default function Team() {
 
                 {/* Info — pulled up 1px to guarantee no seam line under the photo */}
                 <div className="relative z-10 -mt-px flex flex-1 flex-col bg-panel px-6 pb-6 pt-3">
-                  <h3 className="font-display text-xl font-semibold text-ivory">{person.name}</h3>
+                  <h3 className="text-xl font-medium text-ivory">{person.name}</h3>
                   <div className="mt-2.5 flex items-center gap-2.5">
                     <span
                       aria-hidden
@@ -84,10 +88,6 @@ export default function Team() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-[60ch] text-center text-sm leading-relaxed text-slate">
-          Three people, one system. The core team that designs, builds, and runs every Avernik setup
-          — and the people you actually talk to.
-        </p>
       </Container>
     </section>
   );

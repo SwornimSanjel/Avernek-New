@@ -62,7 +62,7 @@ export default function Preloader() {
           <Mark className="relative h-11 w-11 text-ivory" />
         </motion.div>
         <motion.span
-          className="mt-5 font-display text-2xl font-bold tracking-[0.34em] text-ivory"
+          className="mt-5 text-2xl font-semibold tracking-[0.34em] text-ivory"
           initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: reduce ? 0 : 0.25 }}

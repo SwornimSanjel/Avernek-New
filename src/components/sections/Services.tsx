@@ -18,12 +18,12 @@ export default function Services() {
             <ScrollReveal key={group.title} delay={(i % 3) * 0.08} className="h-full">
               <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="font-display text-sm font-bold tracking-[0.22em] text-accent">
+                  <span className="text-sm font-medium tracking-[0.22em] text-accent">
                     {group.phase}
                   </span>
                   <span className="h-px flex-1 bg-white/10" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-ivory">{group.title}</h3>
+                <h3 className="text-lg font-medium text-ivory">{group.title}</h3>
                 <p className="mt-1.5 text-sm text-slate">{group.blurb}</p>
 
                 <ul className="mt-5 flex flex-1 flex-col gap-4">

@@ -57,22 +57,26 @@ export default function Navbar() {
         initial={reduce ? false : { y: "-150%", opacity: 0 }}
         animate={{ y: isHidden ? "-150%" : 0, opacity: isHidden ? 0 : 1 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className={`fixed left-4 right-4 top-3 z-50 mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full border py-2 pl-5 pr-2 backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300 sm:left-6 sm:right-6 sm:top-4 sm:pl-7 sm:pr-2.5 ${
+        className={`fixed left-4 right-4 top-3 z-50 mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full border py-2 pl-5 pr-2 backdrop-blur-xl transition-colors duration-300 sm:left-6 sm:right-6 sm:top-4 sm:pl-7 sm:pr-2.5 ${
           scrolled
-            ? "border-white/[0.1] bg-ink/55 shadow-[0_18px_50px_-22px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.09)]"
-            : "border-white/[0.07] bg-ink/30 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.07)]"
+            ? "border-[#1d2a55]/80 bg-[#081020]/92 shadow-[0_22px_70px_-28px_rgba(0,0,0,0.98),inset_0_1px_0_rgba(255,255,255,0.07)]"
+            : "border-[#22305f]/75 bg-[#081020]/88 shadow-[0_16px_54px_-26px_rgba(0,0,0,0.96),inset_0_1px_0_rgba(255,255,255,0.07)]"
         }`}
       >
         {/* Left: logo */}
         <Logo tone="ivory" />
 
         {/* Center: low-opacity nav links that brighten on hover */}
-        <nav className="hidden items-center gap-7 md:flex lg:gap-9">
-          {nav.map((item) => (
+        <nav className="hidden items-center gap-2 md:flex">
+          {nav.map((item, index) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-ivory/55 transition-colors duration-200 hover:text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                index === 0
+                  ? "border border-[#283a6e]/80 bg-[#16224a] text-ivory shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                  : "text-ivory/60 hover:bg-[#101a3c] hover:text-ivory"
+              }`}
             >
               {item.label}
             </a>
@@ -115,7 +119,7 @@ export default function Navbar() {
       {/* Mobile menu — its own fixed element (no transformed ancestor) so its
           glass blur also works correctly. */}
       {open && (
-        <div className="fixed left-4 right-4 top-[4.75rem] z-50 mx-auto max-w-6xl rounded-2xl border border-white/10 bg-ink/80 p-3 backdrop-blur-2xl backdrop-saturate-150 md:hidden">
+        <div className="fixed left-4 right-4 top-[4.75rem] z-50 mx-auto max-w-6xl rounded-2xl border border-white/10 bg-[#0a1228]/90 p-3 backdrop-blur-2xl backdrop-saturate-150 md:hidden">
           <div className="flex flex-col gap-1">
             {nav.map((item) => (
               <a

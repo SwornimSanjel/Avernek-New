@@ -14,13 +14,18 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-24 md:py-32"
     >
       <AmbientBackground variant="subtle" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Questions"
-          title="Straight answers to the questions we hear most"
+          title={
+            <>
+              Straight answers to the questions we hear{" "}
+              <em className="italic text-accent-glow">most</em>
+            </>
+          }
         />
 
         <div className="mx-auto mt-12 max-w-3xl">
@@ -34,7 +39,7 @@ export default function Faq() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="font-display text-base font-semibold text-ivory sm:text-lg">
+                  <span className="text-base font-medium text-ivory sm:text-lg">
                     {faq.question}
                   </span>
                   <span

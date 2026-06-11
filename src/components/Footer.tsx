@@ -17,12 +17,11 @@ export default function Footer() {
       {/* Closing CTA band */}
       <div className="border-b border-white/10">
         <Container className="flex flex-col items-center gap-5 py-16 text-center md:py-20">
-          <h2 className="max-w-2xl font-display text-2xl font-bold leading-tight text-ivory sm:text-3xl">
-            Stop losing inquiries to slow replies.
+          <h2 className="max-w-2xl font-display text-3xl font-normal leading-[1.05] text-ivory sm:text-4xl">
+            Stop losing inquiries to <em className="italic text-accent-glow">slow replies.</em>
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-slate">
-            Book a system audit — we&apos;ll map how inquiries enter your business and where speed
-            and follow-up can improve.
+            Book a system audit — we&apos;ll map where speed and follow-up can improve.
           </p>
           <LinkButton href="#contact">Book a system audit</LinkButton>
         </Container>

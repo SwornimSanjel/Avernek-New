@@ -24,7 +24,7 @@ export default function SectionHeading({
       className={`flex flex-col gap-4 ${isCenter ? "items-center text-center" : "items-start text-left"}`}
     >
       {eyebrow && (
-        <span className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+        <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           {eyebrow}
         </span>
       )}
@@ -40,7 +40,7 @@ export default function SectionHeading({
           />
         )}
         <h2
-          className={`font-display text-3xl font-bold leading-tight md:text-[2.5rem] ${titleColor}`}
+          className={`font-display text-4xl font-normal leading-[1.05] md:text-[3rem] ${titleColor}`}
         >
           {title}
         </h2>

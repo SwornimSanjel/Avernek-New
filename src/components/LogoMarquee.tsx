@@ -23,18 +23,19 @@ const tools = [
 export default function LogoMarquee() {
   return (
     <div
-      className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+      className="marquee-shell relative w-full overflow-hidden"
+      aria-label="Automation tools Avernik works with"
     >
-      <div className="marquee-track flex w-max items-center gap-5 motion-reduce:animate-none">
+      <div className="marquee-track flex w-max items-center gap-10 motion-reduce:animate-none">
         {[0, 1].map((copy) =>
           tools.map((name) => (
             <span
               key={`${copy}-${name}`}
               aria-hidden={copy === 1}
-              className="border-sweep flex h-[80px] min-w-[180px] shrink-0 items-center justify-center gap-3 rounded-xl border border-white/10 bg-panel/40 px-6 font-display text-xl font-semibold tracking-tight text-slate/60 transition-all duration-200 hover:scale-105 hover:border-accent/30 hover:text-silver sm:text-2xl"
+              className="flex shrink-0 items-center gap-10 text-xl font-medium tracking-tight text-silver/70 transition-colors duration-200 hover:text-ivory sm:text-2xl"
             >
-              <span aria-hidden className="h-2 w-2 shrink-0 rounded-full bg-slate/40" />
               {name}
+              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3d5af1] shadow-[0_0_14px_rgba(61,90,241,0.48)]" />
             </span>
           )),
         )}

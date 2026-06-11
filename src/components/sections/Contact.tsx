@@ -71,28 +71,28 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-28 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-24 md:py-32"
     >
       <AmbientBackground variant="section" />
       <Container className="relative grid gap-12 lg:grid-cols-[1fr_1.1fr]">
         <ScrollReveal className="flex flex-col gap-6">
-          <span className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
             System audit
           </span>
-          <h2 className="font-display text-3xl font-bold leading-tight text-ivory sm:text-4xl">
-            See where your inquiries are leaking.
+          <h2 className="font-display text-4xl font-normal leading-[1.05] text-ivory sm:text-[3rem]">
+            See where your inquiries are{" "}
+            <em className="italic text-accent-glow">leaking.</em>
           </h2>
           <p className="text-base leading-relaxed text-slate">
-            In one short call, we map how inquiries enter your business, how fast they get handled,
-            and where automation can improve response, qualification, and follow-up.
+            One short call to map how inquiries enter, how fast they get handled, and where they
+            leak.
           </p>
 
-          <div className="mt-2 flex flex-col gap-3 rounded-2xl border border-white/10 bg-ink/40 p-6">
+          <div className="mt-2 flex flex-col gap-3 rounded-2xl border border-line bg-ink/40 p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-slate">Founding-client slots</p>
             <p className="text-sm leading-relaxed text-ivory/85">
-              We are onboarding a limited number of early businesses with tailored setup support
-              while we build our portfolio. If your team depends on inquiries, follow-up, and lead
-              quality, this audit will show where the system can improve.
+              We are onboarding a limited number of early businesses with tailored setup support.
+              If your team depends on inquiries, the audit shows where the system can improve.
             </p>
           </div>
 
@@ -119,7 +119,7 @@ export default function Contact() {
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-2xl text-ink">
                 ✓
               </div>
-              <h3 className="font-display text-xl font-semibold text-ivory">Request received</h3>
+              <h3 className="text-xl font-medium text-ivory">Request received</h3>
               <p className="mt-2 max-w-sm text-sm text-slate">
                 Thanks, we will review your inquiry flow and get back to you shortly. Keep an eye on
                 your inbox.

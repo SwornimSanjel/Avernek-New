@@ -75,8 +75,8 @@ export default function Particles({
         ctx.beginPath();
         ctx.arc(x * w, y * h, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.blue
-          ? `rgba(96, 165, 250, ${a})`
-          : `rgba(167, 139, 250, ${a * 0.85})`;
+          ? `rgba(125, 141, 255, ${a * 0.82})`
+          : `rgba(142, 128, 238, ${a * 0.72})`;
         ctx.fill();
       }
     };

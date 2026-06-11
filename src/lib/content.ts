@@ -88,14 +88,14 @@ export const packages: Package[] = [
     id: "core",
     name: "Avernik Core",
     tier: "Basic Inquiry System",
-    summary: "For businesses that need faster replies and simple inquiry tracking.",
+    summary: "Faster replies and simple inquiry tracking.",
     whoFor: "Teams starting to handle inquiries seriously.",
     depth: "Capture + fast response",
     features: [
-      "AI first response on FB & Instagram",
+      "AI replies on Facebook & Instagram",
       "FAQ knowledge base",
       "Inquiry capture to CRM",
-      "Owner alerts for key inquiries",
+      "Owner alerts on key leads",
       "Monthly performance report",
     ],
   },
@@ -103,39 +103,37 @@ export const packages: Package[] = [
     id: "growth",
     name: "Avernik Growth",
     tier: "Main Operating Package",
-    summary: "For businesses that want qualification, CRM visibility and follow-up priority.",
+    summary: "Qualification, CRM visibility and follow-up priority.",
     whoFor: "Teams that want qualified conversations, not just replies.",
     depth: "Full Capture → Report system",
     featured: true,
     features: [
       "Everything in Core",
-      "Lead qualification & intent scoring",
-      "Structured CRM with pipeline view",
+      "Qualification and intent scoring",
+      "Structured CRM pipeline view",
       "Priority follow-up alerts",
-      "Nurture sequences for warm leads",
-      "Campaign support + regular reporting",
+      "Warm-lead nurture sequences",
     ],
   },
   {
     id: "scale",
     name: "Avernik Scale",
     tier: "Full Growth System",
-    summary: "For businesses ready for stronger campaigns, reporting and optimisation.",
+    summary: "Stronger campaigns, reporting and optimisation.",
     whoFor: "Higher-volume teams optimising reach and follow-up.",
     depth: "Optimised system + active management",
     features: [
       "Everything in Growth",
-      "Stronger multi-angle campaigns",
-      "Advanced scoring & CRM dashboard",
+      "Multi-angle campaign management",
+      "Advanced scoring dashboard",
       "Weekly performance reviews",
       "Monthly strategy call",
-      "Priority technical support",
     ],
   },
 ];
 
 export const packagesNote =
-  "Packages are recommended after a system audit, based on your inquiry volume, ad activity, and follow-up process. Sales depend on your offer, pricing, follow-up, and market demand. Avernik strengthens the inquiry system that supports those outcomes.";
+  "Packages are recommended after a system audit. Sales depend on your offer, pricing, and market — Avernik strengthens the inquiry system behind them.";
 
 export type Faq = { question: string; answer: string };
 

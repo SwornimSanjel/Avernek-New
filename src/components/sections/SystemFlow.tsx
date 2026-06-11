@@ -1,79 +1,109 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Container from "../Container";
-import SectionHeading from "../SectionHeading";
-import ScrollReveal from "../ScrollReveal";
+import { LinkButton } from "../Button";
 import AmbientBackground from "../AmbientBackground";
+import ScrollReveal from "../ScrollReveal";
 import { flowSteps } from "@/lib/content";
 
-export default function SystemFlow() {
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [spot, setSpot] = useState({ x: -1000, y: -1000 });
+const stageNotes = [
+  ["Instant source tracking", "Saved to CRM automatically"],
+  ["Fast first reply", "Consistent answers every time"],
+  ["Intent score added", "Low-quality chats filtered out"],
+  ["Warm leads kept alive", "Questions handled before calls"],
+  ["Priority alerts sent", "Team knows who to call first"],
+  ["Pipeline status visible", "Owner sees what happened"],
+];
 
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = gridRef.current?.getBoundingClientRect();
-    if (!r) return;
-    setSpot({ x: e.clientX - r.left, y: e.clientY - r.top });
-  };
+export default function SystemFlow() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 45%", "end 65%"],
+  });
+  const railProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.35,
+  });
+  const railGlowTop = useTransform(railProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="system" className="relative scroll-mt-24 overflow-hidden bg-ink py-28 md:py-40">
+    <section
+      ref={sectionRef}
+      id="system"
+      className="relative scroll-mt-24 overflow-clip bg-ink py-24 md:py-32"
+    >
       <AmbientBackground variant="section" />
       <Container className="relative">
-        <SectionHeading
-          eyebrow="How it works"
-          title="One system, from first message to follow-up."
-          description="Each step hands off to the next automatically, so no inquiry stalls between your ads and your sales team."
-        />
+        <div className="grid items-start gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+          <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
+            <h2 className="max-w-xl font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
+              Turn inquiries into booked{" "}
+              <em className="italic text-accent-glow">follow-up</em>
+            </h2>
 
-        <div
-          ref={gridRef}
-          onMouseMove={onMove}
-          onMouseLeave={() => setSpot({ x: -1000, y: -1000 })}
-          className="relative mt-16 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {/* Mouse-tracking spotlight (behind the cards). */}
-          <div
-            aria-hidden
-            className="flow-spotlight pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] rounded-full"
-            style={{
-              transform: `translate(${spot.x - 200}px, ${spot.y - 200}px)`,
-              transition: "transform 0.15s ease-out",
-            }}
-          />
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-slate">
+              One flow for reply speed, lead quality, and next action.
+            </p>
 
-          {flowSteps.map((step, i) => (
-            <ScrollReveal key={step.step} delay={(i % 3) * 0.1} className="group relative">
-              {/* connector to next step (desktop) */}
-              {i < flowSteps.length - 1 && (i + 1) % 3 !== 0 && (
-                <span
-                  aria-hidden
-                  className="absolute right-[-26px] top-9 hidden h-px w-[26px] bg-gradient-to-r from-accent/50 to-transparent lg:block"
-                />
-              )}
+            <div className="mt-8">
+              <LinkButton href="#contact">Book a system audit</LinkButton>
+            </div>
 
-              <div className="border-sweep relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-glow md:p-8">
-                {/* top accent bar */}
-                <span className="absolute inset-x-0 top-0 h-px scale-x-0 bg-accent-grad transition-transform duration-300 group-hover:scale-x-100" />
+            <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-slate">
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+                24/7 response
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+                Lead routing
+              </span>
+            </div>
+          </ScrollReveal>
 
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="font-display text-sm font-bold tracking-[0.22em] text-accent">
-                    {step.step}
-                  </span>
-                  <span className="h-2 w-2 rounded-full bg-accent/40 transition-all duration-300 group-hover:bg-accent-glow group-hover:shadow-[0_0_12px_rgba(96,165,250,0.8)]" />
-                </div>
+          <div className="relative">
+            <span aria-hidden className="timeline-rail hidden md:block">
+              <motion.span className="timeline-rail-fill" style={{ scaleY: railProgress }} />
+              <motion.span className="timeline-rail-glow" style={{ top: railGlowTop }} />
+            </span>
 
-                <h3 className="mb-2.5 font-display text-xl font-semibold text-ivory">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-slate">{step.description}</p>
+            <div className="flex flex-col gap-5">
+              {flowSteps.map((step, i) => (
+                <ScrollReveal key={step.step} delay={(i % 2) * 0.08}>
+                  <div className="grid gap-4 md:grid-cols-[5rem_1fr]">
+                    <div className="relative z-10 hidden pr-7 text-right text-4xl font-semibold leading-none text-white/65 md:block">
+                      {step.step}
+                    </div>
 
-                <div className="mt-5 flex items-start gap-2 border-t border-white/10 pt-4">
-                  <span className="mt-0.5 text-accent-glow">▸</span>
-                  <p className="text-sm leading-relaxed text-silver">{step.benefit}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+                    <div className="signal-card rounded-2xl p-5 md:p-6">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-line bg-accent/[0.06] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-slate">
+                        <span className="h-2 w-2 rounded-full bg-slate" />
+                        Stage {step.step}
+                      </span>
+
+                      <h3 className="mt-5 text-xl font-medium text-ivory">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate">
+                        {step.description}
+                      </p>
+
+                      <div className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:grid-cols-2">
+                        {[step.benefit, ...(stageNotes[i] ?? [])].slice(0, 3).map((note) => (
+                          <p key={note} className="flex items-start gap-2 text-xs leading-relaxed text-silver">
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                            {note}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>

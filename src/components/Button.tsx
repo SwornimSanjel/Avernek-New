@@ -4,13 +4,14 @@ import { ReactNode } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100";
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100";
 
 const variants: Record<Variant, string> = {
+  // Royal blue stays royal blue on hover — only the soft outer glow blooms.
   primary:
-    "bg-accent text-ivory shadow-glow hover:bg-accent-glow hover:shadow-[0_0_90px_-15px_rgba(96,165,250,0.6)]",
+    "bg-accent text-ivory hover:shadow-[0_0_44px_-6px_var(--primary-glow)] hover:brightness-110",
   secondary:
-    "border border-white/20 bg-white/5 text-ivory hover:border-accent/60 hover:bg-white/10",
+    "border border-line bg-white/5 text-ivory hover:border-accent/60 hover:bg-white/10",
   ghost: "text-ivory hover:text-accent-glow",
 };
 

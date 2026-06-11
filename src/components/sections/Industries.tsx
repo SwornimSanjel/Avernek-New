@@ -57,20 +57,25 @@ export default function Industries() {
   return (
     <section
       id="industries"
-      className="relative scroll-mt-24 overflow-hidden bg-ink py-28 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden bg-ink py-24 md:py-32"
     >
       <AmbientBackground variant="subtle" />
       <Container className="relative">
         <SectionHeading
           eyebrow="Use cases"
-          title="Built for businesses where every inquiry is worth real money."
-          description="If customers message before they buy, speed and follow-up decide who wins. Avernik is built for exactly that moment."
+          title={
+            <>
+              Built for businesses where every inquiry is worth{" "}
+              <em className="italic text-accent-glow">real money.</em>
+            </>
+          }
+          description="If customers message before they buy, speed and follow-up decide who wins."
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, i) => (
             <ScrollReveal key={industry.name} delay={(i % 3) * 0.08} className="h-full">
-              <div className="border-sweep group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/40 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow md:p-8">
+              <div className="border-sweep group relative h-full overflow-hidden rounded-2xl border border-line bg-panel/40 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#3d5af1]/55 md:p-8">
                 {/* subtle surface sheen on hover */}
                 <span
                   aria-hidden
@@ -79,12 +84,12 @@ export default function Industries() {
                 {/* warm hairline that draws in on hover */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-x-0 top-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-accent/60 to-transparent transition-transform duration-300 group-hover:scale-x-100"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#3d5af1] to-transparent transition-transform duration-300 group-hover:scale-x-100"
                 />
-                <span className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/[0.08] text-accent-glow transition-colors duration-200 group-hover:border-accent/45">
+                <span className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#3d5af1]/32 bg-[#0e1a3e]/70 text-[#93a5ff] transition-colors duration-200 group-hover:border-[#5b74f5]/50 group-hover:bg-[#12204e] group-hover:text-[#a8b6ff]">
                   {icons[i]}
                 </span>
-                <h3 className="relative mb-1.5 font-display text-base font-semibold text-ivory">
+                <h3 className="relative mb-1.5 text-base font-medium text-ivory">
                   {industry.name}
                 </h3>
                 <p className="relative text-sm leading-relaxed text-slate">{industry.blurb}</p>

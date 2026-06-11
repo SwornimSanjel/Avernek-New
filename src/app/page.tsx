@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="site-atmosphere">
         <Hero />
         <Problem />
         <SystemFlow />

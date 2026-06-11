@@ -1,108 +1,73 @@
 import Container from "../Container";
-import SectionHeading from "../SectionHeading";
-import ScrollReveal from "../ScrollReveal";
 import AmbientBackground from "../AmbientBackground";
+import ScrollReveal from "../ScrollReveal";
 
-const without = [
-  "Inquiries sit unseen in the inbox",
-  "Staff reply only when they remember",
-  "Serious buyers look like casual questions",
-  "Follow-up depends on memory",
-  "Owners cannot see what happened",
-];
-
-const withAvernik = [
-  "Every inquiry is captured instantly",
-  "Buyers get a reply in seconds",
-  "Real buyers are qualified and scored",
-  "Hot leads are flagged for follow-up first",
-  "Every step is tracked and reported",
-];
-
-// Capability chips — moved here from the hero to keep the hero lean.
-const capabilities = [
-  "First reply in under 60s",
-  "Web, SMS, Facebook & Instagram",
-  "Synced to your CRM",
+// Max 7–8 words per cell — these read as a scan, not prose.
+const rows = [
+  ["Inquiries sit unanswered during busy hours", "Every inquiry gets an instant reply"],
+  ["Leads scattered across Messenger, Instagram, WhatsApp", "Every lead lands in one system"],
+  ["Your team replies to every random message", "AI filters serious buyers first"],
+  ["Follow-ups depend on memory", "Follow-ups are structured and tracked"],
+  ["Slow replies lose good prospects", "Hot leads flagged while interest is high"],
+  ["Marketing spend leaks after the click", "Your backend converts more of every campaign"],
+  ["No visibility on lead quality or status", "Clear pipeline: new, qualified, booked, lost"],
 ];
 
 export default function Problem() {
   return (
-    <section className="relative overflow-hidden bg-navy-deep py-28 md:py-40">
-      <AmbientBackground variant="subtle" />
+    <section className="relative overflow-hidden bg-obsidian py-24 md:py-32">
+      <AmbientBackground variant="section" />
       <Container className="relative">
-        <SectionHeading
-          eyebrow="Where growth leaks"
-          title="The deal is usually lost before sales ever sees it."
-          description="Customers message at night, on weekends, long after you've closed. If your first reply takes hours, the fastest competitor already won."
-        />
+        <ScrollReveal className="mx-auto max-w-4xl text-center">
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
+            The backend gap
+          </span>
+          <h2 className="mt-5 font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
+            Marketing creates attention. Avernik makes sure it does not{" "}
+            <em className="italic text-accent-glow">leak.</em>
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate sm:text-lg">
+            The system after the click decides what your ad spend is worth.
+          </p>
+        </ScrollReveal>
 
-        {/* Capability chips */}
-        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
-          {capabilities.map((cap) => (
-            <span
-              key={cap}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-panel/50 px-3.5 py-2 text-[13px] text-silver transition-colors duration-200 hover:border-accent/40"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-glow" />
-              {cap}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {/* Hover lift/glow lives on the INNER div — ScrollReveal leaves an
-              inline transform on its own node, which would override a hover
-              translate placed on the same element. */}
-          <ScrollReveal className="h-full">
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-1 md:p-8 hover:border-white/20 hover:bg-white/[0.03] hover:shadow-[0_28px_60px_-34px_rgba(0,0,0,0.85),0_0_44px_-30px_rgba(255,255,255,0.18)]">
-              <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-semibold text-silver">
-                <span className="text-slate">Without a system</span>
-              </h3>
-              <ul className="flex flex-col gap-3">
-                {without.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-slate">
-                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-slate/30">
-                      <span className="h-1 w-1 rounded-full bg-slate/60" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        <ScrollReveal className="mt-14 overflow-hidden rounded-2xl border border-line bg-[#0c1530]/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <div className="grid grid-cols-2 border-b border-line text-sm font-medium text-ivory sm:text-base">
+            <div className="bg-white/[0.015] px-4 py-5 sm:px-7">
+              Traditional setup
             </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1} className="h-full">
-            <div className="h-full rounded-2xl border border-accent/25 bg-accent/[0.06] p-8 shadow-glow transition-all duration-300 hover:-translate-y-1 hover:border-accent/45 hover:shadow-[0_0_90px_-18px_rgba(59,130,246,0.6)]">
-              <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-semibold text-ivory">
-                <span className="text-accent-glow">With Avernik</span>
-              </h3>
-              <ul className="flex flex-col gap-3">
-                {withAvernik.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-ivory/90">
-                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-glow">
-                      <svg viewBox="0 0 20 20" fill="none" className="h-2.5 w-2.5" aria-hidden>
-                        <path
-                          d="M4 10.5 8 14 16 6"
-                          stroke="currentColor"
-                          strokeWidth="2.4"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="border-l border-accent-glow/25 bg-accent/10 px-4 py-5 text-accent-glow sm:px-7">
+              Avernik system
             </div>
-          </ScrollReveal>
-        </div>
+          </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center font-display text-lg font-medium text-ivory sm:text-xl">
-          Avernik gives your team a clear path{" "}
-          <span className="text-gradient">from inquiry to conversation</span>.
-        </p>
+          <div className="divide-y divide-white/[0.07]">
+            {rows.map(([without, withAvernik]) => (
+              <div key={without} className="grid grid-cols-1 md:grid-cols-2">
+                <div className="flex items-start gap-3 px-4 py-5 text-sm leading-relaxed text-slate sm:px-7 sm:text-base">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[11px] text-slate">
+                    X
+                  </span>
+                  {without}
+                </div>
+                <div className="flex items-start gap-3 border-t border-white/[0.06] bg-accent/[0.055] px-4 py-5 text-sm leading-relaxed text-silver md:border-l md:border-t-0 md:border-accent-glow/[0.18] sm:px-7 sm:text-base">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/25 text-accent-glow shadow-[0_0_18px_rgba(99,118,255,0.28)]">
+                    <svg viewBox="0 0 20 20" fill="none" className="h-3 w-3" aria-hidden>
+                      <path
+                        d="M4 10.5 8 14 16 6"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.4"
+                      />
+                    </svg>
+                  </span>
+                  {withAvernik}
+                </div>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </Container>
     </section>
   );

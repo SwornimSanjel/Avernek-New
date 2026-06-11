@@ -9,56 +9,58 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Avernik — dark / futuristic "AI command center" direction.
-        obsidian: "#05060A", // deepest / near-black background
-        ink: "#080910", // base background
-        // Legacy aliases kept so existing utility names map to the obsidian panels.
+        // Avernik — deep-space navy system (Mach33-inspired). Single source of
+        // truth lives in globals.css :root; these map utility names onto it.
+        obsidian: "rgb(var(--bg-rgb) / <alpha-value>)", // page background — very dark navy
+        ink: "rgb(var(--bg-deep-rgb) / <alpha-value>)", // section alternates
+        // Legacy aliases kept so existing utility names keep working.
         navy: {
-          DEFAULT: "#080910",
-          deep: "#0B0D14", // obsidian panel surface
+          DEFAULT: "rgb(var(--bg-deep-rgb) / <alpha-value>)",
+          deep: "rgb(var(--bg-deep-rgb) / <alpha-value>)",
         },
         panel: {
-          DEFAULT: "#0B0D14",
-          light: "#11131C",
+          DEFAULT: "rgb(var(--bg-card-rgb) / <alpha-value>)", // elevated panels
+          light: "#16224A",
         },
-        ivory: "#ECEEF4", // silver-white (headings / strong text)
-        silver: "#E5E7EB", // soft silver body text
+        ivory: "rgb(var(--text-rgb) / <alpha-value>)", // headings / strong text
+        silver: "#C3CAE3", // body text — between text and muted
         slate: {
-          DEFAULT: "#8A90A3", // muted / secondary
+          DEFAULT: "rgb(var(--text-muted-rgb) / <alpha-value>)", // cool blue-grey muted
         },
-        // Accent system: cold electric blue → midnight violet.
+        // Primary: royal blue / indigo. No purple, no neon.
         accent: {
-          DEFAULT: "#3B82F6", // electric blue
-          glow: "#60A5FA", // brighter blue highlight
+          DEFAULT: "rgb(var(--primary-rgb) / <alpha-value>)",
+          glow: "#93A5FF", // light indigo for links / highlights on dark
         },
+        // De-purpled: iris now leans blue so legacy usages stay in-palette.
         iris: {
-          DEFAULT: "#8B5CF6", // midnight violet
-          glow: "#A78BFA",
+          DEFAULT: "#5B74F5",
+          glow: "#A8B6FF",
         },
-        // Warm secondary — used sparingly for "priority / hot / human attention".
-        // Cool blue/violet = the system; warm gold = the moments that matter.
+        // Gold — review stars ONLY. Never headings, CTAs or tags.
         gold: {
-          DEFAULT: "#E0A95F", // refined champagne amber
-          glow: "#F2C886",
+          DEFAULT: "var(--gold-star)",
+          glow: "#F8CD74",
         },
-        line: "rgba(255,255,255,0.08)",
+        line: "var(--border)",
       },
       fontFamily: {
-        display: ["var(--font-sora)", "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ["var(--font-hanken)", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Headlines: high-contrast editorial serif at weight 400 only.
+        display: ["var(--font-serif-display)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif-display)", "Georgia", "serif"],
       },
       maxWidth: {
-        container: "1280px",
+        container: "1152px", // = max-w-6xl
       },
       boxShadow: {
-        glow: "0 0 80px -22px rgba(59, 130, 246, 0.5)",
-        "glow-iris": "0 0 80px -22px rgba(139, 92, 246, 0.45)",
-        "glow-gold": "0 18px 60px -30px rgba(224, 169, 95, 0.5)",
-        card: "0 26px 70px -30px rgba(0, 0, 0, 0.8)",
+        glow: "0 0 60px -18px var(--primary-glow)",
+        "glow-iris": "0 0 60px -20px rgba(91, 116, 245, 0.3)",
+        card: "0 20px 50px -28px rgba(0, 0, 0, 0.7)",
       },
       backgroundImage: {
-        "accent-grad": "linear-gradient(120deg, #60A5FA 0%, #8B5CF6 100%)",
-        "ink-grad": "linear-gradient(180deg, #080910 0%, #05060A 100%)",
+        "accent-grad": "linear-gradient(120deg, #93A5FF 0%, #3D5AF1 60%, #3D5AF1 100%)",
+        "ink-grad": "linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%)",
         "panel-grad": "linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%)",
       },
       keyframes: {
@@ -74,10 +76,6 @@ const config: Config = {
           "0%": { transform: "translateX(-120%)" },
           "100%": { transform: "translateX(120%)" },
         },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         typing: {
           "0%, 80%, 100%": { transform: "translateY(0)", opacity: "0.35" },
           "40%": { transform: "translateY(-3px)", opacity: "1" },
@@ -87,7 +85,6 @@ const config: Config = {
         "fade-up": "fade-up 0.6s ease-out both",
         node: "pulseNode 2.6s ease-in-out infinite",
         sweep: "sweep 3.5s linear infinite",
-        marquee: "marquee 30s linear infinite",
         typing: "typing 1.2s ease-in-out infinite",
       },
     },

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Hanken_Grotesk } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import { site } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
@@ -7,18 +7,20 @@ import QuickActions from "@/components/QuickActions";
 import AmbientGlow from "@/components/AmbientGlow";
 import "./globals.css";
 
-const sora = Sora({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sora",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600"],
 });
 
-const hanken = Hanken_Grotesk({
+// Editorial high-contrast serif for headlines — 400 only (it has no bold).
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-hanken",
-  weight: ["400", "500", "600"],
+  variable: "--font-serif-display",
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -64,14 +66,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05060A",
+  themeColor: "#060B1A",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sora.variable} ${hanken.variable}`}>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
       <body>
         <JsonLd />
         <SiteShell>{children}</SiteShell>

@@ -68,7 +68,7 @@ export default function QuickActions() {
                 <Mark className="h-5 w-5 text-ivory" />
               </span>
               <div>
-                <p className="font-display text-sm font-semibold leading-tight text-ivory">
+                <p className="text-sm font-medium leading-tight text-ivory">
                   How can we help?
                 </p>
                 <p className="mt-0.5 text-xs leading-tight text-slate">Two ways to get started.</p>
@@ -150,7 +150,7 @@ export default function QuickActions() {
             not pasted on — diffuse, no hard circle/border */}
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(96,165,250,0.22),rgba(139,92,246,0.12)_45%,transparent_72%)] blur-md"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(99,118,255,0.22),rgba(61,90,241,0.12)_45%,transparent_72%)] blur-md"
         />
         <span className={`relative flex items-center justify-center ${open ? "" : "ai-settle"}`}>
           <AiHead className="h-12 w-12" />
