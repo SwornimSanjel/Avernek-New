@@ -1,24 +1,31 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "../Container";
 import { LinkButton } from "../Button";
-import InquiryOrbit from "../InquiryOrbit";
 import AmbientBackground from "../AmbientBackground";
+import Particles from "../Particles";
 
 const fadeUp = {
   initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
 };
 
+/**
+ * Hero — text-focused and atmospheric, Mach33-style: a large centered headline
+ * vertically centered in a full-height near-black section, lit by ambient
+ * blooms, a diagonal light-ray, and a slow drift of glowing particles. No
+ * centerpiece graphic — the live messenger demo lives lower down in #demo.
+ */
 export default function Hero() {
-  const reduce = useReducedMotion();
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-obsidian">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-obsidian">
       {/* Ambient light blooms + diagonal ray — the "neon in a dark room" finish. */}
       <AmbientBackground variant="hero" />
+      {/* Floating glow particles over the blooms. */}
+      <Particles className="opacity-70" />
 
-      <Container className="relative flex flex-col items-center pt-28 pb-28 text-center sm:pt-32 md:pt-36 md:pb-40">
+      <Container className="relative flex flex-col items-center py-32 text-center">
         {/* 1. Availability pill */}
         <motion.span
           {...fadeUp}
@@ -29,11 +36,11 @@ export default function Hero() {
           Now onboarding founding clients
         </motion.span>
 
-        {/* 2. H1 */}
+        {/* 2. H1 — larger now that it carries the hero alone */}
         <motion.h1
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.12 }}
-          className="mt-6 max-w-3xl font-display text-[2rem] font-bold leading-[1.05] tracking-tight text-ivory sm:text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem]"
+          className="mt-7 max-w-4xl font-display text-[2.25rem] font-bold leading-[1.08] tracking-tight text-ivory sm:text-[3rem] md:text-[3.6rem] lg:text-[4.25rem]"
         >
           We answer, qualify and follow up on every inquiry —{" "}
           <span className="text-gradient">even at 2 a.m.</span>
@@ -43,7 +50,7 @@ export default function Hero() {
         <motion.p
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.22 }}
-          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-silver"
+          className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-silver sm:text-lg"
         >
           Avernik captures every customer message, replies in seconds, scores intent, and hands
           your team a clear follow-up list. Around the clock.
@@ -53,7 +60,7 @@ export default function Hero() {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.32 }}
-          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <LinkButton href="#contact">Book a system audit</LinkButton>
           <a
@@ -62,17 +69,6 @@ export default function Hero() {
           >
             See how it handles a live inquiry →
           </a>
-        </motion.div>
-
-        {/* 5. Abstract "inquiry orbit" centerpiece — atmosphere, not a chat UI.
-            The live messenger demo lives lower down in #demo. */}
-        <motion.div
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28 }}
-          animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-          className="mt-16 w-full max-w-2xl md:mt-20"
-        >
-          <InquiryOrbit />
         </motion.div>
       </Container>
 
