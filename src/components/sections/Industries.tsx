@@ -70,7 +70,7 @@ export default function Industries() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, i) => (
             <ScrollReveal key={industry.name} delay={(i % 3) * 0.08} className="h-full">
-              <div className="border-sweep group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/40 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-gold/30 hover:shadow-glow-gold">
+              <div className="border-sweep group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/40 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow md:p-8">
                 {/* subtle surface sheen on hover */}
                 <span
                   aria-hidden
@@ -79,9 +79,9 @@ export default function Industries() {
                 {/* warm hairline that draws in on hover */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-x-0 top-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-gold/60 to-transparent transition-transform duration-300 group-hover:scale-x-100"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-accent/60 to-transparent transition-transform duration-300 group-hover:scale-x-100"
                 />
-                <span className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gold/25 bg-gold/[0.08] text-gold-glow transition-colors duration-200 group-hover:border-gold/45">
+                <span className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/[0.08] text-accent-glow transition-colors duration-200 group-hover:border-accent/45">
                   {icons[i]}
                 </span>
                 <h3 className="relative mb-1.5 font-display text-base font-semibold text-ivory">

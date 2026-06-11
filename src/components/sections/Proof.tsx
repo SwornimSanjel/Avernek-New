@@ -172,7 +172,7 @@ export default function Proof() {
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {capabilities.map((c, i) => (
             <ScrollReveal key={c.sub} delay={i * 0.08} className="h-full">
-              <div className="border-sweep h-full rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40">
+              <div className="border-sweep h-full rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 md:p-8">
                 <p className="font-display text-3xl font-bold text-accent-glow sm:text-[2rem]">
                   {c.lead}
                   <CountUp to={c.to} suffix={c.suffix} duration={1200} />
@@ -241,7 +241,7 @@ export default function Proof() {
 
         {/* ── Block C — Founding-client frame ────────────────────────────── */}
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <ScrollReveal className="rounded-2xl border border-white/10 bg-panel/50 p-7">
+          <ScrollReveal className="rounded-2xl border border-white/10 bg-panel/50 p-7 md:p-8">
             <h3 className="font-display text-lg font-semibold text-ivory">
               Founding clients, this quarter
             </h3>
@@ -254,7 +254,7 @@ export default function Proof() {
 
           <ScrollReveal
             delay={0.1}
-            className="flex flex-col rounded-2xl border border-white/10 bg-panel/50 p-7"
+            className="flex flex-col rounded-2xl border border-white/10 bg-panel/50 p-7 md:p-8"
           >
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="font-display text-lg font-semibold text-ivory">Case studies</h3>

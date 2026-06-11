@@ -34,7 +34,7 @@ export default function Problem() {
         <SectionHeading
           eyebrow="Where growth leaks"
           title="The deal is usually lost before sales ever sees it."
-          description="Customers message at night, on weekends, and long after you have closed. If the first reply takes hours, the fastest competitor has already won the conversation."
+          description="Customers message at night, on weekends, long after you've closed. If your first reply takes hours, the fastest competitor already won."
         />
 
         {/* Capability chips */}
@@ -55,7 +55,7 @@ export default function Problem() {
               inline transform on its own node, which would override a hover
               translate placed on the same element. */}
           <ScrollReveal className="h-full">
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.03] hover:shadow-[0_28px_60px_-34px_rgba(0,0,0,0.85),0_0_44px_-30px_rgba(255,255,255,0.18)]">
+            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-1 md:p-8 hover:border-white/20 hover:bg-white/[0.03] hover:shadow-[0_28px_60px_-34px_rgba(0,0,0,0.85),0_0_44px_-30px_rgba(255,255,255,0.18)]">
               <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-semibold text-silver">
                 <span className="text-slate">Without a system</span>
               </h3>

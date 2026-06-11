@@ -53,7 +53,7 @@ export default function SystemFlow() {
                 />
               )}
 
-              <div className="border-sweep relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-glow">
+              <div className="border-sweep relative h-full overflow-hidden rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-glow md:p-8">
                 {/* top accent bar */}
                 <span className="absolute inset-x-0 top-0 h-px scale-x-0 bg-accent-grad transition-transform duration-300 group-hover:scale-x-100" />
 
