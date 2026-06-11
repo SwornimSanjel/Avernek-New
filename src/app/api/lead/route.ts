@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
+import { sendLeadNotification } from "@/lib/notifyEmail";
 
 /**
  * Lead intake endpoint for the "Book a system audit" form.
  *
- * Backend-ready but integration-agnostic: it validates the payload and is the
- * single place to wire up downstream delivery. Hardened for public deployment:
+ * Validates the payload, then delivers it. Hardened for public deployment:
  * same-origin only, JSON only, per-IP rate limiting, honeypot, optional
  * Cloudflare Turnstile, and no PII in logs.
  *
- * TO INTEGRATE (future work):
- *   1. Set `LEAD_WEBHOOK_URL` (n8n / Make / Apps Script) — server-side only,
- *      never a NEXT_PUBLIC_ var.
- *   2. (Optional) set `TURNSTILE_SECRET_KEY` + `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
- *      to enable bot protection. With no keys set, the form still works.
+ * Delivery (all independent, none can break the user's success response):
+ *   1. Save to Supabase (`leads` table, service-role insert).
+ *   2. Email a notification to the team via Resend.
+ *   3. Optional legacy webhook if `LEAD_WEBHOOK_URL` is set.
+ * With env vars unset, the form still returns success and logs a warning.
  */
 
 export const runtime = "nodejs";
@@ -86,26 +87,67 @@ async function verifyTurnstile(token: string | undefined, ip: string): Promise<b
   }
 }
 
-async function forwardLead(lead: Omit<LeadPayload, "company_website" | "turnstileToken">) {
-  const webhookUrl = process.env.LEAD_WEBHOOK_URL;
-  if (!webhookUrl) {
-    // Missing config: the lead is validated and the user sees success, but it is
-    // NOT delivered anywhere. Make this loud for developers. See .env.example.
+type Lead = {
+  name: string;
+  business: string;
+  email: string;
+  phone?: string;
+  improve?: string;
+  source?: string;
+  message?: string;
+};
+
+/** Save the lead to Supabase. Never throws — DB hiccups must not lose the lead. */
+async function saveToSupabase(lead: Lead): Promise<void> {
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     console.warn(
-      "[lead] LEAD_WEBHOOK_URL is not set — submission was accepted but NOT forwarded. " +
-        "Set LEAD_WEBHOOK_URL (n8n/Make/Apps Script) to deliver leads. See .env.example.",
+      "[lead] Supabase not configured — lead NOT saved. Set SUPABASE_URL and " +
+        "SUPABASE_SERVICE_ROLE_KEY to persist leads. See .env.example.",
     );
     return;
   }
-  await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ...lead,
-      source: "website:system-audit",
-      receivedAt: new Date().toISOString(),
-    }),
-  });
+  try {
+    const { error } = await getSupabaseAdmin()
+      .from("leads")
+      .insert({ ...lead, origin: "website:system-audit" });
+    if (error) {
+      // Log a non-PII error only (code/message describe the DB op, not the user).
+      console.error("[lead] Supabase insert failed:", error.message);
+    }
+  } catch {
+    console.error("[lead] Supabase insert threw");
+  }
+}
+
+/** Optional legacy webhook delivery (n8n / Make / Apps Script). */
+async function forwardToWebhook(lead: Lead): Promise<void> {
+  const webhookUrl = process.env.LEAD_WEBHOOK_URL;
+  if (!webhookUrl) return;
+  try {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...lead,
+        source: "website:system-audit",
+        receivedAt: new Date().toISOString(),
+      }),
+    });
+  } catch {
+    console.error("[lead] webhook forwarding failed");
+  }
+}
+
+/**
+ * Deliver a validated lead. Each channel is isolated so one failure (DB, email,
+ * or webhook) never breaks the others or the user's success response.
+ */
+async function forwardLead(lead: Lead) {
+  await Promise.allSettled([
+    saveToSupabase(lead),
+    sendLeadNotification(lead).catch(() => console.error("[lead] email notification failed")),
+    forwardToWebhook(lead),
+  ]);
 }
 
 export async function POST(request: Request) {
@@ -169,16 +211,16 @@ export async function POST(request: Request) {
     message: payload.message?.trim() || undefined,
   };
 
-  try {
-    await forwardLead(lead);
-  } catch (err) {
-    // Never log PII. Log a non-identifying event only.
-    console.error("[lead] webhook forwarding failed");
-    void err;
-  }
+  // forwardLead isolates each channel and never throws, so a delivery hiccup
+  // never costs the user their success response.
+  await forwardLead(lead);
 
   // Non-identifying event log (no name/email/phone).
-  console.info("[lead] received", { forwarded: Boolean(process.env.LEAD_WEBHOOK_URL) });
+  console.info("[lead] received", {
+    db: Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY),
+    email: Boolean(process.env.RESEND_API_KEY),
+    webhook: Boolean(process.env.LEAD_WEBHOOK_URL),
+  });
 
   return NextResponse.json({ ok: true });
 }
