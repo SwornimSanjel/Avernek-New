@@ -17,7 +17,7 @@ export default function Footer() {
       {/* Closing CTA band */}
       <div className="border-b border-white/10">
         <Container className="flex flex-col items-center gap-5 py-16 text-center md:py-20">
-          <h2 className="max-w-2xl font-display text-3xl font-normal leading-[1.05] text-ivory sm:text-4xl">
+          <h2 className="max-w-2xl font-sans text-3xl font-medium leading-[1.05] text-ivory sm:text-4xl">
             Stop losing inquiries to <em className="italic">slow replies.</em>
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-slate">

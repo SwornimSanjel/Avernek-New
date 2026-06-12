@@ -13,7 +13,7 @@ const iconProps = {
   strokeWidth: 1.6,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
-  className: "h-5 w-5",
+  className: "h-[22px] w-[22px]",
 };
 
 const icons = [
@@ -75,24 +75,45 @@ export default function Industries() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, i) => (
             <ScrollReveal key={industry.name} delay={(i % 3) * 0.08} className="h-full">
-              <div className="border-sweep group relative h-full overflow-hidden rounded-2xl border border-line bg-panel/40 p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#2d5bff]/55 md:p-8">
-                {/* subtle surface sheen on hover */}
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-gradient-to-b from-[#0c1532]/80 to-[#070c1e]/55 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#2d5bff]/45 hover:shadow-[0_28px_70px_-32px_rgba(45,91,255,0.55)] md:p-7">
+                {/* faint blueprint grid, masked toward the bottom */}
+                <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
+                {/* blue glow that blooms behind the icon on hover */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-panel-grad opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="pointer-events-none absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[#2d5bff]/0 blur-2xl transition-colors duration-500 group-hover:bg-[#2d5bff]/20"
                 />
-                {/* warm hairline that draws in on hover */}
+                {/* hairline that draws in across the top on hover */}
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 top-0 h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#2d5bff] to-transparent transition-transform duration-300 group-hover:scale-x-100"
                 />
-                <span className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#2d5bff]/32 bg-[#0b1434]/70 text-[#6b8aff] transition-colors duration-200 group-hover:border-[#4c70ff]/50 group-hover:bg-[#0e1840] group-hover:text-[#8aa2ff]">
+                {/* elegant serif index numeral */}
+                <span
+                  aria-hidden
+                  className="absolute right-6 top-5 font-display text-xl italic text-slate/35 transition-colors duration-300 group-hover:text-[#6b8aff]/55"
+                >
+                  0{i + 1}
+                </span>
+
+                <span className="relative mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-gradient-to-br from-[#20367f] via-[#16245a] to-[#0b1430] text-[#c2d3ff] shadow-[0_10px_26px_-12px_rgba(45,91,255,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-300 group-hover:from-[#2a49a8] group-hover:text-white group-hover:shadow-[0_14px_34px_-12px_rgba(45,91,255,0.9),inset_0_1px_0_rgba(255,255,255,0.16)]">
                   {icons[i]}
                 </span>
                 <h3 className="relative mb-1.5 text-base font-medium text-ivory">
                   {industry.name}
                 </h3>
                 <p className="relative text-sm leading-relaxed text-slate">{industry.blurb}</p>
+
+                {/* footer cue — slides/fades in on hover, anchored to the bottom */}
+                <span
+                  aria-hidden
+                  className="relative mt-auto flex items-center gap-2 pt-6 text-xs font-medium uppercase tracking-[0.18em] text-slate/0 transition-colors duration-300 group-hover:text-[#7d9bff]"
+                >
+                  Covered
+                  <svg viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                    <path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
               </div>
             </ScrollReveal>
           ))}

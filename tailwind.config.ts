@@ -45,10 +45,10 @@ const config: Config = {
         line: "var(--border)",
       },
       fontFamily: {
-        // Headlines: high-contrast editorial serif at weight 400 only.
-        display: ["var(--font-serif-display)", "Georgia", "serif"],
+        // Headlines: classic Times New Roman-style serif (Tinos).
+        display: ["var(--font-serif-display)", "Times New Roman", "serif"],
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif-display)", "Georgia", "serif"],
+        serif: ["var(--font-serif-display)", "Times New Roman", "serif"],
       },
       maxWidth: {
         container: "1152px", // = max-w-6xl

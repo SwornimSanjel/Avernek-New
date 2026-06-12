@@ -40,7 +40,7 @@ export default function SectionHeading({
           />
         )}
         <h2
-          className={`font-display text-4xl font-normal leading-[1.05] md:text-[3rem] ${titleColor}`}
+          className={`font-sans text-4xl font-medium leading-[1.05] md:text-[3rem] ${titleColor}`}
         >
           {title}
         </h2>

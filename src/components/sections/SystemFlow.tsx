@@ -40,7 +40,7 @@ export default function SystemFlow() {
       <Container className="relative">
         <div className="grid items-start gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
-            <h2 className="max-w-xl font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
+            <h2 className="max-w-xl font-sans text-4xl font-medium leading-[1.05] text-ivory md:text-[3rem]">
               Turn inquiries into booked{" "}
               <em className="italic">follow-up</em>
             </h2>

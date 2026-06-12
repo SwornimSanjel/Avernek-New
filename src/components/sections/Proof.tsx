@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
@@ -43,44 +42,63 @@ const signalMetrics: SignalMetric[] = [
 ];
 
 type Testimonial = {
+  /** Bold review-style headline, like a Trustpilot title. */
+  title: string;
   quote: string;
   name: string;
   role: string;
-  avatar: string;
+  initials: string;
+  /** Solid muted avatar circle — varied hues so the wall reads genuine. */
+  tone: string;
 };
 
-// TODO: placeholder testimonials + avatars — swap in real client quotes and
-// photos (with permission) as soon as they exist. Keep quotes ≤ 2 lines.
+// TODO: placeholder testimonials — swap in real client quotes (with
+// permission) as soon as they exist.
 const testimonials: Testimonial[] = [
   {
-    quote: "We were losing buyers to slow replies. Now every inquiry gets an instant, professional answer.",
-    name: "Suman Shrestha",
-    role: "Founder, Himalayan Fit Studio",
-    avatar: "https://i.pravatar.cc/96?img=16",
+    title: "Sceptical at first — worth it within three weeks",
+    quote:
+      "Honestly I was sceptical. We had tried two other tools before and both times it created more work than it saved. What was different here is they actually mapped out how our clinic handles new patient inquiries before touching anything. Three weeks in and our receptionist stopped having to manually chase every Facebook message. That alone was worth it.",
+    name: "Aashish",
+    role: "Owner, Patan Dental Clinic · Lalitpur",
+    initials: "AP",
+    tone: "bg-[#C9B47C] text-[#3A3214]",
   },
   {
-    quote: "They understood how our team works and built around it. Inquiries are finally easy to manage.",
-    name: "Nisha Karki",
-    role: "Operations Manager, Urban Nest Interiors",
-    avatar: "https://i.pravatar.cc/96?img=17",
+    title: "We are usually the first conversation now",
+    quote:
+      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquiry on WhatsApp or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernik our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
+    name: "Suraj",
+    role: "Managing Director, Makalu Kitchen Solutions · Kathmandu",
+    initials: "SM",
+    tone: "bg-[#8FA98F] text-[#22301F]",
   },
   {
-    quote: "Messages are never ignored after hours. Our team steps in only when the lead is serious.",
-    name: "Rajan Maharjan",
-    role: "Owner, Valley Auto Care",
-    avatar: "https://i.pravatar.cc/96?img=18",
+    title: "Festival season without the burnout",
+    quote:
+      "Dashain and Tihar our inquiry volume doubles but our team size does not. Last year we missed a lot of leads just because nobody could keep up. This year with Avernik handling the first response and organising everything by urgency, my team actually managed the season without burning out. We closed more that fortnight than the same period last year.",
+    name: "Roshani",
+    role: "Founder, Kreasi Event Studio · Kathmandu",
+    initials: "RK",
+    tone: "bg-[#B58FA8] text-[#3A2433]",
   },
   {
-    quote: "Leads used to arrive with no status. Now we see exactly who needs follow-up and who is ready.",
-    name: "Priya Adhikari",
-    role: "Co-Founder, Luma Beauty Academy",
-    avatar: "https://i.pravatar.cc/96?img=19",
+    title: "Finally a proper admissions pipeline",
+    quote:
+      "I run the admissions side of things and before this every cycle was just chaos. Students would fill the form and then we had no clear picture of who had been called, who was still deciding, who had already joined somewhere else. Now there is a proper pipeline. I know exactly where each applicant stands and my counsellors spend time on the ones who are actually close to enrolling.",
+    name: "Bibek",
+    role: "Admissions Head, Evergreen College · Pokhara",
+    initials: "BT",
+    tone: "bg-[#7B86C8] text-[#1D2247]",
   },
   {
-    quote: "It filters low-intent inquiries and points our team at the people who are actually interested.",
-    name: "Bikash Gurung",
-    role: "Director, Summit Property Advisors",
-    avatar: "https://i.pravatar.cc/96?img=20",
+    title: "Every inquiry source in one place",
+    quote:
+      "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernik built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
+    name: "Nirajan",
+    role: "Director, Narayani Properties · Chitwan",
+    initials: "NK",
+    tone: "bg-[#6E97B8] text-[#16293A]",
   },
 ];
 
@@ -107,29 +125,39 @@ function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: numb
 
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-panel p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-colors duration-200 hover:border-[rgba(45,91,255,0.5)] md:p-7">
-      {/* faint blueprint grid, masked so it fades toward the card bottom */}
-      <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
-      {/* Mach33-style oversized quote mark */}
-      <span aria-hidden className="relative font-display text-6xl leading-[0.55] text-ivory">
-        &rdquo;
+    <figure className="relative flex h-full flex-col pt-8">
+      {/* Mach33-style speech-bubble chip: a rounded tile that juts up half
+          above the card's top-left corner, holding chunky filled quote marks. */}
+      <span
+        aria-hidden
+        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[#0c1535]"
+      >
+        <svg viewBox="0 0 38 28" className="h-6 w-8 text-ivory" fill="currentColor">
+          <path d="M0 28V15.5C0 6.8 5.2 1.3 14 0l1.2 4.4C9.6 6 6.6 9 6.6 13.4H13V28H0zm22 0V15.5C22 6.8 27.2 1.3 36 0l1.2 4.4C31.6 6 28.6 9 28.6 13.4H35V28H22z" />
+        </svg>
       </span>
-      <blockquote className="relative mt-4 line-clamp-2 text-sm leading-relaxed text-silver md:text-[15px]">
-        {t.quote}
-      </blockquote>
-      <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
-        <Image
-          src={t.avatar}
-          alt=""
-          width={40}
-          height={40}
-          className="h-10 w-10 shrink-0 rounded-full border border-line object-cover"
-        />
-        <span>
-          <span className="block text-sm font-medium text-ivory">{t.name}</span>
-          <span className="block text-xs text-slate">{t.role}</span>
-        </span>
-      </figcaption>
+      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(125,148,230,0.08)] bg-[#0c1535] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(45,91,255,0.3)]">
+        {/* faint blueprint grid, masked so it fades toward the card bottom */}
+        <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
+        <h4 className="relative text-[15px] font-semibold leading-snug text-ivory">
+          {t.title}
+        </h4>
+        <blockquote className="relative mt-2 text-[13.5px] leading-relaxed text-silver">
+          {t.quote}
+        </blockquote>
+        <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
+          <span
+            aria-hidden
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${t.tone}`}
+          >
+            {t.initials}
+          </span>
+          <span>
+            <span className="block text-[13.5px] font-semibold text-ivory">{t.name}</span>
+            <span className="block text-xs text-slate">{t.role}</span>
+          </span>
+        </figcaption>
+      </div>
     </figure>
   );
 }
@@ -177,13 +205,12 @@ export default function Proof() {
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
             Testimonials
           </span>
-          <h3 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-normal leading-[1.05] text-ivory md:text-[2.5rem]">
-            What teams are <em className="italic">saying</em> once Avernik
-            handles the flow.
+          <h3 className="mx-auto mt-5 max-w-3xl font-sans text-3xl font-medium leading-[1.05] text-ivory md:text-[2.5rem]">
+            What our clients are <em className="italic">saying.</em>
           </h3>
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={(i % 3) * 0.08} className="h-full">
               <TestimonialCard t={t} />

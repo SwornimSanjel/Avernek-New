@@ -38,9 +38,19 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Editorial serif headlines: weight 400 only — never synthesize bold. */
+  /* Editorial serif: weight 400 only — never synthesize bold. */
   .font-display,
   .font-serif {
+    font-weight: 400;
+    font-synthesis-weight: none;
+  }
+
+  /* Headings render in clean sans; only the italic accent word switches to
+     the editorial serif (Tinos italic) — the Mach33 "Hear From The Brands /
+     We've Scaled" treatment. */
+  :is(h1, h2, h3) em {
+    font-family: var(--font-serif-display), "Times New Roman", serif;
+    font-style: italic;
     font-weight: 400;
     font-synthesis-weight: none;
   }
@@ -60,14 +70,9 @@
   .site-atmosphere {
     position: relative;
     overflow-x: clip;
-    background:
-      radial-gradient(ellipse 112rem 42rem at 50% 0%, rgba(45, 91, 255, 0.22), rgba(9, 21, 58, 0.24) 34%, transparent 72%),
-      radial-gradient(ellipse 50rem 24rem at 8% 8%, rgba(45, 91, 255, 0.1), transparent 72%),
-      radial-gradient(ellipse 52rem 24rem at 92% 8%, rgba(66, 76, 204, 0.1), transparent 74%),
-      radial-gradient(ellipse 92rem 30rem at 50% 58%, rgba(2, 4, 13, 0.98), rgba(2, 4, 13, 0.88) 44%, transparent 76%),
-      radial-gradient(ellipse 80rem 24rem at 50% 72%, rgba(45, 91, 255, 0.06), transparent 70%),
-      radial-gradient(ellipse 72rem 22rem at 50% 92%, rgba(56, 68, 190, 0.08), transparent 72%),
-      linear-gradient(180deg, #091230 0%, #02040d 950px, #030610 46%, #02040d 60%, #060a1c 72%, #02040d 84%, #081022 100%);
+    /* One uniform dark-blue-almost-black wash for the whole page — no
+       oscillating stops, so there is no visible band where sections meet. */
+    background: linear-gradient(180deg, #060a18 0%, #050816 55%, #040714 100%);
   }
 
   .site-atmosphere > section {
@@ -80,19 +85,9 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-      linear-gradient(180deg, rgba(2, 4, 13, 0.06), rgba(2, 4, 13, 0.46) 52%, rgba(2, 4, 13, 0.18)),
-      radial-gradient(ellipse 85% 32% at 50% 0%, rgba(29, 78, 216, 0.04), transparent 74%);
+    /* No per-section darkening band — the uniform wrapper does all the work. */
+    background: none;
     z-index: 0;
-  }
-
-  .site-atmosphere #demo::before,
-  .site-atmosphere #proof::before,
-  .site-atmosphere #contact::before {
-    background:
-      radial-gradient(ellipse 92% 38% at 50% 4%, rgba(45, 91, 255, 0.08), transparent 72%),
-      radial-gradient(ellipse 72% 30% at 50% 96%, rgba(66, 76, 204, 0.05), transparent 74%),
-      linear-gradient(180deg, rgba(2, 4, 13, 0.08), rgba(2, 4, 13, 0.34) 58%, rgba(2, 4, 13, 0.12));
   }
 
   .space-atmosphere,
@@ -103,40 +98,36 @@
     inset: 0;
   }
 
+  /* Base atmosphere is transparent so every non-hero section shows only the
+     single uniform page wash (.site-atmosphere) — no per-section gradient,
+     therefore no visible band where sections meet. The hero overrides this
+     via the higher-specificity .space-atmosphere.space-atmosphere-hero rule. */
   .space-atmosphere {
-    background:
-      linear-gradient(180deg, rgba(1, 5, 14, 0.08) 0%, rgba(2, 4, 13, 0.9) 68%, #02040d 100%),
-      radial-gradient(ellipse 72% 44% at 50% -10%, rgba(82, 104, 255, 0.22), transparent 70%),
-      radial-gradient(ellipse 50% 38% at 14% 22%, rgba(69, 84, 210, 0.12), transparent 72%),
-      radial-gradient(ellipse 46% 34% at 88% 18%, rgba(72, 78, 216, 0.15), transparent 74%),
-      linear-gradient(142deg, #091230 0%, #060c1e 44%, #030610 100%);
+    background: transparent;
   }
 
-  .space-atmosphere-hero {
-    /* Deep + saturated: vivid royal-blue crown, falls quickly into blue-black.
-       Matte ("dry") — saturation comes from the hue, not from brightness. */
+  .space-atmosphere.space-atmosphere-hero {
+    /* One smooth wash: dark-blue crown at the very top easing continuously
+       into near-black — deliberately NO mid-band so there is no visible
+       "second layer". Saturation lives only in the top crown glow. */
     background:
-      linear-gradient(180deg, rgba(1, 3, 10, 0.06) 0%, rgba(2, 4, 13, 0.78) 58%, #02040d 100%),
-      radial-gradient(ellipse 78% 46% at 50% 2%, rgba(38, 82, 255, 0.38), rgba(16, 38, 140, 0.14) 48%, transparent 72%),
-      radial-gradient(ellipse 56% 36% at 12% 18%, rgba(36, 78, 240, 0.22), transparent 74%),
-      radial-gradient(ellipse 52% 34% at 88% 16%, rgba(46, 70, 220, 0.2), transparent 72%),
-      radial-gradient(ellipse 76% 20% at 50% 80%, rgba(40, 70, 220, 0.14), transparent 68%),
-      linear-gradient(150deg, #081130 0%, #040918 48%, #02040d 100%);
+      radial-gradient(ellipse 88% 52% at 50% -14%, rgba(36, 74, 230, 0.16), rgba(14, 32, 104, 0.05) 44%, transparent 70%),
+      linear-gradient(180deg, #07101f 0%, #060c1c 26%, #050a17 56%, #060a18 100%);
   }
 
   .space-atmosphere-section {
-    opacity: 0.34;
+    opacity: 0.14;
   }
 
   .space-atmosphere-subtle {
-    opacity: 0.24;
+    opacity: 0.09;
   }
 
   .space-stars {
     background-image:
-      radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 1.6px),
-      radial-gradient(circle, rgba(120, 150, 255, 0.55) 0 1px, transparent 1.4px),
-      radial-gradient(circle, rgba(96, 116, 235, 0.35) 0 1px, transparent 1.35px);
+      radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 0.8px, transparent 1.3px),
+      radial-gradient(circle, rgba(120, 150, 255, 0.32) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(96, 116, 235, 0.2) 0 0.8px, transparent 1.15px);
     background-position:
       0 0,
       34px 62px,
@@ -145,7 +136,7 @@
       132px 132px,
       190px 190px,
       260px 260px;
-    opacity: 0.62;
+    opacity: 0.42;
     animation: starDrift 38s linear infinite;
   }
 
@@ -154,10 +145,10 @@
     width: 56%;
     left: 22%;
     top: -10%;
-    background: linear-gradient(90deg, transparent 0%, rgba(45, 91, 255, 0.22) 48%, rgba(50, 58, 150, 0.13) 56%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(45, 91, 255, 0.14) 48%, rgba(50, 58, 150, 0.08) 56%, transparent 100%);
     filter: blur(54px);
     mix-blend-mode: screen;
-    opacity: 0.72;
+    opacity: 0.45;
   }
 
   .space-ray-a {
@@ -184,19 +175,14 @@
     top: auto;
     bottom: -2px;
     height: 42%;
+    /* Just a faint glow at the foot of the hero — the grid "planet surface"
+       was reading as a separate layer, so it's gone. */
     background-image:
-      linear-gradient(to right, rgba(45, 91, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(45, 91, 255, 0.06) 1px, transparent 1px),
-      radial-gradient(ellipse 82% 40% at 50% 0%, rgba(86, 104, 238, 0.18), transparent 62%),
-      linear-gradient(180deg, transparent 0%, rgba(45, 61, 180, 0.1) 62%, rgba(45, 91, 255, 0.1) 100%);
-    background-size:
-      72px 72px,
-      72px 72px,
-      100% 100%,
-      100% 100%;
+      radial-gradient(ellipse 82% 40% at 50% 0%, rgba(86, 104, 238, 0.08), transparent 60%);
+    background-size: 100% 100%;
     mask-image: linear-gradient(to top, #000 0%, transparent 88%);
     -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 88%);
-    opacity: 0.72;
+    opacity: 0.5;
   }
 
   /* Thin line-grid backdrop. Deliberately faint (0.02) and masked so it fades

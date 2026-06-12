@@ -22,7 +22,7 @@ export default function Problem() {
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
             The backend gap
           </span>
-          <h2 className="mt-5 font-display text-4xl font-normal leading-[1.05] text-ivory md:text-[3rem]">
+          <h2 className="mt-5 font-sans text-4xl font-medium leading-[1.05] text-ivory md:text-[3rem]">
             Marketing creates attention. Avernik makes sure it does not{" "}
             <em className="italic">leak.</em>
           </h2>

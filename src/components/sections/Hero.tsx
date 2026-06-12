@@ -38,17 +38,12 @@ export default function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-transparent">
       <AmbientBackground variant="hero" />
-      <Particles className="opacity-80" count={95} />
+      <Particles className="opacity-50" count={48} />
 
       {/* Saturated royal-blue crown glow behind the headline — deep, not washed */}
       <div
         aria-hidden
-        className="absolute left-1/2 top-[-22%] h-[42rem] w-[80rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,91,255,0.32),rgba(20,45,150,0.12)_45%,transparent_70%)] blur-2xl"
-      />
-      {/* fade to page black at the bottom edge */}
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#02040d] via-[#02040d]/70 to-transparent"
+        className="absolute left-1/2 top-[-22%] h-[42rem] w-[80rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,91,255,0.2),rgba(20,45,150,0.08)_45%,transparent_70%)] blur-2xl"
       />
 
       <Container className="relative flex flex-col items-center py-32 text-center sm:py-36">
@@ -66,7 +61,7 @@ export default function Hero() {
         <motion.h1
           {...fadeUp}
           transition={{ duration: 0.6, delay: 0.12 }}
-          className="mt-8 max-w-4xl font-display text-[2.7rem] font-normal leading-[1.05] text-ivory sm:text-[3.6rem] md:text-[4.4rem] lg:text-[5rem]"
+          className="mt-8 max-w-4xl font-sans text-[2.7rem] font-medium leading-[1.05] text-ivory sm:text-[3.6rem] md:text-[4.4rem] lg:text-[5rem]"
         >
           Every inquiry answered, qualified, and followed up by{" "}
           <em className="italic">future-ready AI.</em>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Tinos } from "next/font/google";
 import { site } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
@@ -14,12 +14,13 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
-// Editorial high-contrast serif for headlines — 400 only (it has no bold).
-const instrumentSerif = Instrument_Serif({
+// Minimal Times New Roman-style serif (Tinos) used ONLY for the italic
+// accent word in headings — restrained, not a fancy calligraphic Didone.
+const tinos = Tinos({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif-display",
-  weight: "400",
+  weight: ["400", "700"],
   style: ["normal", "italic"],
 });
 
@@ -73,7 +74,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${inter.variable} ${tinos.variable}`}>
       <body>
         <JsonLd />
         <SiteShell>{children}</SiteShell>

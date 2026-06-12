@@ -43,7 +43,7 @@ export default function Particles({
     const particles: P[] = Array.from({ length: count }, () => ({
       x: Math.random(),
       y: Math.random(),
-      r: 0.8 + Math.random() * 1.6,
+      r: 0.5 + Math.random() * 0.9,
       vy: 0.008 + Math.random() * 0.018,
       sway: 0.004 + Math.random() * 0.01,
       phase: Math.random() * Math.PI * 2,
@@ -71,7 +71,7 @@ export default function Particles({
       for (const p of particles) {
         const y = ((p.y - t * p.vy) % 1 + 1) % 1; // wraps top → bottom
         const x = p.x + Math.sin(t * 0.4 + p.phase) * p.sway;
-        const a = 0.25 + 0.45 * (0.5 + 0.5 * Math.sin(t * 1.1 + p.twinkle));
+        const a = 0.14 + 0.3 * (0.5 + 0.5 * Math.sin(t * 1.1 + p.twinkle));
         ctx.beginPath();
         ctx.arc(x * w, y * h, p.r, 0, Math.PI * 2);
         ctx.fillStyle = p.blue

@@ -79,7 +79,7 @@ export default function Contact() {
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
             System audit
           </span>
-          <h2 className="font-display text-4xl font-normal leading-[1.05] text-ivory sm:text-[3rem]">
+          <h2 className="font-sans text-4xl font-medium leading-[1.05] text-ivory sm:text-[3rem]">
             See where your inquiries are{" "}
             <em className="italic">leaking.</em>
           </h2>
