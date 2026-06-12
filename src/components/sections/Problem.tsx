@@ -49,16 +49,26 @@ export default function Problem() {
               </span>
             </div>
 
-            {/* V/S badge — compact Mach33-style: a deep-blue orb with one or
-                two tight, faint rings hugging it. No wide bloom or ripples. */}
-            <span className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center sm:h-14 sm:w-14">
-              {/* two tight rings, just past the orb edge */}
-              <span aria-hidden className="absolute h-[132%] w-[132%] rounded-full border border-[#6f8cff]/10" />
-              <span aria-hidden className="absolute h-[116%] w-[116%] rounded-full border border-[#6f8cff]/20" />
+            {/* V/S badge — compact Mach33-style: a small dark navy orb, lit
+                from the top, with two faint rings that fade out toward the
+                bottom so the badge melts into the dark below. */}
+            <span className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center sm:h-12 sm:w-12">
+              {/* two tight rings, masked so they fade away at the bottom */}
+              <span
+                aria-hidden
+                className="absolute h-[134%] w-[134%] rounded-full border border-[#6f8cff]/12 [mask-image:linear-gradient(to_bottom,#000_30%,transparent_88%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_30%,transparent_88%)]"
+              />
+              <span
+                aria-hidden
+                className="absolute h-[116%] w-[116%] rounded-full border border-[#6f8cff]/22 [mask-image:linear-gradient(to_bottom,#000_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_35%,transparent_92%)]"
+              />
 
-              {/* orb — deep navy-blue radial, dim glow kept close to the edge */}
-              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#3552bd,#1f3490_55%,#101c54_100%)] text-[11px] font-semibold tracking-wide text-[#dfe5ff] shadow-[inset_0_1px_2px_rgba(190,205,255,0.28),0_0_12px_2px_rgba(45,91,255,0.3)] ring-1 ring-[#6f8cff]/30 sm:text-[13px]">
-                V/S
+              {/* top-lit rim — bright at the top edge, transparent at the bottom */}
+              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-gradient-to-b from-[#7d93e6]/55 to-transparent p-px">
+                {/* dark navy orb — deep, dim glow biased to the top */}
+                <span className="flex h-full w-full items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_30%,#27408c,#152452_55%,#0a1230_100%)] text-[10px] font-semibold tracking-wide text-[#cdd6f5] shadow-[inset_0_1px_2px_rgba(160,180,255,0.22)] sm:text-[12px]">
+                  V/S
+                </span>
               </span>
             </span>
           </div>
