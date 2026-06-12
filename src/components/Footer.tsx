@@ -23,7 +23,7 @@ export default function Footer() {
           <p className="max-w-md text-sm leading-relaxed text-slate">
             Book a system audit — we&apos;ll map where speed and follow-up can improve.
           </p>
-          <LinkButton href="#contact">Book a system audit</LinkButton>
+          <LinkButton href="#contact">Book an Audit</LinkButton>
         </Container>
       </div>
 
@@ -74,7 +74,7 @@ export default function Footer() {
             {site.contact.email}
           </a>
           <a href="#contact" className="text-sm text-slate transition-colors hover:text-accent-glow">
-            Book a system audit
+            Book an Audit
           </a>
           <a href="#faq" className="text-sm text-slate transition-colors hover:text-accent-glow">
             Questions &amp; answers

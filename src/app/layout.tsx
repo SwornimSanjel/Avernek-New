@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Tinos } from "next/font/google";
+import { Inter, Tinos, Playfair_Display } from "next/font/google";
 import { site } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
@@ -21,6 +21,16 @@ const tinos = Tinos({
   display: "swap",
   variable: "--font-serif-display",
   weight: ["400", "700"],
+  style: ["normal", "italic"],
+});
+
+// High-contrast editorial display serif used for the hero headline (and its
+// italic accent). Variable font, so the full weight axis is available via
+// Tailwind font-* utilities. Scoped to the hero — other headings stay sans.
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
   style: ["normal", "italic"],
 });
 
@@ -74,7 +84,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${tinos.variable}`}>
+    <html lang="en" className={`${inter.variable} ${tinos.variable} ${playfair.variable}`}>
       <body>
         <JsonLd />
         <SiteShell>{children}</SiteShell>

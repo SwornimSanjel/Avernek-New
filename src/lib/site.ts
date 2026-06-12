@@ -42,9 +42,10 @@ export function whatsappLink(text: string = whatsappDefaultText): string {
 
 export const nav = [
   { label: "Demo", href: "#demo" },
-  { label: "How it works", href: "#system" },
-  { label: "Use cases", href: "#industries" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Use cases", href: "#use-cases" },
   { label: "Proof", href: "#proof" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Team", href: "#team" },
   { label: "FAQ", href: "#faq" },
 ] as const;

@@ -92,7 +92,7 @@ export default function QuickActions() {
             <ActionRow
               href="#contact"
               onClick={close}
-              title="Book a system audit"
+              title="Book an Audit"
               desc="Map your inquiry flow in one call."
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>

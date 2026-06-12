@@ -48,6 +48,8 @@ type Testimonial = {
   initials: string;
   /** Solid muted avatar circle — varied hues so the wall reads genuine. */
   tone: string;
+  /** Optional real photo; when set, it replaces the initials circle. */
+  image?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -78,10 +80,11 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "Our clients are mostly from Europe and the US and when they are planning a trek they are comparing three or four agencies at the same time. They send an inquiry and whoever replies first and sounds competent usually gets the booking. We were losing that race purely because of the time difference. Now the first reply goes out within minutes, it is informed, it answers what they actually asked, and by the time I talk to them the trust is already there.",
-    name: "Shristy",
+    name: "Vidhya Sagar",
     role: "Mountain Routes",
-    initials: "SR",
+    initials: "VS",
     tone: "bg-[#7B86C8] text-[#1D2247]",
+    image: "/resources/trusted/vidhya-sagar-mountain-routes.jpg",
   },
   {
     quote:
@@ -134,12 +137,24 @@ function TestimonialCard({ t }: { t: Testimonial }) {
           {t.quote}
         </blockquote>
         <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
-          <span
-            aria-hidden
-            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${t.tone}`}
-          >
-            {t.initials}
-          </span>
+          {t.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={t.image}
+              alt={t.name}
+              width={36}
+              height={36}
+              loading="lazy"
+              className="h-9 w-9 shrink-0 rounded-full object-cover"
+            />
+          ) : (
+            <span
+              aria-hidden
+              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${t.tone}`}
+            >
+              {t.initials}
+            </span>
+          )}
           <span>
             <span className="block text-[13.5px] font-semibold text-ivory">{t.name}</span>
             <span className="block text-xs text-slate">{t.role}</span>

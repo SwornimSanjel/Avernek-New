@@ -56,7 +56,7 @@ const icons = [
 export default function Industries() {
   return (
     <section
-      id="industries"
+      id="use-cases"
       className="relative scroll-mt-24 overflow-hidden bg-ink py-24 md:py-32"
     >
       <AmbientBackground variant="subtle" />
@@ -122,7 +122,7 @@ export default function Industries() {
         <div className="mx-auto mt-12 flex max-w-2xl flex-col items-center gap-5 text-center">
           <p className="text-sm leading-relaxed text-slate">{industriesNote}</p>
           <LinkButton href="#contact" variant="secondary">
-            Book a system audit
+            Book an Audit
           </LinkButton>
         </div>
       </Container>

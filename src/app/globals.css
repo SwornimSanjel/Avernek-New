@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Editorial display serif (Playfair Display) — hero headline only. Authored
+     here so it applies reliably; being in the utilities layer it also overrides
+     the base-layer Tinos rule on heading <em> accents. */
+  .font-playfair {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+}
+
 @layer base {
   :root {
     color-scheme: dark;

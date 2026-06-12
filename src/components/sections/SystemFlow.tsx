@@ -33,7 +33,7 @@ export default function SystemFlow() {
   return (
     <section
       ref={sectionRef}
-      id="system"
+      id="how-it-works"
       className="relative scroll-mt-24 overflow-clip bg-ink py-24 md:py-32"
     >
       <AmbientBackground variant="section" />
@@ -50,7 +50,7 @@ export default function SystemFlow() {
             </p>
 
             <div className="mt-8">
-              <LinkButton href="#contact">Book a system audit</LinkButton>
+              <LinkButton href="#contact">Book an Audit</LinkButton>
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-slate">

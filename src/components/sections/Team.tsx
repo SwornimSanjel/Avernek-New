@@ -25,7 +25,7 @@ function LinkedIn({ url, name }: { url?: string; name: string }) {
 
 export default function Team() {
   return (
-    <section className="relative overflow-hidden bg-ink py-24 md:py-32">
+    <section id="team" className="relative scroll-mt-24 overflow-hidden bg-ink py-24 md:py-32">
       <AmbientBackground variant="subtle" />
       <Container className="relative">
         <SectionHeading
