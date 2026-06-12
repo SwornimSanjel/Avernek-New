@@ -159,23 +159,6 @@ export default function Hero() {
           </span>
         </motion.div>
       </Container>
-
-      {/* Scroll cue — understated, bounces gently, hidden under reduced motion */}
-      <a
-        href="#demo"
-        aria-label="Scroll to the live demo"
-        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-slate/60 transition-colors duration-200 hover:text-slate motion-reduce:hidden"
-      >
-        <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 animate-bounce" aria-hidden>
-          <path
-            d="M6 9l6 6 6-6"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.6"
-          />
-        </svg>
-      </a>
     </section>
   );
 }
