@@ -9,15 +9,15 @@
  * (`motion-reduce:animate-none`) — the names simply sit static.
  */
 const tools = [
-  "OpenAI",
   "Meta",
-  "Google",
+  "OpenAI",
+  "Anthropic",
   "WhatsApp Business",
   "n8n",
   "Make",
+  "Google Sheets",
   "Notion",
   "Python",
-  "Google Sheets",
 ];
 
 export default function LogoMarquee() {

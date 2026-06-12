@@ -326,14 +326,6 @@
   }
 }
 
-@layer utilities {
-  /* Thin, brand-tinted scrollbar */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: #2d5bff #02040d;
-  }
-
-}
 
 /* Avernik assistant build loop — spin-and-form FAST (~0.9s), rest formed for a
    short beat (~4.5s), then break apart with a fast spin-out and reform (~7s). */
