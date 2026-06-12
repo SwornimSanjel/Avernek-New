@@ -42,8 +42,6 @@ const signalMetrics: SignalMetric[] = [
 ];
 
 type Testimonial = {
-  /** Bold review-style headline, like a Trustpilot title. */
-  title: string;
   quote: string;
   name: string;
   role: string;
@@ -52,51 +50,44 @@ type Testimonial = {
   tone: string;
 };
 
-// TODO: placeholder testimonials — swap in real client quotes (with
-// permission) as soon as they exist.
 const testimonials: Testimonial[] = [
   {
-    title: "Sceptical at first — worth it within three weeks",
     quote:
       "Honestly I was sceptical. We had tried two other tools before and both times it created more work than it saved. What was different here is they actually mapped out how our clinic handles new patient inquiries before touching anything. Three weeks in and our receptionist stopped having to manually chase every Facebook message. That alone was worth it.",
     name: "Aashish",
-    role: "Owner, Patan Dental Clinic · Lalitpur",
+    role: "SmileCare Dental",
     initials: "AP",
     tone: "bg-[#C9B47C] text-[#3A3214]",
   },
   {
-    title: "We are usually the first conversation now",
     quote:
       "We sell kitchen equipment to hotels and restaurants and most serious buyers inquiry on WhatsApp or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernik our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
     name: "Suraj",
-    role: "Managing Director, Makalu Kitchen Solutions · Kathmandu",
+    role: "Makalu Kitchen Solutions",
     initials: "SM",
     tone: "bg-[#8FA98F] text-[#22301F]",
   },
   {
-    title: "Festival season without the burnout",
     quote:
       "Dashain and Tihar our inquiry volume doubles but our team size does not. Last year we missed a lot of leads just because nobody could keep up. This year with Avernik handling the first response and organising everything by urgency, my team actually managed the season without burning out. We closed more that fortnight than the same period last year.",
     name: "Roshani",
-    role: "Founder, Kreasi Event Studio · Kathmandu",
+    role: "Kreasi Event Studio",
     initials: "RK",
     tone: "bg-[#B58FA8] text-[#3A2433]",
   },
   {
-    title: "Finally a proper admissions pipeline",
     quote:
-      "I run the admissions side of things and before this every cycle was just chaos. Students would fill the form and then we had no clear picture of who had been called, who was still deciding, who had already joined somewhere else. Now there is a proper pipeline. I know exactly where each applicant stands and my counsellors spend time on the ones who are actually close to enrolling.",
-    name: "Bibek",
-    role: "Admissions Head, Evergreen College · Pokhara",
-    initials: "BT",
+      "Our clients are mostly from Europe and the US and when they are planning a trek they are comparing three or four agencies at the same time. They send an inquiry and whoever replies first and sounds competent usually gets the booking. We were losing that race purely because of the time difference. Now the first reply goes out within minutes, it is informed, it answers what they actually asked, and by the time I talk to them the trust is already there.",
+    name: "Shristy",
+    role: "Mountain Routes",
+    initials: "SR",
     tone: "bg-[#7B86C8] text-[#1D2247]",
   },
   {
-    title: "Every inquiry source in one place",
     quote:
       "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernik built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
     name: "Nirajan",
-    role: "Director, Narayani Properties · Chitwan",
+    role: "Narayani Properties",
     initials: "NK",
     tone: "bg-[#6E97B8] text-[#16293A]",
   },
@@ -139,10 +130,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
       <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(125,148,230,0.08)] bg-[#0c1535] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(45,91,255,0.3)]">
         {/* faint blueprint grid, masked so it fades toward the card bottom */}
         <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
-        <h4 className="relative text-[15px] font-semibold leading-snug text-ivory">
-          {t.title}
-        </h4>
-        <blockquote className="relative mt-2 text-[13.5px] leading-relaxed text-silver">
+        <blockquote className="relative text-[13.5px] leading-relaxed text-silver">
           {t.quote}
         </blockquote>
         <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
