@@ -49,26 +49,18 @@ export default function Problem() {
               </span>
             </div>
 
-            {/* V/S badge — compact Mach33-style: a small dark navy orb, lit
-                from the top, with two faint rings that fade out toward the
-                bottom so the badge melts into the dark below. */}
+            {/* V/S badge — Mach33-style: a blue-bloom orb ringed by clean, full
+                concentric circles at very low opacity (barely-there sonar
+                rings, no fades or masks). */}
             <span className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center sm:h-12 sm:w-12">
-              {/* two tight rings, masked so they fade away at the bottom */}
-              <span
-                aria-hidden
-                className="absolute h-[134%] w-[134%] rounded-full border border-[#6f8cff]/12 [mask-image:linear-gradient(to_bottom,#000_30%,transparent_88%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_30%,transparent_88%)]"
-              />
-              <span
-                aria-hidden
-                className="absolute h-[116%] w-[116%] rounded-full border border-[#6f8cff]/22 [mask-image:linear-gradient(to_bottom,#000_35%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_35%,transparent_92%)]"
-              />
+              {/* faint, evenly-spaced full rings — barely visible */}
+              <span aria-hidden className="absolute h-[172%] w-[172%] rounded-full border border-[#7c97ff]/[0.05]" />
+              <span aria-hidden className="absolute h-[148%] w-[148%] rounded-full border border-[#7c97ff]/[0.07]" />
+              <span aria-hidden className="absolute h-[124%] w-[124%] rounded-full border border-[#7c97ff]/[0.10]" />
 
-              {/* top-lit rim — bright at the top edge, transparent at the bottom */}
-              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-gradient-to-b from-[#7d93e6]/55 to-transparent p-px">
-                {/* dark navy orb — deep, dim glow biased to the top */}
-                <span className="flex h-full w-full items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_30%,#27408c,#152452_55%,#0a1230_100%)] text-[10px] font-semibold tracking-wide text-[#cdd6f5] shadow-[inset_0_1px_2px_rgba(160,180,255,0.22)] sm:text-[12px]">
-                  V/S
-                </span>
+              {/* orb — blue bloom in the upper-centre fading to dark navy edge */}
+              <span className="relative flex h-full w-full items-center justify-center rounded-full bg-[radial-gradient(circle_at_50%_38%,#3a63e0,#1d3690_48%,#0b1640_100%)] text-[10px] font-semibold tracking-wide text-[#dbe2ff] shadow-[inset_0_1px_2px_rgba(170,190,255,0.25)] ring-1 ring-[#7c97ff]/15 sm:text-[12px]">
+                V/S
               </span>
             </span>
           </div>
