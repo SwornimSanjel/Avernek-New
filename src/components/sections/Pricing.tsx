@@ -28,7 +28,7 @@ export default function Pricing() {
               <div
                 className={`border-sweep relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 md:p-8 ${
                   pkg.featured
-                    ? "border-[#2d5bff]/55 bg-[#0a1126]/85 hover:border-[#4c70ff]/70 lg:z-10 lg:scale-[1.04]"
+                    ? "border-[#2d5bff]/55 bg-[#0c1334]/85 hover:border-[#4c70ff]/70 lg:z-10 lg:scale-[1.04]"
                     : "border-line bg-panel/40 hover:border-[#2d5bff]/42"
                 }`}
               >

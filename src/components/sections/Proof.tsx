@@ -124,13 +124,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
           above the card's top-left corner, holding chunky filled quote marks. */}
       <span
         aria-hidden
-        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[#0c1535]"
+        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[linear-gradient(180deg,#182457,#0e1740)]"
       >
         <svg viewBox="0 0 38 28" className="h-6 w-8 text-ivory" fill="currentColor">
           <path d="M0 28V15.5C0 6.8 5.2 1.3 14 0l1.2 4.4C9.6 6 6.6 9 6.6 13.4H13V28H0zm22 0V15.5C22 6.8 27.2 1.3 36 0l1.2 4.4C31.6 6 28.6 9 28.6 13.4H35V28H22z" />
         </svg>
       </span>
-      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(125,148,230,0.08)] bg-[#0c1535] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(45,91,255,0.3)]">
+      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(125,148,230,0.10)] bg-[radial-gradient(130%_90%_at_50%_-6%,#182457_0%,#0e1740_46%,#0a1132_100%)] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(150,175,255,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(45,91,255,0.3)]">
         {/* faint blueprint grid, masked so it fades toward the card bottom */}
         <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
         <blockquote className="relative text-[13.5px] leading-relaxed text-silver">

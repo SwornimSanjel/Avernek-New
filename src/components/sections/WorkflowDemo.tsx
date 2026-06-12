@@ -47,7 +47,7 @@ export default function WorkflowDemo() {
   return (
     <section
       id="demo"
-      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#0c1430_0%,#060a1c_42%,#02040d_100%)] py-24 md:py-32"
+      className="relative scroll-mt-24 overflow-hidden bg-[radial-gradient(125%_120%_at_50%_-10%,#0d1638_0%,#070d26_42%,#020514_100%)] py-24 md:py-32"
     >
       {/* the one brighter, electric-blue "spotlight" section of the site */}
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-[0.22]" />

@@ -41,7 +41,7 @@ export default function Problem() {
               Traditional setup
             </h3>
             <div className="flex items-center justify-center gap-2.5 sm:gap-3">
-              <span className="flex h-7 w-7 items-center justify-center rounded-[9px] border border-white/10 bg-[#0a1126] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:h-9 sm:w-9">
+              <span className="flex h-7 w-7 items-center justify-center rounded-[9px] border border-white/10 bg-[#0c1334] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:h-9 sm:w-9">
                 <Mark className="h-4 w-4 text-ivory sm:h-5 sm:w-5" />
               </span>
               <span className="text-sm font-bold tracking-tight text-white sm:text-2xl">
