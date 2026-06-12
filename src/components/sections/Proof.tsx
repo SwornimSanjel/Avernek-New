@@ -152,7 +152,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 
 export default function Proof() {
   return (
-    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-24 md:py-32">
+    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep pt-24 pb-0 md:pt-32">
       <AmbientBackground variant="section" />
       <Container className="relative">
         <SectionHeading
@@ -211,7 +211,7 @@ export default function Proof() {
       {/* Distinct "built on" strip — its own section, generously spaced from
           the testimonials above and the packages below. The only container is
           a thin hairline above and below the marquee. */}
-      <div className="relative mt-28 md:mt-32">
+      <div className="relative mt-24 md:mt-32">
         <p className="text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           Built on technology you already trust
         </p>
