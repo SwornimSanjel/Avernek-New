@@ -26,16 +26,15 @@ export default function LogoMarquee() {
       className="marquee-shell relative w-full overflow-hidden"
       aria-label="Automation tools Avernik works with"
     >
-      <div className="marquee-track flex w-max items-center gap-10 motion-reduce:animate-none">
+      <div className="marquee-track flex w-max items-center gap-[90px] motion-reduce:animate-none">
         {[0, 1].map((copy) =>
           tools.map((name) => (
             <span
               key={`${copy}-${name}`}
               aria-hidden={copy === 1}
-              className="flex shrink-0 items-center gap-10 text-xl font-medium tracking-tight text-silver/70 transition-colors duration-200 hover:text-ivory sm:text-2xl"
+              className="shrink-0 whitespace-nowrap text-2xl font-medium tracking-tight text-slate transition-colors duration-200 hover:text-ivory sm:text-[1.7rem]"
             >
               {name}
-              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d5bff] shadow-[0_0_14px_rgba(45,91,255,0.48)]" />
             </span>
           )),
         )}

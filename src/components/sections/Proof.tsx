@@ -208,15 +208,16 @@ export default function Proof() {
 
       </Container>
 
-      <div className="relative mt-20 overflow-hidden border-y border-line bg-[#050814]/60 py-10 md:mt-28 md:py-12">
-        <span
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#2d5bff]/45 to-transparent"
-        />
-        <p className="relative mb-7 text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
+      {/* Distinct "built on" strip — its own section, generously spaced from
+          the testimonials above and the packages below. The only container is
+          a thin hairline above and below the marquee. */}
+      <div className="relative mt-28 md:mt-32">
+        <p className="text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           Built on technology you already trust
         </p>
-        <LogoMarquee />
+        <div className="mt-10 border-y border-white/[0.07] py-8">
+          <LogoMarquee />
+        </div>
       </div>
     </section>
   );
