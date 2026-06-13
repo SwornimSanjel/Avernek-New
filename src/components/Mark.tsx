@@ -1,5 +1,5 @@
 /**
- * The Avernik mark — the finalized "filter-A" glyph: two diverging legs forming an
+ * The Avernek mark — the finalized "filter-A" glyph: two diverging legs forming an
  * upward "A" with two rounded notches between them (the qualify / filter motif).
  *
  * Geometry taken from the finalized logo (avernik_filter_a_square.svg), cropped
@@ -12,7 +12,7 @@ type MarkProps = {
   title?: string;
 };
 
-export default function Mark({ className, title = "Avernik" }: MarkProps) {
+export default function Mark({ className, title = "Avernek" }: MarkProps) {
   return (
     <svg
       viewBox="272 270 480 480"

@@ -24,7 +24,7 @@ export default function Problem() {
             The backend gap
           </span>
           <h2 className="mt-5 font-sans text-4xl font-medium leading-[1.05] text-ivory md:text-[3rem]">
-            Marketing creates attention. Avernik makes sure it does not{" "}
+            Marketing creates attention. Avernek makes sure it does not{" "}
             <em className="italic">leak.</em>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate sm:text-lg">
@@ -45,7 +45,7 @@ export default function Problem() {
                 <Mark className="h-4 w-4 text-ivory sm:h-5 sm:w-5" />
               </span>
               <span className="text-sm font-bold tracking-tight text-white sm:text-2xl">
-                Avernik System
+                Avernek System
               </span>
             </div>
 
@@ -68,7 +68,7 @@ export default function Problem() {
           {/* Each row is its own floating band — the page background shows
               through, so no heavy outer container is needed. */}
           <div className="flex flex-col gap-2.5 sm:gap-3">
-            {rows.map(([without, withAvernik]) => (
+            {rows.map(([without, withAvernek]) => (
               <div key={without} className="grid grid-cols-2">
                 {/* Traditional — muted, diagonally hatched, grey ✗ */}
                 <div className="relative flex items-center gap-2.5 overflow-hidden rounded-l-xl border border-r-0 border-white/[0.06] bg-white/[0.015] px-3 py-3.5 sm:gap-3 sm:px-5 sm:py-4">
@@ -84,7 +84,7 @@ export default function Problem() {
                   <span className="relative text-xs leading-relaxed text-slate sm:text-sm">{without}</span>
                 </div>
 
-                {/* Avernik — blue-tinted, glowing ✓, accent-bar divider + bloom */}
+                {/* Avernek — blue-tinted, glowing ✓, accent-bar divider + bloom */}
                 <div className="group relative flex items-center gap-2.5 overflow-hidden rounded-r-xl border border-l-0 border-accent/20 bg-[linear-gradient(90deg,rgba(45,91,255,0.16),rgba(45,91,255,0.045)_62%,transparent)] px-3 py-3.5 transition-colors duration-300 hover:border-accent/40 sm:gap-3 sm:px-5 sm:py-4">
                   <span
                     aria-hidden
@@ -99,7 +99,7 @@ export default function Problem() {
                       <path d="M4 10.5 8 14 16 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" />
                     </svg>
                   </span>
-                  <span className="relative text-xs font-medium leading-relaxed text-ivory sm:text-sm">{withAvernik}</span>
+                  <span className="relative text-xs font-medium leading-relaxed text-ivory sm:text-sm">{withAvernek}</span>
                 </div>
               </div>
             ))}

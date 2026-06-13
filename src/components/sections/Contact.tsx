@@ -232,7 +232,7 @@ export default function Contact() {
                   <p className="mt-1 text-slate">
                     Trouble sending? You can{" "}
                     <a
-                      href={whatsappLink("Hi Avernik, the audit form didn't go through. I'd like a system audit.")}
+                      href={whatsappLink("Hi Avernek, the audit form didn't go through. I'd like a system audit.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-medium text-accent-glow hover:underline"

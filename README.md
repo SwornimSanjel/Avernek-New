@@ -1,7 +1,7 @@
-# Avernik — Marketing Website
+# Avernek — Marketing Website
 
-Public marketing website for **Avernik**, an AI Automation & Growth Systems Agency.
-Positioning: *Avernik owns the inquiry system between marketing and sales* —
+Public marketing website for **Avernek**, an AI Automation & Growth Systems Agency.
+Positioning: *Avernek owns the inquiry system between marketing and sales* —
 **Generate → Reply → Save → Qualify → Follow Up → Report**.
 
 Visual direction: a dark, futuristic **"AI command center"** identity — obsidian
@@ -26,12 +26,12 @@ src/
 │   ├── layout.tsx          # fonts, SEO metadata, JSON-LD
 │   ├── page.tsx            # homepage (composes all sections)
 │   ├── globals.css         # Tailwind layers + base styles
-│   ├── icon.svg            # favicon (Avernik mark)
+│   ├── icon.svg            # favicon (Avernek mark)
 │   ├── robots.ts           # robots.txt
 │   ├── sitemap.ts          # sitemap.xml
 │   └── api/lead/route.ts   # contact form endpoint (backend-ready)
 ├── components/
-│   ├── Mark.tsx            # the Avernik "ascending A" mark (SVG)
+│   ├── Mark.tsx            # the Avernek "ascending A" mark (SVG)
 │   ├── Logo.tsx, Navbar.tsx, Footer.tsx
 │   ├── Button.tsx, Container.tsx, SectionHeading.tsx
 │   ├── ScrollReveal.tsx    # Framer Motion reveal wrapper
@@ -127,7 +127,7 @@ alter table public.leads enable row level security;
 
 > **Production email:** `onboarding@resend.dev` works for testing but may land
 > in spam. Verify a domain in Resend and set `LEAD_NOTIFY_FROM` to e.g.
-> `notify@avernik.com` so notifications deliver cleanly.
+> `notify@avernek.com` so notifications deliver cleanly.
 
 ## Deployment (recommended: Vercel)
 
@@ -159,7 +159,7 @@ These are **placeholders** — search and replace before going live:
 
 ## Content source
 
-All outward-facing copy derives from `Avernik_Full_Agency_Blueprint.pdf` (v9).
+All outward-facing copy derives from `Avernek_Full_Agency_Blueprint.pdf` (v9).
 Internal-only material (margins, unit economics, token costs, hiring triggers,
 internal SOPs) is intentionally **excluded**. Pricing is shown as "starting
 from" so founding-client terms stay flexible. No fake testimonials are used —
@@ -180,7 +180,7 @@ Production hardening is built in; a few things must be done on the host/domain:
 - **/api/lead:** same-origin only, JSON only, per-IP rate limiting, honeypot, and
   optional Cloudflare Turnstile. No PII is logged.
 - **Email auth:** before sending mail from the domain, set up **SPF, DKIM and
-  DMARC** to prevent spoofing/phishing of the Avernik address.
+  DMARC** to prevent spoofing/phishing of the Avernek address.
 - **Dependencies:** run `npm audit` periodically and keep packages patched.
 - **Bot protection (optional):** create a Cloudflare Turnstile widget and set
   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`. With no keys, the

@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Avernik — deep-space navy system (Mach33-inspired). Single source of
+        // Avernek — deep-space navy system (Mach33-inspired). Single source of
         // truth lives in globals.css :root; these map utility names onto it.
         obsidian: "rgb(var(--bg-rgb) / <alpha-value>)", // page background — very dark navy
         ink: "rgb(var(--bg-deep-rgb) / <alpha-value>)", // section alternates

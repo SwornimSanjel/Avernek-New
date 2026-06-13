@@ -4,6 +4,7 @@ import ScrollReveal from "../ScrollReveal";
 import LogoMarquee from "../LogoMarquee";
 import CountUp from "../CountUp";
 import AmbientBackground from "../AmbientBackground";
+import Mark from "../Mark";
 
 type SignalMetric = {
   value?: number;
@@ -63,7 +64,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquiry on WhatsApp or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernik our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
+      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquiry on WhatsApp or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernek our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
     name: "Suraj",
     role: "Makalu Kitchen Solutions",
     initials: "SM",
@@ -71,7 +72,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Dashain and Tihar our inquiry volume doubles but our team size does not. Last year we missed a lot of leads just because nobody could keep up. This year with Avernik handling the first response and organising everything by urgency, my team actually managed the season without burning out. We closed more that fortnight than the same period last year.",
+      "Dashain and Tihar our inquiry volume doubles but our team size does not. Last year we missed a lot of leads just because nobody could keep up. This year with Avernek handling the first response and organising everything by urgency, my team actually managed the season without burning out. We closed more that fortnight than the same period last year.",
     name: "Roshani",
     role: "Kreasi Event Studio",
     initials: "RK",
@@ -88,7 +89,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernik built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
+      "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernek built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
     name: "Nirajan",
     role: "Narayani Properties",
     initials: "NK",
@@ -191,8 +192,8 @@ export default function Proof() {
 
         <ScrollReveal className="relative mt-8 overflow-hidden rounded-2xl border border-line bg-panel/75 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9">
           <div className="relative flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-accent/10 font-medium text-accent-glow">
-              A
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-accent/10 text-accent-glow">
+              <Mark className="h-5 w-5" />
             </span>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate">
               Our promise

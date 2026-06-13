@@ -52,7 +52,7 @@ export default function Team() {
                 <div className="relative aspect-[3/4] w-full transform-gpu overflow-hidden [backface-visibility:hidden]">
                   <Image
                     src={person.photo}
-                    alt={`${person.name}, ${person.role} at Avernik`}
+                    alt={`${person.name}, ${person.role} at Avernek`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="transform-gpu object-cover transition-transform duration-700 ease-out will-change-transform [backface-visibility:hidden] group-hover:scale-[1.05]"

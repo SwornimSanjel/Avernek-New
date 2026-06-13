@@ -9,7 +9,7 @@ import { whatsappLink } from "@/lib/site";
 /**
  * Visitor-facing floating quick-action button (bottom-right).
  *
- * Branded with the Avernik "A" mark. Opens a premium command panel with the two
+ * Branded with the Avernek "A" mark. Opens a premium command panel with the two
  * highest-intent actions (book a system audit, watch the demo) plus a WhatsApp
  * shortcut. Subtle constant animation, respects prefers-reduced-motion, keyboard
  * accessible, mobile-safe.
@@ -48,7 +48,7 @@ export default function QuickActions() {
       {open && (
         <motion.div
           role="dialog"
-          aria-label="Avernik quick actions"
+          aria-label="Avernek quick actions"
           initial={{ opacity: 0, y: 12, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
@@ -135,7 +135,7 @@ export default function QuickActions() {
           A slow head-turn loop keeps it alive without a distracting halo. */}
       <motion.button
         type="button"
-        aria-label="Open Avernik assistant"
+        aria-label="Open Avernek assistant"
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}

@@ -1,8 +1,8 @@
 {
-  "name": "avernik-website",
+  "name": "avernek-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Avernik — AI Automation & Growth Systems Agency. Public marketing website.",
+  "description": "Avernek — AI Automation & Growth Systems Agency. Public marketing website.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

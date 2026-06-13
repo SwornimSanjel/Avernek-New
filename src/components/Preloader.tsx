@@ -67,7 +67,7 @@ export default function Preloader() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: reduce ? 0 : 0.25 }}
         >
-          AVERNIK
+          AVERNEK
         </motion.span>
         <motion.span
           className="mt-3 text-[11px] uppercase tracking-[0.28em] text-slate"

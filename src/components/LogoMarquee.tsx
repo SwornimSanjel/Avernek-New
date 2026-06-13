@@ -24,7 +24,7 @@ export default function LogoMarquee() {
   return (
     <div
       className="marquee-shell relative w-full overflow-hidden"
-      aria-label="Automation tools Avernik works with"
+      aria-label="Automation tools Avernek works with"
     >
       <div className="marquee-track flex w-max items-center gap-[90px] motion-reduce:animate-none">
         {[0, 1].map((copy) =>
