@@ -7,6 +7,9 @@ import QuickActions from "@/components/QuickActions";
 import AmbientGlow from "@/components/AmbientGlow";
 import "./globals.css";
 
+
+
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
