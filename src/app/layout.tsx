@@ -7,9 +7,6 @@ import QuickActions from "@/components/QuickActions";
 import AmbientGlow from "@/components/AmbientGlow";
 import "./globals.css";
 
-
-
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -54,9 +51,9 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   // Static assets from /public (no dynamic image/icon routes).
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/avenor_filter_a_square.jpeg",
+    shortcut: "/avenor_filter_a_square.jpeg",
+    apple: "/avenor_filter_a_square.jpeg",
   },
   openGraph: {
     type: "website",
@@ -85,9 +82,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${inter.variable} ${tinos.variable} ${playfair.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${tinos.variable} ${playfair.variable}`}
+    >
       <body>
         <JsonLd />
         <SiteShell>{children}</SiteShell>
