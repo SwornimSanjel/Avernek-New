@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   // Static assets from /public (no dynamic image/icon routes).
   icons: {
-    icon: "/avenor_filter_a_square.jpeg",
-    shortcut: "/avenor_filter_a_square.jpeg",
-    apple: "/avenor_filter_a_square.jpeg",
+    icon: "/avenor_filter_a_square.svg",
+    shortcut: "/avenor_filter_a_square.svg",
+    apple: "/avenor_filter_a_square.svg",
   },
   openGraph: {
     type: "website",
