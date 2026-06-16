@@ -6,7 +6,7 @@
       <stop offset="100%" stop-color="#010E2E"/>
     </linearGradient>
   </defs>
-  <rect width="1024" height="1024" rx="250" fill="#FFFFFF"/>
+  <!-- <rect width="1024" height="1024" rx="250" fill="#FFFFFF"/> -->
   <g fill="url(#aGradient)">
     <polygon points="468,320 504,320 448,700 308,700"/>
     <polygon points="520,320 556,320 716,700 576,700"/>
