@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Tinos, Playfair_Display } from "next/font/google";
 import { site } from "@/lib/site";
-import JsonLd from "@/components/JsonLd";
 import SiteShell from "@/components/SiteShell";
-import QuickActions from "@/components/QuickActions";
-import AmbientGlow from "@/components/AmbientGlow";
 import "./globals.css";
 
 const inter = Inter({
@@ -93,13 +90,7 @@ export default function RootLayout({
       className={`${inter.variable} ${tinos.variable} ${playfair.variable}`}
     >
       <body>
-        <JsonLd />
         <SiteShell>{children}</SiteShell>
-        {/* Painted above the opaque section backgrounds (corner-only, ultra-low
-            opacity) but below the navbar / floating button (higher z-index). */}
-        <AmbientGlow />
-        {/* Single floating assistant button — opens audit / demo / WhatsApp. */}
-        <QuickActions />
       </body>
     </html>
   );

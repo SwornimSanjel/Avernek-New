@@ -1,5 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import AmbientGlow from "@/components/AmbientGlow";
+import QuickActions from "@/components/QuickActions";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import SystemFlow from "@/components/sections/SystemFlow";
@@ -14,6 +17,7 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <Navbar />
       <main className="site-atmosphere">
         <Hero />
@@ -28,6 +32,11 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      {/* Painted above the opaque section backgrounds (corner-only, ultra-low
+          opacity) but below the navbar / floating button (higher z-index). */}
+      <AmbientGlow />
+      {/* Single floating assistant button — opens audit / demo / WhatsApp. */}
+      <QuickActions />
     </>
   );
 }
