@@ -26,7 +26,7 @@ const signalMetrics: SignalMetric[] = [
     value: 100,
     suffix: "%",
     label: "Inquiry capture",
-    note: "Messages, forms, and WhatsApp leads are pushed into one organized system.",
+    note: "Messages, forms, and lead details are pushed into one organized system.",
   },
   {
     value: 24,
@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquiry on WhatsApp or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernek our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
+      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquire through social messages or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernek our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
     name: "Suraj",
     role: "Makalu Kitchen Solutions",
     initials: "SM",

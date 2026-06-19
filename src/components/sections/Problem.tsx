@@ -6,7 +6,7 @@ import Mark from "../Mark";
 // Max 7–8 words per cell — these read as a scan, not prose.
 const rows = [
   ["Inquiries sit unanswered during busy hours", "Every inquiry gets an instant reply"],
-  ["Leads scattered across Messenger, Instagram, WhatsApp", "Every lead lands in one system"],
+  ["Leads scattered across inboxes, DMs, and forms", "Every lead lands in one system"],
   ["Your team replies to every random message", "AI filters serious buyers first"],
   ["Follow-ups depend on memory", "Follow-ups are structured and tracked"],
   ["Slow replies lose good prospects", "Hot leads flagged while interest is high"],

@@ -4,15 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Mark from "./Mark";
 import AiHead from "./AiHead";
-import { whatsappLink } from "@/lib/site";
 
 /**
  * Visitor-facing floating quick-action button (bottom-right).
  *
  * Branded with the Avernek "A" mark. Opens a premium command panel with the two
- * highest-intent actions (book a system audit, watch the demo) plus a WhatsApp
- * shortcut. Subtle constant animation, respects prefers-reduced-motion, keyboard
- * accessible, mobile-safe.
+ * highest-intent actions (book a system audit and watch the demo). Subtle
+ * constant animation, respects prefers-reduced-motion, keyboard accessible,
+ * mobile-safe.
  */
 export default function QuickActions() {
   const [open, setOpen] = useState(false);
@@ -112,21 +111,6 @@ export default function QuickActions() {
                 <path d="M10.5 8.5 16 12l-5.5 3.5z" fill="currentColor" />
               </svg>
             </ActionRow>
-          </div>
-
-          {/* footer — WhatsApp shortcut */}
-          <div className="relative border-t border-white/10 px-5 py-3">
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate transition-colors hover:text-accent-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden>
-                <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.02Zm-7.01 15.24h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.23 8.25c0 4.54-3.7 8.23-8.24 8.23Z" />
-              </svg>
-              Prefer chat? Message us on WhatsApp
-            </a>
           </div>
         </motion.div>
       )}

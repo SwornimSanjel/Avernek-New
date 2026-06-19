@@ -12,7 +12,6 @@ const tools = [
   "Meta",
   "OpenAI",
   "Anthropic",
-  "WhatsApp Business",
   "n8n",
   "Make",
   "Google Sheets",

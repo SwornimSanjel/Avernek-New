@@ -7,7 +7,7 @@ import ScrollReveal from "../ScrollReveal";
 import { ActionButton } from "../Button";
 import Turnstile from "../Turnstile";
 import AmbientBackground from "../AmbientBackground";
-import { site, whatsappLink } from "@/lib/site";
+import { site } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -23,11 +23,39 @@ const improveOptions = [
 const sourceOptions = [
   "Website forms",
   "Facebook / Instagram",
-  "WhatsApp",
   "Phone calls",
   "Paid ads",
   "Multiple channels",
   "Not sure yet",
+];
+
+type ContactLink = {
+  label: string;
+  href: string;
+  icon: "mail" | "instagram" | "facebook" | "tiktok";
+};
+
+const contactLinks: ContactLink[] = [
+  {
+    label: "Email",
+    href: `mailto:${site.contact.email}`,
+    icon: "mail",
+  },
+  {
+    label: "Instagram",
+    href: site.social.instagram,
+    icon: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: site.social.facebook,
+    icon: "facebook",
+  },
+  {
+    label: "TikTok",
+    href: site.social.tiktok,
+    icon: "tiktok",
+  },
 ];
 
 export default function Contact() {
@@ -100,15 +128,32 @@ export default function Contact() {
             <span className="mt-0.5 text-accent-glow">▸</span>
             <span>
               <span className="text-silver">Best fit:</span> businesses that receive inquiries
-              through calls, forms, DMs, ads, or WhatsApp, and want a clearer system for response,
+              through calls, forms, DMs, or ads, and want a clearer system for response,
               qualification, and follow-up.
             </span>
           </p>
 
-          <div className="mt-2 flex flex-col gap-2 text-sm text-slate">
-            <a href={`mailto:${site.contact.email}`} className="hover:text-accent-glow">
-              {site.contact.email}
-            </a>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            {contactLinks.map((link) => {
+              const external = link.href.startsWith("http");
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  aria-label={link.label}
+                  title={link.label}
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-accent/10 hover:text-accent-glow hover:shadow-[0_0_26px_-10px_var(--primary-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                >
+                  <ContactIcon icon={link.icon} />
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-3 text-sm text-slate">
+            <span className="h-px w-8 bg-accent/50" />
             <span>{site.contact.location}</span>
           </div>
         </ScrollReveal>
@@ -171,7 +216,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <label htmlFor="phone" className={labelClass}>
-                    Phone / WhatsApp
+                    Phone
                   </label>
                   <input
                     id="phone"
@@ -230,16 +275,7 @@ export default function Contact() {
                 >
                   <p className="text-red-400">{error}</p>
                   <p className="mt-1 text-slate">
-                    Trouble sending? You can{" "}
-                    <a
-                      href={whatsappLink("Hi Avernek, the audit form didn't go through. I'd like a system audit.")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-accent-glow hover:underline"
-                    >
-                      message us on WhatsApp
-                    </a>{" "}
-                    or email{" "}
+                    Trouble sending? Email{" "}
                     <a href={`mailto:${site.contact.email}`} className="font-medium text-accent-glow hover:underline">
                       {site.contact.email}
                     </a>
@@ -416,5 +452,63 @@ function SelectField({
         </motion.div>
       )}
     </div>
+  );
+}
+
+function ContactIcon({ icon }: { icon: ContactLink["icon"] }) {
+  if (icon === "mail") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+        <path
+          d="M4.5 6.5h15v11h-15v-11Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinejoin="round"
+        />
+        <path
+          d="m5 7 7 6 7-6"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  if (icon === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
+        <rect
+          x="5"
+          y="5"
+          width="14"
+          height="14"
+          rx="4"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path
+          d="M15.4 11.56a3.4 3.4 0 1 1-6.8.88 3.4 3.4 0 0 1 6.8-.88Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+        <path d="M16.4 7.8h.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (icon === "tiktok") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+        <path d="M15.46 3.2c.27 2.05 1.42 3.42 3.44 3.55v3.12a6.7 6.7 0 0 1-3.42-.9v5.88c0 3.82-3.02 6.12-6.18 5.07-4.53-1.5-4.12-8.16.67-9.05.62-.12 1.21-.1 1.82.03v3.27a2.7 2.7 0 0 0-1.4-.17c-2.1.43-1.96 3.46.03 3.76 1.28.19 2.09-.56 2.09-1.93V3.2h2.95Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+      <path d="M13.5 21v-8h2.68l.4-3.11H13.5V7.9c0-.9.25-1.51 1.54-1.51h1.65V3.6A22 22 0 0 0 14.29 3c-2.38 0-4 1.45-4 4.11v2.78H7.6V13h2.69v8h3.21Z" />
+    </svg>
   );
 }

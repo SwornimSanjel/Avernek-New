@@ -35,7 +35,7 @@ export default function Home() {
       {/* Painted above the opaque section backgrounds (corner-only, ultra-low
           opacity) but below the navbar / floating button (higher z-index). */}
       <AmbientGlow />
-      {/* Single floating assistant button — opens audit / demo / WhatsApp. */}
+      {/* Single floating assistant button — opens audit / demo. */}
       <QuickActions />
     </>
   );
