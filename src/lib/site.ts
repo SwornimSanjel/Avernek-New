@@ -31,6 +31,7 @@ export const nav = [
   { label: "Use cases", href: "#use-cases" },
   { label: "Proof", href: "#proof" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Team", href: "#team" },
+  // Temporarily unlinked from the public navigation. Keep the Team section/data intact.
+  // { label: "Team", href: "#team" },
   { label: "FAQ", href: "#faq" },
 ] as const;

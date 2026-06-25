@@ -27,7 +27,7 @@ export default function Home() {
         <Industries />
         <Proof />
         <Pricing />
-        <Team />
+        {/* <Team /> */}
         <Faq />
         <Contact />
       </main>
