@@ -11,11 +11,6 @@ const trustAvatars = [
   { src: "/resources/trusted/client-male-2.jpg", alt: "Client avatar", position: "center" },
   { src: "/resources/trusted/client-female.jpg", alt: "Female client avatar", position: "50% 18%" },
   { src: "/resources/trusted/client-male-3.jpg", alt: "Client avatar", position: "50% 28%" },
-  {
-    src: "/resources/trusted/vidhya-sagar-mountain-routes.jpg",
-    alt: "Vidhya Sagar from Mountain Routes",
-    position: "center",
-  },
 ];
 
 export default function Hero() {

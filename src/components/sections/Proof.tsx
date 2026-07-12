@@ -79,15 +79,6 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Our clients are mostly from Europe and the US and when they are planning a trek they are comparing three or four agencies at the same time. They send an inquiry and whoever replies first and sounds competent usually gets the booking. We were losing that race purely because of the time difference. Now the first reply goes out within minutes, it is informed, it answers what they actually asked, and by the time I talk to them the trust is already there.",
-    name: "Vidhya Sagar",
-    role: "Mountain Routes",
-    initials: "VS",
-    tone: "bg-[#F7F7F8] text-[#09080D]",
-    image: "/resources/trusted/vidhya-sagar-mountain-routes.jpg",
-  },
-  {
-    quote:
       "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernek built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
     name: "Nirajan",
     role: "Narayani Properties",
