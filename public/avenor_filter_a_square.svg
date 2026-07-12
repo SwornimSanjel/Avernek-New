@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
   <defs>
     <linearGradient id="aGradient" x1="0" y1="320" x2="0" y2="700" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#032661"/>
-      <stop offset="50%" stop-color="#021A47"/>
-      <stop offset="100%" stop-color="#010E2E"/>
+      <stop offset="0%" stop-color="#A76BFF"/>
+      <stop offset="50%" stop-color="#8A3FFB"/>
+      <stop offset="100%" stop-color="#4A1A80"/>
     </linearGradient>
   </defs>
   <!-- <rect width="1024" height="1024" rx="250" fill="#FFFFFF"/> -->

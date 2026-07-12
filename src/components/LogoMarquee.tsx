@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Infinite right-to-left marquee of the tools the system is built on.
  *

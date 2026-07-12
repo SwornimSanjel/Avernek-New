@@ -16,12 +16,12 @@ export default function Services() {
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {serviceGroups.map((group, i) => (
             <ScrollReveal key={group.title} delay={(i % 3) * 0.08} className="h-full">
-              <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-panel/50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow">
+              <div className="hud-cut hud-brackets group flex h-full flex-col border border-accent/10 bg-panel/50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="text-sm font-medium tracking-[0.22em] text-accent">
                     {group.phase}
                   </span>
-                  <span className="h-px flex-1 bg-white/10" />
+                  <span className="h-px flex-1 bg-accent/10" />
                 </div>
                 <h3 className="text-lg font-medium text-ivory">{group.title}</h3>
                 <p className="mt-1.5 text-sm text-slate">{group.blurb}</p>

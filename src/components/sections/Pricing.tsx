@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
@@ -26,14 +24,14 @@ export default function Pricing() {
           {packages.map((pkg, i) => (
             <ScrollReveal key={pkg.id} delay={i * 0.1} className="h-full">
               <div
-                className={`border-sweep relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 md:p-8 ${
+                className={`border-sweep hud-cut relative flex h-full flex-col border p-7 transition-all duration-200 hover:-translate-y-1 md:p-8 ${
                   pkg.featured
-                    ? "border-[#2d5bff]/55 bg-[#0c1334]/85 hover:border-[#4c70ff]/70 lg:z-10 lg:scale-[1.04]"
-                    : "border-line bg-panel/40 hover:border-[#2d5bff]/42"
+                    ? "border-[#F7F7F8]/55 bg-[#171322]/85 hover:border-[#171322]/70 lg:z-10 lg:scale-[1.04]"
+                    : "border-line bg-panel/40 hover:border-[#F7F7F8]/42"
                 }`}
               >
                 {pkg.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-medium uppercase tracking-wide text-ivory">
+                  <span className="hud-cut-xs absolute -top-3 left-1/2 -translate-x-1/2 bg-[linear-gradient(120deg,#171322,#09080D)] px-4 py-1 text-xs font-semibold uppercase tracking-wide text-[#F7F7F8]">
                     Recommended
                   </span>
                 )}
@@ -44,7 +42,7 @@ export default function Pricing() {
                 <h3 className="mt-2 text-2xl font-medium text-ivory">{pkg.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate">{pkg.summary}</p>
 
-                <div className="mt-6 flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs">
+                <div className="hud-cut-sm mt-6 flex flex-col gap-2 border border-accent/10 bg-accent/[0.02] p-4 text-xs">
                   <div className="flex gap-2">
                     <span className="shrink-0 text-slate">Best for:</span>
                     <span className="text-silver">{pkg.whoFor}</span>
@@ -61,7 +59,7 @@ export default function Pricing() {
                 <ul className="mt-3 flex flex-1 flex-col gap-3">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm text-silver">
-                      <span className="mt-0.5 text-[#6b8aff]">✓</span>
+                      <span className="mt-0.5 text-[#F7F7F8]">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -81,7 +79,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="mx-auto mt-12 max-w-2xl rounded-xl border border-white/10 bg-panel/40 p-5 text-center text-sm leading-relaxed text-slate">
+        <p className="hud-cut-sm mx-auto mt-12 max-w-2xl border border-accent/10 bg-panel/40 p-5 text-center text-sm leading-relaxed text-slate">
           {packagesNote}
         </p>
       </Container>

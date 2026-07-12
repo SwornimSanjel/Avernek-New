@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import Container from "../Container";
 import ScrollReveal from "../ScrollReveal";
 import { ActionButton } from "../Button";
@@ -93,7 +92,7 @@ export default function Contact() {
   }
 
   const fieldClass =
-    "w-full rounded-lg border border-white/15 bg-white/[0.03] px-4 py-3 text-sm text-ivory placeholder:text-slate/70 transition-colors hover:border-white/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
+    "hud-cut-xs w-full border border-accent/15 bg-accent/[0.03] px-4 py-3 text-sm text-ivory placeholder:text-slate/70 transition-colors hover:border-accent/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
   const labelClass = "mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate";
 
   return (
@@ -116,7 +115,7 @@ export default function Contact() {
             leak.
           </p>
 
-          <div className="mt-2 flex flex-col gap-3 rounded-2xl border border-line bg-ink/40 p-6">
+          <div className="hud-cut-sm mt-2 flex flex-col gap-3 border border-line bg-ink/40 p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-slate">Founding-client slots</p>
             <p className="text-sm leading-relaxed text-ivory/85">
               We are onboarding a limited number of early businesses with tailored setup support.
@@ -144,7 +143,7 @@ export default function Contact() {
                   rel={external ? "noopener noreferrer" : undefined}
                   aria-label={link.label}
                   title={link.label}
-                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-accent/10 hover:text-accent-glow hover:shadow-[0_0_26px_-10px_var(--primary-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-accent/10 bg-accent/[0.04] text-slate transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-accent/10 hover:text-accent-glow hover:shadow-[0_0_26px_-10px_var(--primary-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 >
                   <ContactIcon icon={link.icon} />
                 </a>
@@ -160,7 +159,7 @@ export default function Contact() {
 
         <ScrollReveal delay={0.1}>
           {status === "success" ? (
-            <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-accent/30 bg-accent/[0.06] p-10 text-center">
+            <div className="hud-cut hud-brackets flex h-full flex-col items-center justify-center border border-accent/30 bg-accent/[0.06] p-10 text-center">
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-2xl text-ink">
                 ✓
               </div>
@@ -180,7 +179,7 @@ export default function Contact() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-white/10 bg-ink/40 p-6 sm:p-8"
+              className="hud-cut hud-brackets border border-accent/10 bg-ink/40 p-6 sm:p-8"
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
@@ -384,7 +383,7 @@ function SelectField({
         aria-expanded={open}
         onClick={() => (open ? setOpen(false) : openMenu())}
         onKeyDown={onTriggerKeyDown}
-        className={`relative w-full rounded-lg border border-white/15 bg-white/[0.03] px-4 py-3 pr-10 text-left text-sm transition-colors hover:border-white/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent ${
+        className={`hud-cut-xs relative w-full border border-accent/15 bg-accent/[0.03] px-4 py-3 pr-10 text-left text-sm transition-colors hover:border-accent/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent ${
           value ? "text-ivory" : "text-slate/70"
         }`}
       >
@@ -413,12 +412,9 @@ function SelectField({
       {/* Conditionally rendered (no AnimatePresence) so the panel always unmounts
           on close. Entrance animation only; closing is instant and reliable. */}
       {open && (
-        <motion.div
+        <div
           role="listbox"
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
-          className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-y-auto rounded-xl border border-white/10 bg-ink p-1.5 shadow-card"
+          className="hud-cut-sm absolute left-0 right-0 top-full z-30 mt-2 max-h-64 animate-fade-up overflow-y-auto border border-accent/10 bg-ink p-1.5 shadow-card"
         >
             {options.map((opt, i) => {
               const selected = opt === value;
@@ -430,9 +426,9 @@ function SelectField({
                   aria-selected={selected}
                   onMouseEnter={() => setHighlight(i)}
                   onClick={() => select(i)}
-                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-white/5 ${
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-accent/5 ${
                     selected ? "text-accent-glow" : "text-silver"
-                  } ${highlight === i ? "bg-white/5" : ""}`}
+                  } ${highlight === i ? "bg-accent/5" : ""}`}
                 >
                   <span>{opt}</span>
                   {selected && (
@@ -449,7 +445,7 @@ function SelectField({
                 </button>
               );
             })}
-        </motion.div>
+        </div>
       )}
     </div>
   );

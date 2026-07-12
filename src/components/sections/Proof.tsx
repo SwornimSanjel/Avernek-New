@@ -2,7 +2,6 @@ import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import LogoMarquee from "../LogoMarquee";
-import CountUp from "../CountUp";
 import AmbientBackground from "../AmbientBackground";
 import Mark from "../Mark";
 
@@ -60,7 +59,7 @@ const testimonials: Testimonial[] = [
     name: "Aashish",
     role: "SmileCare Dental",
     initials: "AP",
-    tone: "bg-[#C9B47C] text-[#3A3214]",
+    tone: "bg-[#F7F7F8] text-[#09080D]",
   },
   {
     quote:
@@ -68,7 +67,7 @@ const testimonials: Testimonial[] = [
     name: "Suraj",
     role: "Makalu Kitchen Solutions",
     initials: "SM",
-    tone: "bg-[#8FA98F] text-[#22301F]",
+    tone: "bg-[#F7F7F8] text-[#09080D]",
   },
   {
     quote:
@@ -76,7 +75,7 @@ const testimonials: Testimonial[] = [
     name: "Roshani",
     role: "Kreasi Event Studio",
     initials: "RK",
-    tone: "bg-[#B58FA8] text-[#3A2433]",
+    tone: "bg-[#1B1626] text-[#F7F7F8]",
   },
   {
     quote:
@@ -84,7 +83,7 @@ const testimonials: Testimonial[] = [
     name: "Vidhya Sagar",
     role: "Mountain Routes",
     initials: "VS",
-    tone: "bg-[#7B86C8] text-[#1D2247]",
+    tone: "bg-[#F7F7F8] text-[#09080D]",
     image: "/resources/trusted/vidhya-sagar-mountain-routes.jpg",
   },
   {
@@ -93,7 +92,7 @@ const testimonials: Testimonial[] = [
     name: "Nirajan",
     role: "Narayani Properties",
     initials: "NK",
-    tone: "bg-[#6E97B8] text-[#16293A]",
+    tone: "bg-[#1B1626] text-[#F7F7F8]",
   },
 ];
 
@@ -106,11 +105,7 @@ function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: numb
       {/* Stat numbers stay sans — the one place bold is allowed. */}
       <p className="mt-8 text-4xl font-bold text-ivory">
         {metric.lead}
-        {typeof metric.value === "number" ? (
-          <CountUp to={metric.value} suffix={metric.suffix} duration={1200} />
-        ) : (
-          metric.suffix
-        )}
+        {typeof metric.value === "number" ? `${metric.value.toLocaleString("en-US")}${metric.suffix}` : metric.suffix}
       </p>
       <h3 className="mt-4 text-lg font-medium text-silver">{metric.label}</h3>
       <p className="mt-2 text-sm leading-relaxed text-slate">{metric.note}</p>
@@ -125,13 +120,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
           above the card's top-left corner, holding chunky filled quote marks. */}
       <span
         aria-hidden
-        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[linear-gradient(180deg,#182457,#0e1740)]"
+        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[linear-gradient(180deg,#171322,#1B1626)]"
       >
         <svg viewBox="0 0 38 28" className="h-6 w-8 text-ivory" fill="currentColor">
           <path d="M0 28V15.5C0 6.8 5.2 1.3 14 0l1.2 4.4C9.6 6 6.6 9 6.6 13.4H13V28H0zm22 0V15.5C22 6.8 27.2 1.3 36 0l1.2 4.4C31.6 6 28.6 9 28.6 13.4H35V28H22z" />
         </svg>
       </span>
-      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(125,148,230,0.10)] bg-[radial-gradient(130%_90%_at_50%_-6%,#182457_0%,#0e1740_46%,#0a1132_100%)] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(150,175,255,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(45,91,255,0.3)]">
+      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(247,247,248,0.14)] bg-[radial-gradient(130%_90%_at_50%_-6%,#171322_0%,#1B1626_46%,#09080D_100%)] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(247,247,248,0.13)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(247,247,248,0.34)]">
         {/* faint blueprint grid, masked so it fades toward the card bottom */}
         <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
         <blockquote className="relative text-[13.5px] leading-relaxed text-silver">
@@ -190,9 +185,9 @@ export default function Proof() {
           ))}
         </div>
 
-        <ScrollReveal className="relative mt-8 overflow-hidden rounded-2xl border border-line bg-panel/75 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9">
+        <ScrollReveal className="hud-cut hud-brackets relative mt-8 overflow-hidden border border-line bg-panel/75 p-7 shadow-[inset_0_1px_0_rgba(247,247,248,0.05)] sm:p-9">
           <div className="relative flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-accent/10 text-accent-glow">
+            <span className="hud-cut-xs flex h-10 w-10 items-center justify-center border border-line bg-accent/10 text-accent-glow">
               <Mark className="h-5 w-5" />
             </span>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate">
@@ -233,7 +228,7 @@ export default function Proof() {
         <p className="text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
           Built on technology you already trust
         </p>
-        <div className="mt-10 border-y border-white/[0.07] py-8">
+        <div className="mt-10 border-y border-accent/[0.07] py-8">
           <LogoMarquee />
         </div>
       </div>

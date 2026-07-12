@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import AmbientGlow from "@/components/AmbientGlow";
-import QuickActions from "@/components/QuickActions";
+import LazyQuickActions from "@/components/LazyQuickActions";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import SystemFlow from "@/components/sections/SystemFlow";
@@ -36,7 +36,7 @@ export default function Home() {
           opacity) but below the navbar / floating button (higher z-index). */}
       <AmbientGlow />
       {/* Single floating assistant button — opens audit / demo. */}
-      <QuickActions />
+      <LazyQuickActions />
     </>
   );
 }

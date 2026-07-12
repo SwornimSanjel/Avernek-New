@@ -1,7 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Container from "../Container";
 import { LinkButton } from "../Button";
 import AmbientBackground from "../AmbientBackground";
@@ -18,21 +14,8 @@ const stageNotes = [
 ];
 
 export default function SystemFlow() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 45%", "end 65%"],
-  });
-  const railProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    mass: 0.35,
-  });
-  const railGlowTop = useTransform(railProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <section
-      ref={sectionRef}
       id="how-it-works"
       className="relative scroll-mt-24 overflow-clip bg-ink py-24 md:py-32"
     >
@@ -54,10 +37,10 @@ export default function SystemFlow() {
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-slate">
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              <span className="rounded-full border border-accent/10 bg-accent/[0.03] px-3 py-1">
                 24/7 response
               </span>
-              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">
+              <span className="rounded-full border border-accent/10 bg-accent/[0.03] px-3 py-1">
                 Lead routing
               </span>
             </div>
@@ -65,15 +48,15 @@ export default function SystemFlow() {
 
           <div className="relative">
             <span aria-hidden className="timeline-rail hidden md:block">
-              <motion.span className="timeline-rail-fill" style={{ scaleY: railProgress }} />
-              <motion.span className="timeline-rail-glow" style={{ top: railGlowTop }} />
+              <span className="timeline-rail-fill" />
+              <span className="timeline-rail-glow top-1/2" />
             </span>
 
             <div className="flex flex-col gap-5">
               {flowSteps.map((step, i) => (
                 <ScrollReveal key={step.step} delay={(i % 2) * 0.08}>
                   <div className="grid gap-4 md:grid-cols-[5rem_1fr]">
-                    <div className="relative z-10 hidden pr-7 text-right text-4xl font-semibold leading-none text-white/65 md:block">
+                    <div className="relative z-10 hidden pr-7 text-right text-4xl font-semibold leading-none text-ivory/65 md:block">
                       {step.step}
                     </div>
 
@@ -90,7 +73,7 @@ export default function SystemFlow() {
                         {step.description}
                       </p>
 
-                      <div className="mt-4 grid gap-2 border-t border-white/10 pt-4 sm:grid-cols-2">
+                      <div className="mt-4 grid gap-2 border-t border-accent/10 pt-4 sm:grid-cols-2">
                         {[step.benefit, ...(stageNotes[i] ?? [])].slice(0, 3).map((note) => (
                           <p key={note} className="flex items-start gap-2 text-xs leading-relaxed text-silver">
                             <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />

@@ -30,8 +30,8 @@ function row(label: string, value?: string): string {
   if (!value) return "";
   return `
     <tr>
-      <td style="padding:6px 14px 6px 0;color:#8A90A3;font-size:13px;white-space:nowrap;vertical-align:top;">${label}</td>
-      <td style="padding:6px 0;color:#11131C;font-size:14px;">${escapeHtml(value)}</td>
+      <td style="padding:6px 14px 6px 0;color:#171322;font-size:13px;white-space:nowrap;vertical-align:top;">${label}</td>
+      <td style="padding:6px 0;color:#09080D;font-size:14px;">${escapeHtml(value)}</td>
     </tr>`;
 }
 
@@ -51,11 +51,11 @@ export async function sendLeadNotification(lead: LeadFields): Promise<void> {
   const receivedAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Kathmandu" });
 
   const html = `
-  <div style="background:#05060A;padding:24px;font-family:Arial,Helvetica,sans-serif;">
-    <div style="max-width:560px;margin:0 auto;background:#ECEEF4;border-radius:12px;overflow:hidden;">
-      <div style="background:linear-gradient(120deg,#60A5FA 0%,#8B5CF6 100%);padding:18px 24px;">
-        <p style="margin:0;color:#fff;font-size:16px;font-weight:bold;">New audit request</p>
-        <p style="margin:4px 0 0;color:#EAF2FF;font-size:13px;">${escapeHtml(lead.business)}</p>
+  <div style="background:#09080D;padding:24px;font-family:Arial,Helvetica,sans-serif;">
+    <div style="max-width:560px;margin:0 auto;background:#F7F7F8;border-radius:12px;overflow:hidden;">
+      <div style="background:linear-gradient(120deg,#171322 0%,#1B1626 55%,#09080D 100%);padding:18px 24px;">
+        <p style="margin:0;color:#F7F7F8;font-size:16px;font-weight:bold;">New audit request</p>
+        <p style="margin:4px 0 0;color:#1B1626;font-size:13px;">${escapeHtml(lead.business)}</p>
       </div>
       <div style="padding:20px 24px;">
         <table style="width:100%;border-collapse:collapse;">

@@ -15,28 +15,24 @@
   :root {
     color-scheme: dark;
 
-    /* Deep-space navy theme tokens — the single source of truth.
-       Tailwind utilities (obsidian, ink, panel, accent, …) map onto these.
-       Direction: blue-black page, SATURATED glossy navy panels (gradient-lit,
-       never flat), vivid royal blue accents. Premium = chroma + sheen,
-       not brightness. */
-    --bg: #020514; /* page background — blue-black with real blue in it */
-    --bg-deep: #070d26; /* section alternates */
-    --bg-card: #0c1334; /* elevated panels — rich saturated navy */
-    --border: rgba(122, 146, 235, 0.17); /* hairline cool borders */
-    --text: #edeff7;
-    --text-muted: #8e97b8; /* cool blue-grey, not pure grey */
-    --primary: #2d5bff; /* vivid royal blue — buttons, links */
-    --primary-glow: rgba(45, 91, 255, 0.45);
-    --gold-star: #f5b942; /* review stars ONLY */
+    /* Premium monochrome theme with a restrained #1B1626 ink-violet tint. */
+    --bg: #09080D;
+    --bg-deep: #050507;
+    --bg-card: #171322;
+    --border: rgba(255, 255, 255, 0.1);
+    --text: #f7f7f8;
+    --text-muted: #b9b6c4;
+    --primary: #f7f7f8;
+    --primary-glow: rgba(247, 247, 248, 0.42);
+    --gold-star: #f7f7f8;
 
     /* RGB channel triplets so Tailwind opacity modifiers (bg-accent/30 …) work. */
-    --bg-rgb: 2 5 20;
-    --bg-deep-rgb: 7 13 38;
-    --bg-card-rgb: 12 19 52;
-    --text-rgb: 237 239 247;
-    --text-muted-rgb: 142 151 184;
-    --primary-rgb: 45 91 255;
+    --bg-rgb: 9 8 13;
+    --bg-deep-rgb: 5 5 7;
+    --bg-card-rgb: 23 19 34;
+    --text-rgb: 247 247 248;
+    --text-muted-rgb: 185 182 196;
+    --primary-rgb: 247 247 248;
   }
 
   html {
@@ -80,9 +76,10 @@
   .site-atmosphere {
     position: relative;
     overflow-x: clip;
-    /* One uniform dark-blue-almost-black wash for the whole page — no
-       oscillating stops, so there is no visible band where sections meet. */
-    background: linear-gradient(180deg, #060a18 0%, #050816 55%, #040714 100%);
+    background:
+      radial-gradient(circle at 78% 8%, rgba(247, 247, 248, 0.07), transparent 30rem),
+      radial-gradient(circle at 8% 28%, rgba(27, 22, 38, 0.16), transparent 26rem),
+      linear-gradient(180deg, #050507 0%, #09080D 48%, #050507 100%);
   }
 
   .site-atmosphere > section {
@@ -117,12 +114,10 @@
   }
 
   .space-atmosphere.space-atmosphere-hero {
-    /* One smooth wash: saturated blue crown at the very top easing
-       continuously into blue-black — deliberately NO mid-band so there is no
-       visible "second layer". Polished = chroma in the crown + bluer base. */
     background:
-      radial-gradient(ellipse 88% 52% at 50% -14%, rgba(38, 78, 240, 0.22), rgba(16, 36, 120, 0.07) 44%, transparent 70%),
-      linear-gradient(180deg, #081230 0%, #060d24 26%, #050a1c 56%, #04081a 100%);
+      radial-gradient(ellipse 76% 46% at 74% -8%, rgba(247, 247, 248, 0.14), rgba(27, 22, 38, 0.11) 48%, transparent 72%),
+      radial-gradient(ellipse 54% 44% at 8% 28%, rgba(247, 247, 248, 0.055), transparent 68%),
+      linear-gradient(180deg, #171322 0%, #09080D 42%, #050507 100%);
   }
 
   .space-atmosphere-section {
@@ -135,9 +130,9 @@
 
   .space-stars {
     background-image:
-      radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 0.8px, transparent 1.3px),
-      radial-gradient(circle, rgba(120, 150, 255, 0.32) 0 0.8px, transparent 1.2px),
-      radial-gradient(circle, rgba(96, 116, 235, 0.2) 0 0.8px, transparent 1.15px);
+      radial-gradient(circle, rgba(247, 247, 248, 0.5) 0 0.8px, transparent 1.3px),
+      radial-gradient(circle, rgba(247, 247, 248, 0.24) 0 0.8px, transparent 1.2px),
+      radial-gradient(circle, rgba(27, 22, 38, 0.18) 0 0.8px, transparent 1.15px);
     background-position:
       0 0,
       34px 62px,
@@ -146,7 +141,7 @@
       132px 132px,
       190px 190px,
       260px 260px;
-    opacity: 0.42;
+    opacity: 0.17;
     animation: starDrift 38s linear infinite;
   }
 
@@ -155,7 +150,7 @@
     width: 56%;
     left: 22%;
     top: -10%;
-    background: linear-gradient(90deg, transparent 0%, rgba(45, 91, 255, 0.14) 48%, rgba(50, 58, 150, 0.08) 56%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(247, 247, 248, 0.13) 48%, rgba(27, 22, 38, 0.1) 56%, transparent 100%);
     filter: blur(54px);
     mix-blend-mode: screen;
     opacity: 0.45;
@@ -188,7 +183,7 @@
     /* Just a faint glow at the foot of the hero — the grid "planet surface"
        was reading as a separate layer, so it's gone. */
     background-image:
-      radial-gradient(ellipse 82% 40% at 50% 0%, rgba(86, 104, 238, 0.08), transparent 60%);
+      radial-gradient(ellipse 82% 40% at 50% 0%, rgba(247,247,248, 0.11), transparent 60%);
     background-size: 100% 100%;
     mask-image: linear-gradient(to top, #000 0%, transparent 88%);
     -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 88%);
@@ -200,36 +195,130 @@
      dashboard grid. Most sections use AmbientBackground and no grid at all. */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(to right, rgba(247, 247, 248, 0.008) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(247, 247, 248, 0.008) 1px, transparent 1px);
     background-size: 64px 64px;
     -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 45%, #000 0%, transparent 78%);
     mask-image: radial-gradient(ellipse 70% 70% at 50% 45%, #000 0%, transparent 78%);
   }
 
-  /* Faint blueprint grid inside cards (Mach33-style) — texture, not a grid.
-     Sits on the card's own navy; fades out toward the bottom. */
+  /* Faint instrument grid inside cards — texture, not a grid.
+     Sits on the card's own graphite; fades out toward the bottom. */
   /* Aceternity-style fine grid — small cells, faded toward the card edges
      with a radial mask so the centre reads clearest. */
   .card-grid {
     background-image:
-      linear-gradient(to right, rgba(96, 130, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(96, 130, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(247, 247, 248, 0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(247, 247, 248, 0.02) 1px, transparent 1px);
     background-size: 20px 20px;
     -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000 28%, transparent 100%);
     mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000 28%, transparent 100%);
   }
 
+  /* ---- HUD structural system --------------------------------------------
+     Reusable soft console panel primitives. The site keeps the futuristic
+     glass/HUD detailing, but the actual shapes are rounded and approachable. */
+  .hud-cut {
+    clip-path: none;
+    border-radius: 1.75rem;
+  }
+
+  .hud-cut-sm {
+    clip-path: none;
+    border-radius: 1.25rem;
+  }
+
+  .hud-cut-xs {
+    clip-path: none;
+    border-radius: 999px;
+  }
+
+  /* Targeting-reticle corner brackets layered on top of a relatively
+     positioned card — reads as an instrument panel, not a rounded tile. */
+  .hud-brackets {
+    position: relative;
+  }
+  .hud-brackets::before,
+  .hud-brackets::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.85;
+  }
+  .hud-brackets::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid var(--primary);
+    border-left: 2px solid var(--primary);
+  }
+  .hud-brackets::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid rgba(247,247,248, 0.72);
+    border-right: 2px solid rgba(247,247,248, 0.72);
+  }
+
+  /* Persistent (not hover-only) slow-rotating holographic ring — for the
+     hero console and other single "hero moment" elements. */
+  .holo-ring {
+    position: relative;
+    isolation: isolate;
+  }
+  .holo-ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--angle, 0deg),
+      rgba(247,247,248, 0.72),
+      rgba(23,19,34, 0.42) 25%,
+      rgba(247,247,248, 0.13) 50%,
+      rgba(23,19,34, 0.42) 75%,
+      rgba(247,247,248, 0.72) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    border-radius: inherit;
+    animation: borderSweep 12s linear infinite;
+  }
+
+  /* Faint scanline texture — CRT / HUD readout feel. Deliberately subtle. */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(247,247,248, 0.045) 0px,
+      rgba(247,247,248, 0.045) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  /* Small uppercase monospace-style readout tag — HUD label chip. */
+  .hud-tag {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    letter-spacing: 0.14em;
+  }
+
   /* Glass / dashboard panel. */
   /* Glossy glass panel — gradient-lit from the top so it reads polished,
-     never a flat fill. Blue-tinted hairline + inner sheen. */
+     never a flat fill. Warm hairline + inner sheen. */
   .glass {
     @apply border backdrop-blur-sm;
     border-color: var(--border);
     background:
-      radial-gradient(110% 70% at 50% -8%, rgba(45, 91, 255, 0.14), transparent 55%),
-      linear-gradient(180deg, rgba(18, 28, 70, 0.72), rgba(8, 13, 36, 0.78) 60%);
-    box-shadow: inset 0 1px 0 rgba(150, 175, 255, 0.12);
+      radial-gradient(110% 70% at 50% -8%, rgba(247,247,248, 0.12), transparent 55%),
+      linear-gradient(180deg, rgba(23,19,34, 0.76), rgba(9, 8, 13, 0.84) 60%);
+    box-shadow: inset 0 1px 0 rgba(247,247,248, 0.12);
   }
 
   .signal-card {
@@ -237,9 +326,11 @@
     overflow: hidden;
     border: 1px solid var(--border);
     background:
-      radial-gradient(80% 80% at 50% -10%, rgba(45, 91, 255, 0.2), transparent 58%),
-      linear-gradient(180deg, rgba(18, 30, 74, 0.9), rgba(4, 8, 26, 0.96));
-    box-shadow: inset 0 1px 0 rgba(150, 175, 255, 0.12);
+      radial-gradient(80% 80% at 50% -10%, rgba(247,247,248, 0.13), transparent 58%),
+      linear-gradient(180deg, rgba(23,19,34, 0.92), rgba(9, 8, 13, 0.96));
+    box-shadow: inset 0 1px 0 rgba(247,247,248, 0.12);
+    clip-path: none;
+    border-radius: 1.5rem !important;
   }
 
   .signal-card::before {
@@ -247,9 +338,9 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(to right, rgba(45, 91, 255, 0.075) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(45, 91, 255, 0.055) 1px, transparent 1px),
-      radial-gradient(ellipse 120% 85% at 50% 0%, transparent 38%, rgba(45, 91, 255, 0.14) 39%, transparent 40%, transparent 54%, rgba(45, 91, 255, 0.08) 55%, transparent 56%);
+      linear-gradient(to right, rgba(247,247,248, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(247,247,248, 0.05) 1px, transparent 1px),
+      radial-gradient(ellipse 120% 85% at 50% 0%, transparent 38%, rgba(247,247,248, 0.09) 39%, transparent 40%, transparent 54%, rgba(27,22,38, 0.06) 55%, transparent 56%);
     background-size: 42px 42px, 42px 42px, 100% 100%;
     opacity: 0.58;
     mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
@@ -265,8 +356,8 @@
     width: 48px;
     transform: translateX(-50%);
     border-radius: 999px;
-    background: linear-gradient(90deg, transparent, #253bb8, #2d5bff, transparent);
-    box-shadow: 0 0 22px rgba(45, 91, 255, 0.58);
+    background: linear-gradient(90deg, transparent, rgba(247,247,248, 0.85), rgba(27,22,38, 0.55), transparent);
+    box-shadow: 0 0 22px rgba(247,247,248, 0.38);
   }
 
   .signal-card > * {
@@ -284,11 +375,11 @@
     border-radius: 999px;
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.22) 12%,
-      rgba(255, 255, 255, 0.12) 100%
+      rgba(247,247,248, 0.08),
+      rgba(247,247,248, 0.22) 12%,
+      rgba(247,247,248, 0.12) 100%
     );
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 16px rgba(247,247,248, 0.08);
   }
 
   .timeline-rail-fill,
@@ -302,13 +393,13 @@
     transform-origin: top;
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.98),
-      rgba(255, 255, 255, 0.78),
-      rgba(255, 255, 255, 0.42)
+      rgba(247,247,248, 0.98),
+      rgba(247,247,248, 0.78),
+      rgba(247,247,248, 0.42)
     );
     box-shadow:
-      0 0 12px rgba(255, 255, 255, 0.42),
-      0 0 30px rgba(45, 91, 255, 0.16);
+      0 0 12px rgba(247,247,248, 0.42),
+      0 0 30px rgba(247,247,248, 0.14);
   }
 
   .timeline-rail-glow {
@@ -319,12 +410,12 @@
     background: linear-gradient(
       to bottom,
       transparent,
-      rgba(255, 255, 255, 0.98),
-      rgba(255, 255, 255, 0.32),
+      rgba(247,247,248, 0.98),
+      rgba(247,247,248, 0.32),
       transparent
     );
     filter: blur(0.6px);
-    box-shadow: 0 0 22px rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 22px rgba(247,247,248, 0.28);
   }
 
   /* Avernek assistant — self-assembling line-art robot.
@@ -407,8 +498,8 @@
     background: conic-gradient(
       from var(--angle, 0deg),
       transparent 0%,
-      rgba(45, 91, 255, 0.62) 8%,
-      rgba(96, 130, 255, 0.44) 16%,
+      rgba(247,247,248, 0.6) 8%,
+      rgba(23,19,34, 0.42) 16%,
       transparent 25%,
       transparent 100%
     );
@@ -427,6 +518,11 @@
     animation-play-state: running;
   }
 
+  /* Keep the sweep ring soft when it appears on a rounded HUD card. */
+  .border-sweep.hud-cut::before {
+    clip-path: none;
+  }
+
   /* Logo marquee — scrolls on idle, pauses while any logo is hovered. */
   .marquee-shell {
     mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
@@ -443,7 +539,7 @@
   /* Mouse-tracking spotlight (SystemFlow only). Hidden for reduced-motion
      users and on touch devices (no hover). */
   .flow-spotlight {
-    background: radial-gradient(circle, rgba(96, 130, 255, 0.1) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(247,247,248, 0.1) 0%, transparent 60%);
   }
   @media (prefers-reduced-motion: reduce) {
     .flow-spotlight {

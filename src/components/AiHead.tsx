@@ -3,15 +3,15 @@
  * outline strokes + glowing eyes are drawn, so the dark site shows through).
  *
  * The `.ai-line` / `.ai-pop` classes (defined in globals.css) make it draw /
- * assemble itself on a slow loop. Eye colour uses the brand indigo-blue.
+ * assemble itself on a slow loop. Eye colour uses the brand pearl signal.
  */
 type AiHeadProps = {
   className?: string;
   title?: string;
 };
 
-const LINE = "#ECEEF4"; // ivory outline
-const EYE = "#6B8AFF"; // accent-glow (brand indigo-blue)
+const LINE = "#F7F7F8"; // ivory outline
+const EYE = "#F7F7F8"; // accent-glow
 
 export default function AiHead({ className, title = "Avernek assistant" }: AiHeadProps) {
   return (

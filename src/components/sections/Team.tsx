@@ -14,7 +14,7 @@ function LinkedIn({ url, name }: { url?: string; name: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${name} on LinkedIn`}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-white/10 text-slate transition-colors duration-200 hover:border-accent/50 hover:text-accent-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-accent/10 text-slate transition-colors duration-200 hover:border-accent/50 hover:text-accent-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
     >
       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden>
         <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 22 10.5 22 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9V9Z" />
@@ -42,7 +42,7 @@ export default function Team() {
           {founders.map((person, i) => (
             <ScrollReveal key={person.name} delay={i * 0.08} className="h-full">
               <div
-                className={`group relative flex h-full transform-gpu flex-col overflow-hidden rounded-2xl bg-panel shadow-card ring-1 transition-all duration-300 ease-out hover:-translate-y-1.5 ${
+                className={`hud-cut hud-brackets group relative flex h-full transform-gpu flex-col overflow-hidden bg-panel shadow-card ring-1 transition-all duration-300 ease-out hover:-translate-y-1.5 ${
                   person.featured
                     ? "ring-accent/45 hover:ring-accent/70"
                     : "ring-white/[0.06] hover:ring-accent/35"

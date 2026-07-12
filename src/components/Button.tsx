@@ -4,14 +4,13 @@ import { ReactNode } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100";
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:cursor-not-allowed disabled:opacity-60 disabled:active:scale-100";
 
 const variants: Record<Variant, string> = {
-  // Royal blue stays royal blue on hover — only the soft outer glow blooms.
   primary:
-    "bg-accent text-ivory hover:shadow-[0_0_44px_-6px_var(--primary-glow)] hover:brightness-110",
+    "border border-[#F7F7F8] bg-[#F7F7F8] text-[#09080D] shadow-[0_0_34px_-12px_rgba(247,247,248,0.88)] hover:shadow-[0_0_44px_-10px_rgba(247,247,248,0.95)]",
   secondary:
-    "border border-line bg-white/5 text-ivory hover:border-accent/60 hover:bg-white/10",
+    "border border-[#F7F7F8]/20 bg-transparent text-[#F7F7F8] hover:border-[#F7F7F8]/40 hover:bg-[#F7F7F8]/5",
   ghost: "text-ivory hover:text-accent-glow",
 };
 

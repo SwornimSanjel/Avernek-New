@@ -30,7 +30,7 @@ export default function SectionHeading({
       )}
       <div className={`relative ${isCenter ? "max-w-3xl" : "max-w-2xl"}`}>
         {/* Faint glow so the heading feels lit, not boxed. Tone "ink" sections
-            sit on light, where a blue bloom would muddy — skip it there. */}
+            sit on light, where a warm bloom would muddy — skip it there. */}
         {tone === "ivory" && (
           <span
             aria-hidden

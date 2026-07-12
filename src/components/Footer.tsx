@@ -7,7 +7,7 @@ import { legalNote } from "@/lib/content";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-white/10 bg-ink">
+    <footer className="relative border-t border-accent/10 bg-ink">
       {/* faint accent hairline along the very top */}
       <span
         aria-hidden
@@ -15,7 +15,7 @@ export default function Footer() {
       />
 
       {/* Closing CTA band */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-accent/10">
         <Container className="flex flex-col items-center gap-5 py-16 text-center md:py-20">
           <h2 className="max-w-2xl font-sans text-3xl font-medium leading-[1.05] text-ivory sm:text-4xl">
             Stop losing inquiries to <em className="italic">slow replies.</em>
@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
 
       {/* Flow strip */}
-      <div className="border-b border-white/10 bg-navy-deep/40">
+      <div className="border-b border-accent/10 bg-navy-deep/40">
         <Container className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 py-5 text-center">
           {site.flow.map((step, i) => (
             <span key={step} className="flex items-center gap-3">
@@ -87,7 +87,7 @@ export default function Footer() {
       </Container>
 
       {/* Legal / trust disclaimer */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-accent/10">
         <Container className="py-5">
           <p className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-slate/80">
             {legalNote}
@@ -96,7 +96,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-accent/10">
         <Container className="flex flex-col items-center justify-between gap-2 py-6 text-center text-xs text-slate sm:flex-row sm:text-left">
           <p>
             © {year} {site.legalName}. All rights reserved.

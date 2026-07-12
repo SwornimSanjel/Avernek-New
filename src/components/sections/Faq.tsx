@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
@@ -32,7 +31,7 @@ export default function Faq() {
           {faqs.map((faq, i) => {
             const isOpen = open === i;
             return (
-              <ScrollReveal key={faq.question} delay={(i % 6) * 0.05} className="border-b border-white/10">
+              <ScrollReveal key={faq.question} delay={(i % 6) * 0.05} className="border-b border-accent/10">
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
@@ -43,7 +42,7 @@ export default function Faq() {
                     {faq.question}
                   </span>
                   <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 text-accent-glow transition-transform duration-300 ${
+                    className={`hud-cut-xs flex h-7 w-7 shrink-0 items-center justify-center border border-accent/20 text-accent-glow transition-transform duration-300 ${
                       isOpen ? "rotate-45" : ""
                     }`}
                     aria-hidden
@@ -51,21 +50,15 @@ export default function Faq() {
                     +
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-slate sm:text-base">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}>
+                  <div className="overflow-hidden">
+                    <p className="pb-6 pr-10 text-sm leading-relaxed text-slate sm:text-base">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
               </ScrollReveal>
             );
           })}

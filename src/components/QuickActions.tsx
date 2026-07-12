@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import Mark from "./Mark";
 import AiHead from "./AiHead";
 
@@ -45,13 +44,10 @@ export default function QuickActions() {
     >
       {/* Premium quick-action panel */}
       {open && (
-        <motion.div
+        <div
           role="dialog"
           aria-label="Avernek quick actions"
-          initial={{ opacity: 0, y: 12, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mb-3 w-[20rem] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-2xl border border-white/12 bg-ink/95 shadow-card backdrop-blur-xl"
+          className="hud-cut hud-brackets relative mb-3 w-[20rem] max-w-[calc(100vw-2.5rem)] animate-fade-up overflow-hidden border border-accent/12 bg-ink/95 shadow-card backdrop-blur-xl"
         >
           {/* top accent hairline + soft corner glow */}
           <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent-grad opacity-70" />
@@ -61,9 +57,9 @@ export default function QuickActions() {
           />
 
           {/* header */}
-          <div className="relative flex items-start justify-between gap-3 border-b border-white/10 px-5 py-4">
+          <div className="relative flex items-start justify-between gap-3 border-b border-accent/10 px-5 py-4">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-panel-light shadow-card">
+              <span className="hud-cut-xs flex h-9 w-9 items-center justify-center border border-accent/10 bg-panel-light shadow-card">
                 <Mark className="h-5 w-5 text-ivory" />
               </span>
               <div>
@@ -78,7 +74,7 @@ export default function QuickActions() {
               type="button"
               aria-label="Close quick actions"
               onClick={close}
-              className="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-slate transition-colors hover:bg-white/5 hover:text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-slate transition-colors hover:bg-accent/5 hover:text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden>
                 <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -112,34 +108,29 @@ export default function QuickActions() {
               </svg>
             </ActionRow>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* The floating assistant — just the robot head, no box / border / glow.
           A slow head-turn loop keeps it alive without a distracting halo. */}
-      <motion.button
+      <button
         type="button"
         aria-label="Open Avernek assistant"
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.95 }}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian"
       >
         {/* soft low-opacity backlight so the head reads as part of the page,
             not pasted on — diffuse, no hard circle/border */}
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(96,130,255,0.22),rgba(45,91,255,0.12)_45%,transparent_72%)] blur-md"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(27,22,38,0.22),rgba(247,247,248,0.14)_45%,transparent_72%)] blur-md"
         />
         <span className={`relative flex items-center justify-center ${open ? "" : "ai-settle"}`}>
           <AiHead className="h-12 w-12" />
         </span>
-      </motion.button>
+      </button>
     </div>
   );
 }
@@ -162,9 +153,9 @@ function ActionRow({
     <a
       href={href}
       onClick={onClick}
-      className="group/item flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3 transition-colors duration-200 hover:border-accent/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+      className="hud-cut-sm group/item flex items-center gap-3 border border-accent/10 bg-accent/[0.03] p-3 transition-colors duration-200 hover:border-accent/40 hover:bg-accent/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-accent/15 text-accent-glow">
+      <span className="hud-cut-xs flex h-9 w-9 shrink-0 items-center justify-center border border-accent/10 bg-accent/15 text-accent-glow">
         {children}
       </span>
       <span className="min-w-0 flex-1">

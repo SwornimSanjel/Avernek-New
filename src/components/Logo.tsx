@@ -20,10 +20,10 @@ export default function Logo({ tone = "ivory", className = "", href = "/" }: Log
       aria-label="Avernek home"
       className={`group inline-flex items-center gap-2.5 ${className}`}
     >
-      <span className="relative flex h-9 w-9 items-center justify-center rounded-[10px] border border-white/10 bg-[#0c1334] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-colors duration-300 group-hover:border-[#2d5bff]/45">
+      <span className="hud-cut-xs relative flex h-9 w-9 items-center justify-center border border-accent/10 bg-[#171322] shadow-[inset_0_1px_0_rgba(247,247,248,0.06)] transition-colors duration-300 group-hover:border-[#F7F7F8]/50">
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-[10px] bg-[#2d5bff] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-15"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#F7F7F8,#171322)] opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-25"
         />
         <Mark className="relative h-5 w-5 text-ivory" />
       </span>
