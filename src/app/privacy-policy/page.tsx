@@ -12,28 +12,28 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-obsidian px-6 py-12 text-ivory">
+    <main className="min-h-screen bg-paper px-6 py-12 text-ink">
       <article className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="inline-flex text-sm font-medium text-slate underline underline-offset-4 hover:text-ivory"
+          className="inline-flex text-sm font-medium text-muted underline underline-offset-4 hover:text-ink"
         >
           Main page
         </Link>
 
-        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-slate">
+        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-muted">
           Avernek Compliance
         </p>
 
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ivory">
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink">
           Privacy Policy
         </h1>
 
-        <p className="mt-2 text-sm text-slate">
+        <p className="mt-2 text-sm text-muted">
           Last updated: June 16, 2026
         </p>
 
-        <section className="mt-10 space-y-5 text-base leading-7 text-silver">
+        <section className="mt-10 space-y-5 text-base leading-7 text-graphite">
           <p>
             Avernek provides AI automation, inquiry response systems, CRM
             workflows, lead routing, appointment support, and growth systems for
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
             Meta-connected business communication workflows.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Information We May Collect
           </h2>
 
@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
             appointment details, CRM records, and support or sales communication.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Meta-Connected Information
           </h2>
 
@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
             management, or customer support workflow.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             How We Use Information
           </h2>
 
@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
             requirements.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Sharing of Information
           </h2>
 
@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
             comply with law, protect security, or maintain platform integrity.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Data Storage and Security
           </h2>
 
@@ -100,7 +100,7 @@ export default function PrivacyPolicyPage() {
             However, no online system can be guaranteed to be completely secure.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Data Retention
           </h2>
 
@@ -111,7 +111,7 @@ export default function PrivacyPolicyPage() {
             security requirements.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             User Rights and Choices
           </h2>
 
@@ -120,14 +120,14 @@ export default function PrivacyPolicyPage() {
             information by contacting us at{" "}
             <a
               href={`mailto:${contactEmail}`}
-              className="font-medium text-ivory underline underline-offset-4"
+              className="font-medium text-ink underline underline-offset-4"
             >
               {contactEmail}
             </a>
             . We may need to verify the request before taking action.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Contact
           </h2>
 
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
             For privacy questions or data requests, contact{" "}
             <a
               href={`mailto:${contactEmail}`}
-              className="font-medium text-ivory underline underline-offset-4"
+              className="font-medium text-ink underline underline-offset-4"
             >
               {contactEmail}
             </a>

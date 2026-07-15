@@ -6,7 +6,8 @@ type SectionHeadingProps = {
   title: ReactNode;
   description?: ReactNode;
   align?: "left" | "center";
-  tone?: "ivory" | "ink";
+  /** "light" = ink text on paper (default) · "dark" = paper text on charcoal */
+  tone?: "light" | "dark";
 };
 
 export default function SectionHeading({
@@ -14,39 +15,33 @@ export default function SectionHeading({
   title,
   description,
   align = "center",
-  tone = "ivory",
+  tone = "light",
 }: SectionHeadingProps) {
   const isCenter = align === "center";
-  const titleColor = tone === "ivory" ? "text-ivory" : "text-ink";
-  const descColor = tone === "ivory" ? "text-slate" : "text-slate";
+  const titleColor = tone === "light" ? "text-ink" : "text-char-text";
+  const descColor = tone === "light" ? "text-muted" : "text-char-muted";
+  const eyebrowColor = tone === "light" ? "text-sky" : "text-sky-bright";
+  const ruleColor = tone === "light" ? "bg-sky/50" : "bg-sky-bright/50";
   return (
     <ScrollReveal
-      className={`flex flex-col gap-4 ${isCenter ? "items-center text-center" : "items-start text-left"}`}
+      className={`flex flex-col gap-5 ${isCenter ? "items-center text-center" : "items-start text-left"}`}
     >
       {eyebrow && (
-        <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
+        <span
+          className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] ${eyebrowColor}`}
+        >
+          <span aria-hidden className={`h-px w-8 ${ruleColor}`} />
           {eyebrow}
+          {isCenter && <span aria-hidden className={`h-px w-8 ${ruleColor}`} />}
         </span>
       )}
-      <div className={`relative ${isCenter ? "max-w-3xl" : "max-w-2xl"}`}>
-        {/* Faint glow so the heading feels lit, not boxed. Tone "ink" sections
-            sit on light, where a warm bloom would muddy — skip it there. */}
-        {tone === "ivory" && (
-          <span
-            aria-hidden
-            className={`pointer-events-none absolute top-1/2 -z-10 h-28 w-[70%] -translate-y-1/2 rounded-full bg-accent/[0.08] blur-[60px] ${
-              isCenter ? "left-1/2 -translate-x-1/2" : "left-0"
-            }`}
-          />
-        )}
-        <h2
-          className={`font-sans text-4xl font-medium leading-[1.05] md:text-[3rem] ${titleColor}`}
-        >
-          {title}
-        </h2>
-      </div>
+      <h2
+        className={`max-w-3xl font-display text-4xl font-medium leading-[1.06] tracking-[-0.01em] md:text-[3rem] ${titleColor}`}
+      >
+        {title}
+      </h2>
       {description && (
-        <p className={`max-w-[58ch] text-base leading-relaxed sm:text-lg ${descColor}`}>
+        <p className={`max-w-[56ch] text-base leading-relaxed sm:text-lg ${descColor}`}>
           {description}
         </p>
       )}

@@ -9,83 +9,95 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Avernek — premium dusk system. Single source of truth
-        // lives in globals.css :root; these map utility names onto it.
-        obsidian: "rgb(var(--bg-rgb) / <alpha-value>)", // page background — near-black
-        ink: "rgb(var(--bg-deep-rgb) / <alpha-value>)", // section alternates
-        // Legacy aliases kept so existing utility names keep working.
-        navy: {
-          DEFAULT: "rgb(var(--bg-deep-rgb) / <alpha-value>)",
-          deep: "rgb(var(--bg-deep-rgb) / <alpha-value>)",
+        // Avernek — "Kathmandu Editorial" system. Source of truth in
+        // globals.css :root; these map utility names onto it.
+        paper: {
+          DEFAULT: "rgb(var(--paper-rgb) / <alpha-value>)", // dark page background
+          deep: "#131317", // alternating dark section
         },
-        panel: {
-          DEFAULT: "rgb(var(--bg-card-rgb) / <alpha-value>)", // elevated panels
-          light: "#171322",
+        card: "#1A1B20",
+        ink: "rgb(var(--ink-rgb) / <alpha-value>)", // platinum headings / strong text
+        graphite: "#C3C2BC", // body text
+        muted: "#8B8B91", // secondary text
+        line: "rgb(243 242 238 / 0.10)", // hairlines on dark
+
+        // Bronze accent. `sky` is a legacy alias kept for stability;
+        // `brass` is the semantic name for new code — both render champagne bronze.
+        sky: {
+          DEFAULT: "rgb(var(--sky-rgb) / <alpha-value>)",
+          bright: "rgb(var(--sky-bright-rgb) / <alpha-value>)",
+          wash: "#241E12",
         },
-        ivory: "rgb(var(--text-rgb) / <alpha-value>)", // headings / strong text
-        silver: "#D8D6DD", // body text — soft monochrome with a faint ink-violet cast
-        slate: {
-          DEFAULT: "rgb(var(--text-muted-rgb) / <alpha-value>)", // warm graphite muted
+        brass: {
+          DEFAULT: "rgb(var(--sky-rgb) / <alpha-value>)",
+          bright: "rgb(var(--sky-bright-rgb) / <alpha-value>)",
+          wash: "#241E12",
+          deep: "#8A6A3B",
         },
-        // Primary: high-contrast white signal.
-        accent: {
-          DEFAULT: "rgb(var(--primary-rgb) / <alpha-value>)",
-          glow: "#F7F7F8",
+
+        // Light porcelain surfaces (a few sections + emphasis cards).
+        char: {
+          DEFAULT: "rgb(var(--char-rgb) / <alpha-value>)",
+          card: "#F7F6F2",
+          text: "#16161A",
+          muted: "#5C5C63",
         },
-        // Secondary accent: soft #1B1626-tinted highlight.
-        iris: {
-          DEFAULT: "#1B1626",
-          glow: "#F7F7F8",
-        },
-        // Gold — review stars ONLY. Never headings, CTAs or tags.
-        gold: {
-          DEFAULT: "var(--gold-star)",
-          glow: "#F7F7F8",
-        },
-        line: "var(--border)",
+
+        // Legacy aliases — keep unrendered components (Team, Services,
+        // Technology, CaseStudies, Preloader) compiling until they return.
+        obsidian: "#161615",
+        navy: { DEFAULT: "#161615", deep: "#161615" },
+        panel: { DEFAULT: "#1F1F1D", light: "#1F1F1D" },
+        ivory: "#F4F3EE",
+        silver: "#C9C8C0",
+        slate: { DEFAULT: "#8B8A82" },
+        accent: { DEFAULT: "rgb(var(--sky-rgb) / <alpha-value>)", glow: "#7CBBDF" },
+        iris: { DEFAULT: "#1F1F1D", glow: "#7CBBDF" },
+        gold: { DEFAULT: "#C7A252", glow: "#C7A252" },
       },
       fontFamily: {
-        // Headlines: classic Times New Roman-style serif (Tinos).
-        display: ["var(--font-serif-display)", "Times New Roman", "serif"],
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        serif: ["var(--font-fraunces)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif-display)", "Times New Roman", "serif"],
       },
       maxWidth: {
-        container: "1152px", // = max-w-6xl
+        container: "1152px",
       },
       boxShadow: {
-        glow: "0 0 60px -18px var(--primary-glow)",
-        "glow-iris": "0 0 60px -20px rgba(247,247,248, 0.22)",
-        card: "0 20px 50px -28px rgba(0, 0, 0, 0.7)",
-      },
-      backgroundImage: {
-        "accent-grad": "linear-gradient(120deg, #F7F7F8 0%, #D8D6DD 52%, #8A8194 100%)",
-        "ink-grad": "linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%)",
-        "panel-grad": "linear-gradient(160deg, rgba(247,247,248,0.04) 0%, rgba(247,247,248,0) 60%)",
+        card: "0 1px 2px rgba(0,0,0,0.4), 0 20px 50px -30px rgba(0,0,0,0.8)",
+        "card-hover": "0 2px 6px rgba(0,0,0,0.5), 0 30px 60px -28px rgba(0,0,0,0.9)",
+        "btn-ink": "0 12px 28px -12px rgba(0,0,0,0.7)",
       },
       keyframes: {
         "fade-up": {
-          "0%": { opacity: "0.38", transform: "translateY(10px)" },
+          "0%": { opacity: "0.3", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         pulseNode: {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.55", transform: "scale(1.2)" },
         },
-        sweep: {
-          "0%": { transform: "translateX(-120%)" },
-          "100%": { transform: "translateX(120%)" },
+        // Travelling gradient for the ShineBorder card stroke.
+        shine: {
+          "0%": { backgroundPosition: "0% 0%" },
+          "50%": { backgroundPosition: "100% 100%" },
+          "100%": { backgroundPosition: "0% 0%" },
         },
-        typing: {
-          "0%, 80%, 100%": { transform: "translateY(0)", opacity: "0.35" },
-          "40%": { transform: "translateY(-3px)", opacity: "1" },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.38s ease-out both",
+        "fade-up": "fade-up 0.45s ease-out both",
         node: "pulseNode 2.8s ease-in-out infinite",
-        sweep: "sweep 4.8s linear infinite",
-        typing: "typing 1.2s ease-in-out infinite",
+        shine: "shine var(--duration) infinite linear",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
     },
   },

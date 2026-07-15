@@ -29,7 +29,7 @@ export default function LogoMarquee() {
             <span
               key={`${copy}-${name}`}
               aria-hidden={copy === 1}
-              className="shrink-0 whitespace-nowrap text-2xl font-medium tracking-tight text-slate transition-colors duration-200 hover:text-ivory sm:text-[1.7rem]"
+              className="shrink-0 whitespace-nowrap text-2xl font-medium tracking-tight text-muted/70 transition-colors duration-200 hover:text-ink sm:text-[1.7rem]"
             >
               {name}
             </span>

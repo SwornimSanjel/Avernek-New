@@ -1,16 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import AmbientGlow from "@/components/AmbientGlow";
 import LazyQuickActions from "@/components/LazyQuickActions";
 import Hero from "@/components/sections/Hero";
+import SpeedToLead from "@/components/sections/SpeedToLead";
 import Problem from "@/components/sections/Problem";
 import SystemFlow from "@/components/sections/SystemFlow";
 import WorkflowDemo from "@/components/sections/WorkflowDemo";
 import Industries from "@/components/sections/Industries";
 import Proof from "@/components/sections/Proof";
 import Pricing from "@/components/sections/Pricing";
-import Team from "@/components/sections/Team";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 
@@ -19,8 +18,9 @@ export default function Home() {
     <>
       <JsonLd />
       <Navbar />
-      <main className="site-atmosphere">
+      <main>
         <Hero />
+        <SpeedToLead />
         <Problem />
         <SystemFlow />
         <WorkflowDemo />
@@ -32,9 +32,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      {/* Painted above the opaque section backgrounds (corner-only, ultra-low
-          opacity) but below the navbar / floating button (higher z-index). */}
-      <AmbientGlow />
       {/* Single floating assistant button — opens audit / demo. */}
       <LazyQuickActions />
     </>

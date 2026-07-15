@@ -16,7 +16,7 @@ export default function CaseStudies() {
   if (caseStudies.length === 0) return null;
 
   return (
-    <section id="results" className="scroll-mt-24 bg-ink py-24 md:py-32">
+    <section id="results" className="scroll-mt-24 bg-ink py-32 md:py-48">
       <Container>
         <SectionHeading
           eyebrow="Results"

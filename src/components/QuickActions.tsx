@@ -7,10 +7,9 @@ import AiHead from "./AiHead";
 /**
  * Visitor-facing floating quick-action button (bottom-right).
  *
- * Branded with the Avernek "A" mark. Opens a premium command panel with the two
- * highest-intent actions (book a system audit and watch the demo). Subtle
- * constant animation, respects prefers-reduced-motion, keyboard accessible,
- * mobile-safe.
+ * Branded with the Avernek "A" mark. Opens a panel with the two highest-intent
+ * actions (book a system audit and watch the demo). Respects
+ * prefers-reduced-motion, keyboard accessible, mobile-safe.
  */
 export default function QuickActions() {
   const [open, setOpen] = useState(false);
@@ -42,31 +41,22 @@ export default function QuickActions() {
       ref={wrapRef}
       className="fixed bottom-5 right-5 z-40 flex flex-col items-end sm:bottom-6 sm:right-6"
     >
-      {/* Premium quick-action panel */}
+      {/* Quick-action panel */}
       {open && (
         <div
           role="dialog"
           aria-label="Avernek quick actions"
-          className="hud-cut hud-brackets relative mb-3 w-[20rem] max-w-[calc(100vw-2.5rem)] animate-fade-up overflow-hidden border border-accent/12 bg-ink/95 shadow-card backdrop-blur-xl"
+          className="card-lift relative mb-3 w-[20rem] max-w-[calc(100vw-2.5rem)] animate-fade-up overflow-hidden"
         >
-          {/* top accent hairline + soft corner glow */}
-          <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent-grad opacity-70" />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-10 -top-16 h-32 w-32 rounded-full bg-accent/15 blur-3xl"
-          />
-
           {/* header */}
-          <div className="relative flex items-start justify-between gap-3 border-b border-accent/10 px-5 py-4">
+          <div className="relative flex items-start justify-between gap-3 border-b border-line px-5 py-4">
             <div className="flex items-center gap-3">
-              <span className="hud-cut-xs flex h-9 w-9 items-center justify-center border border-accent/10 bg-panel-light shadow-card">
-                <Mark className="h-5 w-5 text-ivory" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-paper">
+                <Mark className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-sm font-medium leading-tight text-ivory">
-                  How can we help?
-                </p>
-                <p className="mt-0.5 text-xs leading-tight text-slate">Two ways to get started.</p>
+                <p className="text-sm font-semibold leading-tight text-ink">How can we help?</p>
+                <p className="mt-0.5 text-xs leading-tight text-muted">Two ways to get started.</p>
               </div>
             </div>
             <button
@@ -74,7 +64,7 @@ export default function QuickActions() {
               type="button"
               aria-label="Close quick actions"
               onClick={close}
-              className="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-slate transition-colors hover:bg-accent/5 hover:text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="-mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:bg-ink/[0.05] hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
             >
               <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden>
                 <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -87,7 +77,7 @@ export default function QuickActions() {
             <ActionRow
               href="#contact"
               onClick={close}
-              title="Book an Audit"
+              title="Book a Free Audit"
               desc="Map your inquiry flow in one call."
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>
@@ -111,31 +101,25 @@ export default function QuickActions() {
         </div>
       )}
 
-      {/* The floating assistant — just the robot head, no box / border / glow.
-          A slow head-turn loop keeps it alive without a distracting halo. */}
+      {/* The floating assistant — the robot head with a soft paper backlight so
+          it stays readable over both light and dark sections. */}
       <button
         type="button"
         aria-label="Open Avernek assistant"
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-brass/40 bg-card shadow-btn-ink transition-transform duration-200 hover:scale-105 hover:border-brass active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
       >
-        {/* soft low-opacity backlight so the head reads as part of the page,
-            not pasted on — diffuse, no hard circle/border */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-[4.75rem] w-[4.75rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(27,22,38,0.22),rgba(247,247,248,0.14)_45%,transparent_72%)] blur-md"
-        />
-        <span className={`relative flex items-center justify-center ${open ? "" : "ai-settle"}`}>
-          <AiHead className="h-12 w-12" />
+        <span className={`relative flex items-center justify-center text-paper ${open ? "" : "ai-settle"}`}>
+          <AiHead className="h-10 w-10" />
         </span>
       </button>
     </div>
   );
 }
 
-/** A single premium action row inside the quick-action panel. */
+/** A single action row inside the quick-action panel. */
 function ActionRow({
   href,
   onClick,
@@ -153,19 +137,19 @@ function ActionRow({
     <a
       href={href}
       onClick={onClick}
-      className="hud-cut-sm group/item flex items-center gap-3 border border-accent/10 bg-accent/[0.03] p-3 transition-colors duration-200 hover:border-accent/40 hover:bg-accent/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+      className="group/item flex items-center gap-3 rounded-2xl border border-line bg-paper p-3 transition-colors duration-200 hover:border-sky/50 hover:bg-sky-wash/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
     >
-      <span className="hud-cut-xs flex h-9 w-9 shrink-0 items-center justify-center border border-accent/10 bg-accent/15 text-accent-glow">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-wash text-sky">
         {children}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-semibold text-ivory">{title}</span>
-        <span className="block truncate text-xs text-slate">{desc}</span>
+        <span className="block text-sm font-semibold text-ink">{title}</span>
+        <span className="block truncate text-xs text-muted">{desc}</span>
       </span>
       <svg
         viewBox="0 0 20 20"
         fill="none"
-        className="h-4 w-4 shrink-0 text-slate transition-transform duration-200 group-hover/item:translate-x-0.5 group-hover/item:text-accent-glow"
+        className="h-4 w-4 shrink-0 text-muted transition-transform duration-200 group-hover/item:translate-x-0.5 group-hover/item:text-sky"
         aria-hidden
       >
         <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />

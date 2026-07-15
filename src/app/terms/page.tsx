@@ -12,28 +12,28 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-obsidian px-6 py-12 text-ivory">
+    <main className="min-h-screen bg-paper px-6 py-12 text-ink">
       <article className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="inline-flex text-sm font-medium text-slate underline underline-offset-4 hover:text-ivory"
+          className="inline-flex text-sm font-medium text-muted underline underline-offset-4 hover:text-ink"
         >
           Main page
         </Link>
 
-        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-slate">
+        <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-muted">
           Avernek Compliance
         </p>
 
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ivory">
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink">
           Terms of Service
         </h1>
 
-        <p className="mt-2 text-sm text-slate">
+        <p className="mt-2 text-sm text-muted">
           Last updated: June 16, 2026
         </p>
 
-        <section className="mt-10 space-y-5 text-base leading-7 text-silver">
+        <section className="mt-10 space-y-5 text-base leading-7 text-graphite">
           <p>
             These Terms of Service govern the use of Avernek services, including
             AI automation systems, inquiry response workflows, CRM setup, lead
@@ -41,7 +41,7 @@ export default function TermsPage() {
             Meta-connected business operations.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Use of Services
           </h2>
 
@@ -53,7 +53,7 @@ export default function TermsPage() {
             applicable platform policies.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Acceptable Use
           </h2>
 
@@ -64,7 +64,7 @@ export default function TermsPage() {
             that violates Meta policies or applicable laws.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             User and Business Responsibilities
           </h2>
 
@@ -76,7 +76,7 @@ export default function TermsPage() {
             customer communication requirements.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Automation and Communication
           </h2>
 
@@ -88,7 +88,7 @@ export default function TermsPage() {
             regulated, or high-risk situations.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Service Availability
           </h2>
 
@@ -99,7 +99,7 @@ export default function TermsPage() {
             reasons.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Third-Party Platforms
           </h2>
 
@@ -111,7 +111,7 @@ export default function TermsPage() {
             third-party platforms.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Limitation of Liability
           </h2>
 
@@ -122,7 +122,7 @@ export default function TermsPage() {
             automation errors, missed messages, or interrupted access.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Changes to These Terms
           </h2>
 
@@ -132,7 +132,7 @@ export default function TermsPage() {
             the revised Terms.
           </p>
 
-          <h2 className="pt-4 text-xl font-semibold text-ivory">
+          <h2 className="pt-4 text-xl font-semibold text-ink">
             Contact
           </h2>
 
@@ -140,7 +140,7 @@ export default function TermsPage() {
             For questions about these Terms, contact{" "}
             <a
               href={`mailto:${contactEmail}`}
-              className="font-medium text-ivory underline underline-offset-4"
+              className="font-medium text-ink underline underline-offset-4"
             >
               {contactEmail}
             </a>

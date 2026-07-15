@@ -2,37 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  /* Editorial display serif (Playfair Display) — hero headline only. Authored
-     here so it applies reliably; being in the utilities layer it also overrides
-     the base-layer Tinos rule on heading <em> accents. */
-  .font-playfair {
-    font-family: var(--font-playfair), Georgia, serif;
-  }
-}
-
 @layer base {
   :root {
     color-scheme: dark;
 
-    /* Premium monochrome theme with a restrained #1B1626 ink-violet tint. */
-    --bg: #09080D;
-    --bg-deep: #050507;
-    --bg-card: #171322;
-    --border: rgba(255, 255, 255, 0.1);
-    --text: #f7f7f8;
-    --text-muted: #b9b6c4;
-    --primary: #f7f7f8;
-    --primary-glow: rgba(247, 247, 248, 0.42);
-    --gold-star: #f7f7f8;
+    /* ------------------------------------------------------------------
+       Avernek — "Matte Signal" system.
+       Dark charcoal base (shiny-matte, gradient-lit), platinum text, one
+       champagne-bronze accent. Premium / futuristic / AI, never a café.
+       Most sections are dark; a few porcelain-light sections + light
+       emphasis cards keep it from ever reading dead.
+       NOTE: legacy token names are kept for stability —
+         paper, paper-deep, card, ink, graphite, muted, line = the DARK theme
+         char, surface-dark, card-dark = the LIGHT (porcelain) surfaces
+         sky = bronze accent (also aliased as brass)
+       ------------------------------------------------------------------ */
+    --paper: #0e0e11; /* page background — near-black charcoal */
+    --paper-deep: #131317; /* alternating dark section */
+    --card: #1a1b20; /* elevated dark panel */
+    --ink: #f3f2ee; /* headings / strong text — platinum */
+    --graphite: #c3c2bc; /* body text — light grey */
+    --muted: #8b8b91; /* secondary text — cool grey */
+    --line: rgba(243, 242, 238, 0.1); /* hairline borders on dark */
 
-    /* RGB channel triplets so Tailwind opacity modifiers (bg-accent/30 …) work. */
-    --bg-rgb: 9 8 13;
-    --bg-deep-rgb: 5 5 7;
-    --bg-card-rgb: 23 19 34;
-    --text-rgb: 247 247 248;
-    --text-muted-rgb: 185 182 196;
-    --primary-rgb: 247 247 248;
+    --sky: #cbaa6b; /* accent — champagne bronze (reads on dark) */
+    --sky-bright: #e7cf99; /* brighter champagne highlight */
+    --sky-wash: #241e12; /* dark bronze fill for chips on dark */
+
+    /* Light porcelain surfaces (a few sections + emphasis cards) */
+    --char: #edece6; /* light section background */
+    --char-card: #f7f6f2; /* light card */
+    --char-line: rgba(20, 20, 26, 0.12); /* hairlines on light */
+    --char-text: #16161a; /* dark text on light */
+    --char-muted: #5c5c63; /* muted dark text on light */
+
+    /* RGB triplets so Tailwind opacity modifiers work. */
+    --paper-rgb: 14 14 17;
+    --ink-rgb: 243 242 238;
+    --sky-rgb: 203 170 107;
+    --sky-bright-rgb: 231 207 153;
+    --char-rgb: 237 236 230;
   }
 
   html {
@@ -40,387 +49,159 @@
   }
 
   body {
-    @apply bg-obsidian font-sans font-normal text-silver antialiased;
+    @apply bg-paper font-sans text-graphite antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  /* Editorial serif: weight 400 only — never synthesize bold. */
-  .font-display,
-  .font-serif {
-    font-weight: 400;
-    font-synthesis-weight: none;
-  }
-
-  /* Headings render in clean sans; only the italic accent word switches to
-     the editorial serif (Tinos italic) — the Mach33 "Hear From The Brands /
-     We've Scaled" treatment. */
+  /* Italic accent word inside headings — editorial serif. */
   :is(h1, h2, h3) em {
-    font-family: var(--font-serif-display), "Times New Roman", serif;
+    font-family: var(--font-fraunces), Georgia, serif;
     font-style: italic;
-    font-weight: 400;
-    font-synthesis-weight: none;
+    font-weight: inherit;
   }
 
   ::selection {
-    @apply bg-accent/30 text-ivory;
+    background: rgba(203, 170, 107, 0.26);
+    color: var(--ink);
   }
 
-  /* Consistent, visible keyboard focus on all links & buttons. */
   a:focus-visible,
   button:focus-visible {
-    @apply rounded outline-none ring-2 ring-accent ring-offset-2 ring-offset-ink;
+    @apply rounded outline-none ring-2 ring-sky ring-offset-2 ring-offset-paper;
   }
 }
 
 @layer components {
-  .site-atmosphere {
-    position: relative;
-    overflow-x: clip;
-    background:
-      radial-gradient(circle at 78% 8%, rgba(247, 247, 248, 0.07), transparent 30rem),
-      radial-gradient(circle at 8% 28%, rgba(27, 22, 38, 0.16), transparent 26rem),
-      linear-gradient(180deg, #050507 0%, #09080D 48%, #050507 100%);
-  }
-
-  .site-atmosphere > section {
-    position: relative;
-    background-color: transparent !important;
-  }
-
-  .site-atmosphere > section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    /* No per-section darkening band — the uniform wrapper does all the work. */
-    background: none;
-    z-index: 0;
-  }
-
-  .space-atmosphere,
-  .space-stars,
-  .space-ray,
-  .space-horizon {
-    position: absolute;
-    inset: 0;
-  }
-
-  /* Base atmosphere is transparent so every non-hero section shows only the
-     single uniform page wash (.site-atmosphere) — no per-section gradient,
-     therefore no visible band where sections meet. The hero overrides this
-     via the higher-specificity .space-atmosphere.space-atmosphere-hero rule. */
-  .space-atmosphere {
-    background: transparent;
-  }
-
-  .space-atmosphere.space-atmosphere-hero {
-    background:
-      radial-gradient(ellipse 76% 46% at 74% -8%, rgba(247, 247, 248, 0.14), rgba(27, 22, 38, 0.11) 48%, transparent 72%),
-      radial-gradient(ellipse 54% 44% at 8% 28%, rgba(247, 247, 248, 0.055), transparent 68%),
-      linear-gradient(180deg, #171322 0%, #09080D 42%, #050507 100%);
-  }
-
-  .space-atmosphere-section {
-    opacity: 0.14;
-  }
-
-  .space-atmosphere-subtle {
-    opacity: 0.09;
-  }
-
-  .space-stars {
+  /* Blueprint graph paper — faint light rules on the dark base for a calm,
+     technical "signal" texture. Pair with .grid-paper-fade to dissolve. */
+  .grid-paper {
     background-image:
-      radial-gradient(circle, rgba(247, 247, 248, 0.5) 0 0.8px, transparent 1.3px),
-      radial-gradient(circle, rgba(247, 247, 248, 0.24) 0 0.8px, transparent 1.2px),
-      radial-gradient(circle, rgba(27, 22, 38, 0.18) 0 0.8px, transparent 1.15px);
-    background-position:
-      0 0,
-      34px 62px,
-      88px 12px;
-    background-size:
-      132px 132px,
-      190px 190px,
-      260px 260px;
-    opacity: 0.17;
-    animation: starDrift 38s linear infinite;
+      linear-gradient(to right, rgba(243, 242, 238, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(243, 242, 238, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+  .grid-paper-fade {
+    -webkit-mask-image: radial-gradient(ellipse 88% 78% at 50% 32%, #000 0%, transparent 82%);
+    mask-image: radial-gradient(ellipse 88% 78% at 50% 32%, #000 0%, transparent 82%);
   }
 
-  .space-ray {
-    height: 120%;
-    width: 56%;
-    left: 22%;
-    top: -10%;
-    background: linear-gradient(90deg, transparent 0%, rgba(247, 247, 248, 0.13) 48%, rgba(27, 22, 38, 0.1) 56%, transparent 100%);
-    filter: blur(54px);
-    mix-blend-mode: screen;
-    opacity: 0.45;
+  /* Fine dot grid on dark. */
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(243, 242, 238, 0.06) 1px, transparent 1px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 34%, #000 0%, transparent 80%);
+    mask-image: radial-gradient(ellipse 75% 70% at 50% 34%, #000 0%, transparent 80%);
   }
 
-  .space-ray-a {
-    transform: rotate(23deg);
-  }
-
-  .space-ray-b {
-    left: 12%;
-    top: -18%;
-    width: 42%;
-    opacity: 0.46;
-    transform: rotate(-18deg);
-  }
-
-  .space-ray-soft {
-    left: 30%;
-    top: -18%;
-    width: 44%;
-    opacity: 0.2;
-    transform: rotate(20deg);
-  }
-
-  .space-horizon {
-    top: auto;
-    bottom: -2px;
-    height: 42%;
-    /* Just a faint glow at the foot of the hero — the grid "planet surface"
-       was reading as a separate layer, so it's gone. */
+  /* Faint grid for the porcelain-light sections — dark rules. */
+  .grid-lines-dark {
     background-image:
-      radial-gradient(ellipse 82% 40% at 50% 0%, rgba(247,247,248, 0.11), transparent 60%);
-    background-size: 100% 100%;
-    mask-image: linear-gradient(to top, #000 0%, transparent 88%);
-    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 88%);
-    opacity: 0.5;
+      linear-gradient(to right, rgba(20, 20, 26, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20, 20, 26, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 0%, transparent 82%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 0%, transparent 82%);
   }
 
-  /* Thin line-grid backdrop. Deliberately faint (0.02) and masked so it fades
-     to nothing at the edges — it should read as texture, never as a hard
-     dashboard grid. Most sections use AmbientBackground and no grid at all. */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(247, 247, 248, 0.008) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(247, 247, 248, 0.008) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 45%, #000 0%, transparent 78%);
-    mask-image: radial-gradient(ellipse 70% 70% at 50% 45%, #000 0%, transparent 78%);
-  }
-
-  /* Faint instrument grid inside cards — texture, not a grid.
-     Sits on the card's own graphite; fades out toward the bottom. */
-  /* Aceternity-style fine grid — small cells, faded toward the card edges
-     with a radial mask so the centre reads clearest. */
-  .card-grid {
-    background-image:
-      linear-gradient(to right, rgba(247, 247, 248, 0.028) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(247, 247, 248, 0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-    -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000 28%, transparent 100%);
-    mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000 28%, transparent 100%);
-  }
-
-  /* ---- HUD structural system --------------------------------------------
-     Reusable soft console panel primitives. The site keeps the futuristic
-     glass/HUD detailing, but the actual shapes are rounded and approachable. */
-  .hud-cut {
-    clip-path: none;
-    border-radius: 1.75rem;
-  }
-
-  .hud-cut-sm {
-    clip-path: none;
-    border-radius: 1.25rem;
-  }
-
-  .hud-cut-xs {
-    clip-path: none;
-    border-radius: 999px;
-  }
-
-  /* Targeting-reticle corner brackets layered on top of a relatively
-     positioned card — reads as an instrument panel, not a rounded tile. */
-  .hud-brackets {
-    position: relative;
-  }
-  .hud-brackets::before,
-  .hud-brackets::after {
-    content: "";
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.85;
-  }
-  .hud-brackets::before {
-    top: -1px;
-    left: -1px;
-    border-top: 2px solid var(--primary);
-    border-left: 2px solid var(--primary);
-  }
-  .hud-brackets::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 2px solid rgba(247,247,248, 0.72);
-    border-right: 2px solid rgba(247,247,248, 0.72);
-  }
-
-  /* Persistent (not hover-only) slow-rotating holographic ring — for the
-     hero console and other single "hero moment" elements. */
-  .holo-ring {
-    position: relative;
-    isolation: isolate;
-  }
-  .holo-ring::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    background: conic-gradient(
-      from var(--angle, 0deg),
-      rgba(247,247,248, 0.72),
-      rgba(23,19,34, 0.42) 25%,
-      rgba(247,247,248, 0.13) 50%,
-      rgba(23,19,34, 0.42) 75%,
-      rgba(247,247,248, 0.72) 100%
-    );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-    border-radius: inherit;
-    animation: borderSweep 12s linear infinite;
-  }
-
-  /* Faint scanline texture — CRT / HUD readout feel. Deliberately subtle. */
-  .scanlines {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(247,247,248, 0.045) 0px,
-      rgba(247,247,248, 0.045) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-    mix-blend-mode: overlay;
-    opacity: 0.5;
-  }
-
-  /* Small uppercase monospace-style readout tag — HUD label chip. */
-  .hud-tag {
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    letter-spacing: 0.14em;
-  }
-
-  /* Glass / dashboard panel. */
-  /* Glossy glass panel — gradient-lit from the top so it reads polished,
-     never a flat fill. Warm hairline + inner sheen. */
-  .glass {
-    @apply border backdrop-blur-sm;
-    border-color: var(--border);
-    background:
-      radial-gradient(110% 70% at 50% -8%, rgba(247,247,248, 0.12), transparent 55%),
-      linear-gradient(180deg, rgba(23,19,34, 0.76), rgba(9, 8, 13, 0.84) 60%);
-    box-shadow: inset 0 1px 0 rgba(247,247,248, 0.12);
-  }
-
-  .signal-card {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background:
-      radial-gradient(80% 80% at 50% -10%, rgba(247,247,248, 0.13), transparent 58%),
-      linear-gradient(180deg, rgba(23,19,34, 0.92), rgba(9, 8, 13, 0.96));
-    box-shadow: inset 0 1px 0 rgba(247,247,248, 0.12);
-    clip-path: none;
-    border-radius: 1.5rem !important;
-  }
-
-  .signal-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, rgba(247,247,248, 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(247,247,248, 0.05) 1px, transparent 1px),
-      radial-gradient(ellipse 120% 85% at 50% 0%, transparent 38%, rgba(247,247,248, 0.09) 39%, transparent 40%, transparent 54%, rgba(27,22,38, 0.06) 55%, transparent 56%);
-    background-size: 42px 42px, 42px 42px, 100% 100%;
-    opacity: 0.58;
-    mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
-  }
-
-  .signal-card::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 2px;
-    width: 48px;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    background: linear-gradient(90deg, transparent, rgba(247,247,248, 0.85), rgba(27,22,38, 0.55), transparent);
-    box-shadow: 0 0 22px rgba(247,247,248, 0.38);
-  }
-
-  .signal-card > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .timeline-rail {
-    position: absolute;
-    left: 4.85rem;
-    top: 0.35rem;
-    bottom: 1.5rem;
-    width: 2px;
-    pointer-events: none;
-    border-radius: 999px;
+  /* Hairline rules that fade at both ends. */
+  .rule-fade {
     background: linear-gradient(
-      to bottom,
-      rgba(247,247,248, 0.08),
-      rgba(247,247,248, 0.22) 12%,
-      rgba(247,247,248, 0.12) 100%
-    );
-    box-shadow: 0 0 16px rgba(247,247,248, 0.08);
-  }
-
-  .timeline-rail-fill,
-  .timeline-rail-glow {
-    position: absolute;
-    border-radius: inherit;
-  }
-
-  .timeline-rail-fill {
-    inset: 0;
-    transform-origin: top;
-    background: linear-gradient(
-      to bottom,
-      rgba(247,247,248, 0.98),
-      rgba(247,247,248, 0.78),
-      rgba(247,247,248, 0.42)
-    );
-    box-shadow:
-      0 0 12px rgba(247,247,248, 0.42),
-      0 0 30px rgba(247,247,248, 0.14);
-  }
-
-  .timeline-rail-glow {
-    left: 50%;
-    height: 92px;
-    width: 4px;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(
-      to bottom,
+      to right,
       transparent,
-      rgba(247,247,248, 0.98),
-      rgba(247,247,248, 0.32),
+      rgba(243, 242, 238, 0.14) 18%,
+      rgba(243, 242, 238, 0.14) 82%,
       transparent
     );
-    filter: blur(0.6px);
-    box-shadow: 0 0 22px rgba(247,247,248, 0.28);
+  }
+  .rule-fade-dark {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(20, 20, 26, 0.14) 18%,
+      rgba(20, 20, 26, 0.14) 82%,
+      transparent
+    );
   }
 
-  /* Avernek assistant — self-assembling line-art robot.
-     Base state is the FULLY-FORMED robot, so when motion is reduced (the
-     animation is disabled below) it simply shows the finished head. */
+  /* Elevated dark panel — gradient-lit from the top with a hairline sheen so
+     it reads polished (shiny-matte), never a flat black box. */
+  .card-lift {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, #202127 0%, #17181d 62%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      0 26px 60px -34px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Porcelain-light section surface (demo, contact) with a faint bronze glow. */
+  .surface-dark {
+    background:
+      radial-gradient(120% 75% at 50% -8%, rgba(203, 170, 107, 0.12), transparent 56%),
+      linear-gradient(180deg, #f1f0ec 0%, #e8e7e0 100%);
+  }
+
+  /* Light emphasis card — used on dark sections to draw the eye, and inside
+     the porcelain sections. */
+  .card-dark {
+    border: 1px solid var(--char-line);
+    background: linear-gradient(180deg, #ffffff 0%, #f6f5f1 100%);
+    box-shadow: 0 1px 2px rgba(20, 20, 26, 0.05), 0 22px 48px -26px rgba(20, 20, 26, 0.28);
+  }
+
+  /* Primary CTA on dark — platinum pill with a soft sheen (dark text). */
+  .btn-sheen {
+    background: linear-gradient(180deg, #ffffff 0%, #e7e5dd 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 12px 28px -14px rgba(0, 0, 0, 0.7);
+  }
+  /* CTA on the porcelain-light sections — dark ink pill (light text). */
+  .btn-sheen-paper {
+    background: linear-gradient(180deg, #26262d 0%, #141418 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      0 12px 28px -14px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Starfield — deliberately placed points that breathe slowly. Sizes and
+     delays are authored per-star (never random) so the field reads designed. */
+  .star {
+    position: absolute;
+    border-radius: 9999px;
+    background: #f3f2ee;
+    animation: twinkle 5.5s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+  .star-glow {
+    box-shadow: 0 0 6px rgba(243, 242, 238, 0.9), 0 0 14px rgba(203, 170, 107, 0.5);
+  }
+
+  /* Slow champagne aurora that drifts behind the hero headline. */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(72px);
+    animation: auroraDrift 26s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Logo marquee — scrolls on idle, pauses on hover. */
+  .marquee-shell {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+  .marquee-track {
+    animation: marqueeLeft 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Avernek assistant — self-assembling line-art robot (QuickActions). */
   .ai-line {
     stroke-dasharray: 130;
     stroke-dashoffset: 0;
@@ -436,9 +217,39 @@
   }
 }
 
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.4);
+  }
+}
 
-/* Avernek assistant build loop — spin-and-form FAST (~0.9s), rest formed for a
-   short beat (~4.5s), then break apart with a fast spin-out and reform (~7s). */
+@keyframes auroraDrift {
+  0% {
+    transform: translate3d(-5%, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5%, -3%, 0) scale(1.09);
+  }
+  100% {
+    transform: translate3d(-5%, 0, 0) scale(1);
+  }
+}
+
+@keyframes marqueeLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 @keyframes aiDraw {
   0% {
     stroke-dashoffset: 130;
@@ -479,105 +290,6 @@
   }
   100% {
     transform: rotate(-360deg) scale(0.35);
-  }
-}
-
-/* Gradient border sweep on hover (Laser Edge) — the card stays dark; only a
-   1px conic-gradient ring sweeps around the border while hovered. */
-@layer components {
-  .border-sweep {
-    position: relative;
-    isolation: isolate;
-  }
-  .border-sweep::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: conic-gradient(
-      from var(--angle, 0deg),
-      transparent 0%,
-      rgba(247,247,248, 0.6) 8%,
-      rgba(23,19,34, 0.42) 16%,
-      transparent 25%,
-      transparent 100%
-    );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-    animation: borderSweep 4s linear infinite paused;
-  }
-  .border-sweep:hover::before {
-    opacity: 1;
-    animation-play-state: running;
-  }
-
-  /* Keep the sweep ring soft when it appears on a rounded HUD card. */
-  .border-sweep.hud-cut::before {
-    clip-path: none;
-  }
-
-  /* Logo marquee — scrolls on idle, pauses while any logo is hovered. */
-  .marquee-shell {
-    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  }
-  .marquee-track {
-    animation: marqueeLeft 28s linear infinite;
-    will-change: transform;
-  }
-  .marquee-track:hover {
-    animation-play-state: paused;
-  }
-
-  /* Mouse-tracking spotlight (SystemFlow only). Hidden for reduced-motion
-     users and on touch devices (no hover). */
-  .flow-spotlight {
-    background: radial-gradient(circle, rgba(247,247,248, 0.1) 0%, transparent 60%);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .flow-spotlight {
-      display: none;
-    }
-  }
-  @media (hover: none) {
-    .flow-spotlight {
-      display: none;
-    }
-  }
-}
-@keyframes starDrift {
-  to {
-    background-position:
-      132px 80px,
-      224px 128px,
-      348px 184px;
-  }
-}
-
-@keyframes marqueeLeft {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes borderSweep {
-  to {
-    --angle: 360deg;
   }
 }
 

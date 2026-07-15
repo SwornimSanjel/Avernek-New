@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Tinos, Playfair_Display } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import { site } from "@/lib/site";
 import SiteShell from "@/components/SiteShell";
 import "./globals.css";
@@ -11,24 +11,13 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
-// Minimal Times New Roman-style serif (Tinos) used ONLY for the italic
-// accent word in headings — restrained, not a fancy calligraphic Didone.
-const tinos = Tinos({
+// Editorial display serif — headlines and italic accent words only.
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-serif-display",
-  weight: ["400", "700"],
+  variable: "--font-fraunces",
   style: ["normal", "italic"],
-});
-
-// High-contrast editorial display serif used for the hero headline (and its
-// italic accent). Variable font, so the full weight axis is available via
-// Tailwind font-* utilities. Scoped to the hero — other headings stay sans.
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-playfair",
-  style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
@@ -74,7 +63,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0714",
+  themeColor: "#0E0E11",
   width: "device-width",
   initialScale: 1,
 };
@@ -85,10 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${tinos.variable} ${playfair.variable}`}
-    >
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
         <SiteShell>{children}</SiteShell>
       </body>

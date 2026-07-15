@@ -1,29 +1,10 @@
 type Variant = "hero" | "section" | "subtle";
 
-export default function AmbientBackground({
-  variant = "section",
-  className = "",
-}: {
-  variant?: Variant;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className}`}
-    >
-      <div className={`space-atmosphere space-atmosphere-${variant}`} />
-      <div className="space-stars" />
-
-      {variant === "hero" && (
-        <>
-          <div className="space-ray space-ray-a" />
-          <div className="space-ray space-ray-b" />
-          <div className="space-horizon" />
-        </>
-      )}
-
-      {variant === "section" && <div className="space-ray space-ray-soft" />}
-    </div>
-  );
+/**
+ * Legacy no-op. The dark "space atmosphere" system was removed in the light
+ * editorial redesign — sections now own their own backgrounds. Kept so
+ * currently-unrendered sections (Team, Services, …) keep compiling.
+ */
+export default function AmbientBackground(_props: { variant?: Variant; className?: string }) {
+  return null;
 }

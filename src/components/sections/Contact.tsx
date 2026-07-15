@@ -5,7 +5,8 @@ import Container from "../Container";
 import ScrollReveal from "../ScrollReveal";
 import { ActionButton } from "../Button";
 import Turnstile from "../Turnstile";
-import AmbientBackground from "../AmbientBackground";
+import DotPattern from "../ui/DotPattern";
+import ShineBorder from "../ui/ShineBorder";
 import { site } from "@/lib/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -92,43 +93,42 @@ export default function Contact() {
   }
 
   const fieldClass =
-    "hud-cut-xs w-full border border-accent/15 bg-accent/[0.03] px-4 py-3 text-sm text-ivory placeholder:text-slate/70 transition-colors hover:border-accent/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
-  const labelClass = "mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate";
+    "w-full rounded-xl border border-line bg-white/[0.04] px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors hover:border-ink/25 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky";
+  const labelClass = "mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted";
 
   return (
-    <section
-      id="contact"
-      className="relative scroll-mt-24 overflow-hidden bg-navy-deep py-24 md:py-32"
-    >
-      <AmbientBackground variant="section" />
+    <section id="contact" className="bg-paper-deep relative scroll-mt-24 overflow-hidden py-32 md:py-48">
+      <DotPattern className="fill-white/[0.09] [mask-image:radial-gradient(680px_circle_at_50%_40%,white,transparent)]" />
       <Container className="relative grid gap-12 lg:grid-cols-[1fr_1.1fr]">
         <ScrollReveal className="flex flex-col gap-6">
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
-            System audit
+          <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-sky">
+            <span aria-hidden className="h-px w-8 bg-sky/50" />
+            Free system audit
           </span>
-          <h2 className="font-sans text-4xl font-medium leading-[1.05] text-ivory sm:text-[3rem]">
-            See where your inquiries are{" "}
-            <em className="italic">leaking.</em>
+          <h2 className="font-display text-4xl font-medium leading-[1.06] text-ink sm:text-[3rem]">
+            See where your inquiries are <em>leaking.</em>
           </h2>
-          <p className="text-base leading-relaxed text-slate">
+          <p className="text-base leading-relaxed text-muted">
             One short call to map how inquiries enter, how fast they get handled, and where they
-            leak.
+            leak. No obligation, no jargon.
           </p>
 
-          <div className="hud-cut-sm mt-2 flex flex-col gap-3 border border-line bg-ink/40 p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate">Founding-client slots</p>
-            <p className="text-sm leading-relaxed text-ivory/85">
+          <div className="mt-2 flex flex-col gap-3 rounded-2xl border border-line bg-white/[0.03] p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">
+              Founding-client slots
+            </p>
+            <p className="text-sm leading-relaxed text-ink/85">
               We are onboarding a limited number of early businesses with tailored setup support.
               If your team depends on inquiries, the audit shows where the system can improve.
             </p>
           </div>
 
-          <p className="flex items-start gap-2 text-sm leading-relaxed text-slate">
-            <span className="mt-0.5 text-accent-glow">▸</span>
+          <p className="flex items-start gap-2 text-sm leading-relaxed text-muted">
+            <span className="mt-0.5 text-sky">▸</span>
             <span>
-              <span className="text-silver">Best fit:</span> businesses that receive inquiries
-              through calls, forms, DMs, or ads, and want a clearer system for response,
-              qualification, and follow-up.
+              <span className="font-medium text-ink/90">Best fit:</span> businesses that
+              receive inquiries through calls, forms, DMs, or ads, and want a clearer system for
+              response, qualification, and follow-up.
             </span>
           </p>
 
@@ -143,7 +143,7 @@ export default function Contact() {
                   rel={external ? "noopener noreferrer" : undefined}
                   aria-label={link.label}
                   title={link.label}
-                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-accent/10 bg-accent/[0.04] text-slate transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-accent/10 hover:text-accent-glow hover:shadow-[0_0_26px_-10px_var(--primary-glow)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-line text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-sky/60 hover:text-sky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
                 >
                   <ContactIcon icon={link.icon} />
                 </a>
@@ -151,27 +151,27 @@ export default function Contact() {
             })}
           </div>
 
-          <div className="flex items-center gap-3 text-sm text-slate">
-            <span className="h-px w-8 bg-accent/50" />
+          <div className="flex items-center gap-3 text-sm text-muted">
+            <span className="h-px w-8 bg-sky/50" />
             <span>{site.contact.location}</span>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           {status === "success" ? (
-            <div className="hud-cut hud-brackets flex h-full flex-col items-center justify-center border border-accent/30 bg-accent/[0.06] p-10 text-center">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-2xl text-ink">
+            <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-sky/30 bg-sky/[0.06] p-10 text-center">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-sky text-2xl text-paper">
                 ✓
               </div>
-              <h3 className="text-xl font-medium text-ivory">Request received</h3>
-              <p className="mt-2 max-w-sm text-sm text-slate">
+              <h3 className="text-xl font-semibold text-ink">Request received</h3>
+              <p className="mt-2 max-w-sm text-sm text-muted">
                 Thanks, we will review your inquiry flow and get back to you shortly. Keep an eye on
                 your inbox.
               </p>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="mt-6 text-sm font-medium text-accent-glow hover:underline"
+                className="mt-6 text-sm font-medium text-sky hover:underline"
               >
                 Submit another request
               </button>
@@ -179,8 +179,9 @@ export default function Contact() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="hud-cut hud-brackets border border-accent/10 bg-ink/40 p-6 sm:p-8"
+              className="card-lift relative overflow-hidden rounded-3xl p-6 sm:p-8"
             >
+              <ShineBorder duration={16} />
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className={labelClass}>
@@ -273,9 +274,12 @@ export default function Contact() {
                   className="mt-4 rounded-lg border border-red-400/30 bg-red-400/[0.06] p-3 text-sm"
                 >
                   <p className="text-red-400">{error}</p>
-                  <p className="mt-1 text-slate">
+                  <p className="mt-1 text-muted">
                     Trouble sending? Email{" "}
-                    <a href={`mailto:${site.contact.email}`} className="font-medium text-accent-glow hover:underline">
+                    <a
+                      href={`mailto:${site.contact.email}`}
+                      className="font-medium text-sky hover:underline"
+                    >
                       {site.contact.email}
                     </a>
                     .
@@ -284,10 +288,10 @@ export default function Contact() {
               )}
 
               <ActionButton type="submit" className="mt-6 w-full" disabled={status === "submitting"}>
-                {status === "submitting" ? "Sending…" : "Book my system audit"}
+                {status === "submitting" ? "Sending…" : "Book my free system audit"}
               </ActionButton>
 
-              <p className="mt-4 text-center text-xs text-slate">
+              <p className="mt-4 text-center text-xs text-muted">
                 We only use this information to prepare for your audit. Sensitive business details can
                 be discussed on the call.
               </p>
@@ -302,7 +306,7 @@ export default function Contact() {
 /**
  * Fully custom, on-brand dropdown. A native <select> only lets us style the
  * closed box; this renders the option list ourselves so the open menu matches
- * the dark theme. The chosen value is mirrored into a hidden input so the
+ * the dark panel. The chosen value is mirrored into a hidden input so the
  * existing FormData submission still captures the field with no API change.
  */
 function SelectField({
@@ -372,7 +376,7 @@ function SelectField({
 
   return (
     <div ref={wrapRef} className="relative">
-      <label htmlFor={id} className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate">
+      <label htmlFor={id} className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-muted">
         {label}
       </label>
 
@@ -383,8 +387,8 @@ function SelectField({
         aria-expanded={open}
         onClick={() => (open ? setOpen(false) : openMenu())}
         onKeyDown={onTriggerKeyDown}
-        className={`hud-cut-xs relative w-full border border-accent/15 bg-accent/[0.03] px-4 py-3 pr-10 text-left text-sm transition-colors hover:border-accent/25 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent ${
-          value ? "text-ivory" : "text-slate/70"
+        className={`relative w-full rounded-xl border border-line bg-white/[0.04] px-4 py-3 pr-10 text-left text-sm transition-colors hover:border-ink/25 focus:border-sky focus:outline-none focus:ring-1 focus:ring-sky ${
+          value ? "text-ink" : "text-muted/60"
         }`}
       >
         {value || placeholder}
@@ -392,7 +396,7 @@ function SelectField({
           aria-hidden
           viewBox="0 0 20 20"
           fill="none"
-          className={`pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate transition-transform duration-200 ${
+          className={`pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         >
@@ -409,42 +413,41 @@ function SelectField({
       {/* Mirror the value for the existing FormData submission */}
       <input type="hidden" name={id} value={value} />
 
-      {/* Conditionally rendered (no AnimatePresence) so the panel always unmounts
-          on close. Entrance animation only; closing is instant and reliable. */}
+      {/* Conditionally rendered so the panel always unmounts on close. */}
       {open && (
         <div
           role="listbox"
-          className="hud-cut-sm absolute left-0 right-0 top-full z-30 mt-2 max-h-64 animate-fade-up overflow-y-auto border border-accent/10 bg-ink p-1.5 shadow-card"
+          className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 animate-fade-up overflow-y-auto rounded-xl border border-line bg-card p-1.5 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)]"
         >
-            {options.map((opt, i) => {
-              const selected = opt === value;
-              return (
-                <button
-                  key={opt}
-                  type="button"
-                  role="option"
-                  aria-selected={selected}
-                  onMouseEnter={() => setHighlight(i)}
-                  onClick={() => select(i)}
-                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-accent/5 ${
-                    selected ? "text-accent-glow" : "text-silver"
-                  } ${highlight === i ? "bg-accent/5" : ""}`}
-                >
-                  <span>{opt}</span>
-                  {selected && (
-                    <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4 text-accent-glow" aria-hidden>
-                      <path
-                        d="M4 10.5 8 14.5 16 6"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </button>
-              );
-            })}
+          {options.map((opt, i) => {
+            const selected = opt === value;
+            return (
+              <button
+                key={opt}
+                type="button"
+                role="option"
+                aria-selected={selected}
+                onMouseEnter={() => setHighlight(i)}
+                onClick={() => select(i)}
+                className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-white/[0.05] ${
+                  selected ? "text-sky" : "text-ink/85"
+                } ${highlight === i ? "bg-white/[0.05]" : ""}`}
+              >
+                <span>{opt}</span>
+                {selected && (
+                  <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4 text-sky" aria-hidden>
+                    <path
+                      d="M4 10.5 8 14.5 16 6"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </button>
+            );
+          })}
         </div>
       )}
     </div>

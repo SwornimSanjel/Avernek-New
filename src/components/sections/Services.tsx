@@ -5,7 +5,7 @@ import { serviceGroups } from "@/lib/content";
 
 export default function Services() {
   return (
-    <section id="services" className="relative scroll-mt-24 bg-obsidian py-24 md:py-32">
+    <section id="services" className="relative scroll-mt-24 bg-obsidian py-32 md:py-48">
       <Container>
         <SectionHeading
           eyebrow="Capabilities"

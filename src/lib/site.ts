@@ -9,14 +9,14 @@ export const site = {
   tagline: "The inquiry system between your ads and your sales team.",
   category: "AI Inquiry Systems for Growth-Focused Businesses",
   description:
-    "Avernek builds the inquiry system that captures every customer inquiry, replies in seconds, qualifies real buyers, and routes them to your team around the clock.",
+    "Avernek builds the inquiry system that captures every customer inquiry, replies in seconds, qualifies real buyers, and routes them to your team before the lead goes cold.",
   // Replace with the live domain before launch.
   url: "https://avernek.com", // PLACEHOLDER — replace with real domain
   flow: ["Capture", "Respond", "Qualify", "Nurture", "Follow Up", "Report"] as const,
   contact: {
     email: "contact@avernek.com",
     phone: "+977-XX-XXXXXXX", // PLACEHOLDER — replace
-    location: "Kathmandu, Nepal", // PLACEHOLDER — confirm/replace
+    location: "Nepal", // PLACEHOLDER — confirm/replace
   },
   social: {
     instagram: "https://www.instagram.com/avernek.system?igsh=bmZhbGc4ODljdndl&utm_source=qr",

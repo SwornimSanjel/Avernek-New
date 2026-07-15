@@ -287,3 +287,27 @@ export type CaseStudy = {
 };
 
 export const caseStudies: CaseStudy[] = [];
+
+/**
+ * Client testimonials.
+ *
+ * INTENTIONALLY EMPTY — same rule as `caseStudies` above. The Proof section
+ * renders the testimonial wall only when this array has entries, so the page
+ * simply omits it until real, permissioned quotes exist.
+ *
+ * When adding one:
+ *   - use the client's OWN words (their message/voice note, lightly tidied for
+ *     grammar only — never rewritten or "made to sound" more natural),
+ *   - get their permission to publish name + business,
+ *   - never invent a business, a person, or a result.
+ *
+ * `avatar` is optional — Proof assigns a unique tint per person automatically.
+ */
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  initials: string;
+};
+
+export const testimonials: Testimonial[] = [];

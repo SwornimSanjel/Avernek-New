@@ -2,8 +2,10 @@ import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
 import LogoMarquee from "../LogoMarquee";
-import AmbientBackground from "../AmbientBackground";
 import Mark from "../Mark";
+import Marquee from "../ui/Marquee";
+import ShineBorder from "../ui/ShineBorder";
+import { testimonials, type Testimonial } from "@/lib/content";
 
 type SignalMetric = {
   value?: number;
@@ -41,185 +43,141 @@ const signalMetrics: SignalMetric[] = [
   },
 ];
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  initials: string;
-  /** Solid muted avatar circle — varied hues so the wall reads genuine. */
-  tone: string;
-  /** Optional real photo; when set, it replaces the initials circle. */
-  image?: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    quote:
-      "Honestly I was sceptical. We had tried two other tools before and both times it created more work than it saved. What was different here is they actually mapped out how our clinic handles new patient inquiries before touching anything. Three weeks in and our receptionist stopped having to manually chase every Facebook message. That alone was worth it.",
-    name: "Aashish",
-    role: "SmileCare Dental",
-    initials: "AP",
-    tone: "bg-[#F7F7F8] text-[#09080D]",
-  },
-  {
-    quote:
-      "We sell kitchen equipment to hotels and restaurants and most serious buyers inquire through social messages or our site late in the evening. By morning they have already called two other suppliers. Since we started using Avernek our response goes out immediately and we are usually the first conversation they have. It has changed how procurement managers think of us.",
-    name: "Suraj",
-    role: "Makalu Kitchen Solutions",
-    initials: "SM",
-    tone: "bg-[#F7F7F8] text-[#09080D]",
-  },
-  {
-    quote:
-      "Dashain and Tihar our inquiry volume doubles but our team size does not. Last year we missed a lot of leads just because nobody could keep up. This year with Avernek handling the first response and organising everything by urgency, my team actually managed the season without burning out. We closed more that fortnight than the same period last year.",
-    name: "Roshani",
-    role: "Kreasi Event Studio",
-    initials: "RK",
-    tone: "bg-[#1B1626] text-[#F7F7F8]",
-  },
-  {
-    quote:
-      "Land and apartment inquiries come from everywhere — Facebook, Hamrobazar, direct calls — and for a long time we had no single place to see all of it. We were duplicating follow-ups, missing some entirely. The system Avernek built pulls everything together and flags who is serious. My agents stopped wasting afternoons on people who were just checking prices.",
-    name: "Nirajan",
-    role: "Narayani Properties",
-    initials: "NK",
-    tone: "bg-[#1B1626] text-[#F7F7F8]",
-  },
+// Avatar tints, assigned by index — WhatsApp-style deep fill + light initials,
+// so a new real testimonial gets a unique colour with no extra styling work.
+const avatarTints = [
+  { bg: "#123b35", fg: "#6fd8c0" },
+  { bg: "#3d1d2b", fg: "#f18fa9" },
+  { bg: "#262048", fg: "#9d94ea" },
+  { bg: "#3b2d13", fg: "#e2bb6c" },
+  { bg: "#14303f", fg: "#7cc3e0" },
+  { bg: "#33241f", fg: "#dda183" },
 ];
 
-function SignalMetricCard({ metric, index }: { metric: SignalMetric; index: number }) {
+// Split across two counter-drifting marquee rows.
+const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
+
+function SignalMetricCard({ metric }: { metric: SignalMetric }) {
   return (
-    <div className="signal-card h-full rounded-2xl p-7 md:p-8">
-      <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate">
-        Signal 0{index + 1}
-      </span>
-      {/* Stat numbers stay sans — the one place bold is allowed. */}
-      <p className="mt-8 text-4xl font-bold text-ivory">
+    <div className="card-lift h-full p-7 md:p-8">
+      <p className="font-display text-4xl font-medium text-ink">
         {metric.lead}
-        {typeof metric.value === "number" ? `${metric.value.toLocaleString("en-US")}${metric.suffix}` : metric.suffix}
+        {typeof metric.value === "number"
+          ? `${metric.value.toLocaleString("en-US")}${metric.suffix}`
+          : metric.suffix}
       </p>
-      <h3 className="mt-4 text-lg font-medium text-silver">{metric.label}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-slate">{metric.note}</p>
+      <h3 className="mt-4 text-base font-semibold text-ink">{metric.label}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{metric.note}</p>
     </div>
   );
 }
 
-function TestimonialCard({ t }: { t: Testimonial }) {
+function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
+  const tint = avatarTints[index % avatarTints.length];
   return (
-    <figure className="relative flex h-full flex-col pt-8">
-      {/* Mach33-style speech-bubble chip: a rounded tile that juts up half
-          above the card's top-left corner, holding chunky filled quote marks. */}
-      <span
-        aria-hidden
-        className="absolute left-0 top-0 z-10 flex h-[60px] w-[68px] items-center justify-center rounded-2xl rounded-bl-none bg-[linear-gradient(180deg,#171322,#1B1626)]"
-      >
-        <svg viewBox="0 0 38 28" className="h-6 w-8 text-ivory" fill="currentColor">
-          <path d="M0 28V15.5C0 6.8 5.2 1.3 14 0l1.2 4.4C9.6 6 6.6 9 6.6 13.4H13V28H0zm22 0V15.5C22 6.8 27.2 1.3 36 0l1.2 4.4C31.6 6 28.6 9 28.6 13.4H35V28H22z" />
-        </svg>
-      </span>
-      <div className="relative flex flex-1 flex-col overflow-hidden rounded-2xl rounded-tl-none border border-[rgba(247,247,248,0.14)] bg-[radial-gradient(130%_90%_at_50%_-6%,#171322_0%,#1B1626_46%,#09080D_100%)] p-6 pt-9 shadow-[0_26px_64px_-38px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(247,247,248,0.13)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(247,247,248,0.34)]">
-        {/* faint blueprint grid, masked so it fades toward the card bottom */}
-        <span aria-hidden className="card-grid pointer-events-none absolute inset-0" />
-        <blockquote className="relative text-[13.5px] leading-relaxed text-silver">
-          {t.quote}
-        </blockquote>
-        <figcaption className="relative mt-auto flex items-center gap-3 pt-6">
-          {t.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={t.image}
-              alt={t.name}
-              width={36}
-              height={36}
-              loading="lazy"
-              className="h-9 w-9 shrink-0 rounded-full object-cover"
-            />
-          ) : (
-            <span
-              aria-hidden
-              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold ${t.tone}`}
-            >
-              {t.initials}
-            </span>
-          )}
-          <span>
-            <span className="block text-[13.5px] font-semibold text-ivory">{t.name}</span>
-            <span className="block text-xs text-slate">{t.role}</span>
-          </span>
-        </figcaption>
-      </div>
+    <figure className="card-lift relative flex w-[23rem] shrink-0 flex-col p-6 transition-colors duration-300 hover:border-brass/40">
+      <svg viewBox="0 0 38 28" className="h-5 w-7 text-sky/50" fill="currentColor" aria-hidden>
+        <path d="M0 28V15.5C0 6.8 5.2 1.3 14 0l1.2 4.4C9.6 6 6.6 9 6.6 13.4H13V28H0zm22 0V15.5C22 6.8 27.2 1.3 36 0l1.2 4.4C31.6 6 28.6 9 28.6 13.4H35V28H22z" />
+      </svg>
+      <blockquote className="mt-4 text-[13.5px] leading-relaxed text-graphite">{t.quote}</blockquote>
+      <figcaption className="mt-auto flex items-center gap-3 pt-6">
+        <span
+          aria-hidden
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[13px] font-semibold"
+          style={{ backgroundColor: tint.bg, color: tint.fg }}
+        >
+          {t.initials}
+        </span>
+        <span>
+          <span className="block text-[13.5px] font-semibold text-ink">{t.name}</span>
+          <span className="block text-xs text-muted">{t.role}</span>
+        </span>
+      </figcaption>
     </figure>
   );
 }
 
 export default function Proof() {
   return (
-    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-navy-deep pt-24 pb-0 md:pt-32">
-      <AmbientBackground variant="section" />
+    <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-paper-deep py-32 md:py-48">
       <Container className="relative">
         <SectionHeading
-          eyebrow="Proof"
           title={
             <>
-              A system built for <em className="italic">cleaner</em> inquiry
-              handling.
+              A system built for <em>cleaner</em> inquiry handling.
             </>
           }
           description="The operating standards built into every system we ship."
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {signalMetrics.map((metric, i) => (
             <ScrollReveal key={metric.label} delay={(i % 4) * 0.06} className="h-full">
-              <SignalMetricCard metric={metric} index={i} />
+              <SignalMetricCard metric={metric} />
             </ScrollReveal>
           ))}
         </div>
 
-        <ScrollReveal className="hud-cut hud-brackets relative mt-8 overflow-hidden border border-line bg-panel/75 p-7 shadow-[inset_0_1px_0_rgba(247,247,248,0.05)] sm:p-9">
+        {/* Promise band — dark, with a slow bronze shine travelling the stroke */}
+        <ScrollReveal className="card-lift relative mt-6 overflow-hidden p-7 text-left sm:p-9">
+          <ShineBorder duration={18} />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brass-bright/10 blur-3xl"
+          />
           <div className="relative flex items-center gap-3">
-            <span className="hud-cut-xs flex h-10 w-10 items-center justify-center border border-line bg-accent/10 text-accent-glow">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brass-wash text-brass">
               <Mark className="h-5 w-5" />
             </span>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               Our promise
             </p>
           </div>
-          <p className="relative mt-4 max-w-3xl text-sm leading-relaxed text-ivory/90">
+          <p className="relative mt-4 max-w-3xl text-sm leading-relaxed text-graphite sm:text-base">
             We guarantee the parts we control: the system live, faster first replies, lead tracking,
             and clear reporting. Sales still depend on your offer, market, and follow-up.
           </p>
         </ScrollReveal>
 
-        {/* Testimonials read as their own section — same 96/128px rhythm as
-            the gaps between top-level sections. */}
-        <ScrollReveal className="mt-24 text-center md:mt-32">
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
-            Testimonials
-          </span>
-          <h3 className="mx-auto mt-5 max-w-3xl font-sans text-3xl font-medium leading-[1.05] text-ivory md:text-[2.5rem]">
-            What our clients are <em className="italic">saying.</em>
-          </h3>
-        </ScrollReveal>
-
-        <div className="mt-10 grid gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={(i % 3) * 0.08} className="h-full">
-              <TestimonialCard t={t} />
-            </ScrollReveal>
-          ))}
-        </div>
-
+        {/* Testimonials — rendered only when real, permissioned quotes exist.
+            See `testimonials` in lib/content.ts. */}
+        {testimonials.length > 0 && (
+          <ScrollReveal className="mt-32 text-center md:mt-44">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-sky">
+              Testimonials
+            </span>
+            <h3 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-medium leading-[1.06] text-ink md:text-[2.5rem]">
+              What our clients are <em>saying.</em>
+            </h3>
+          </ScrollReveal>
+        )}
       </Container>
 
-      {/* Distinct "built on" strip — its own section, generously spaced from
-          the testimonials above and the packages below. The only container is
-          a thin hairline above and below the marquee. */}
-      <div className="relative mt-24 md:mt-32">
-        <p className="text-center text-[11px] font-medium uppercase tracking-[0.3em] text-slate">
+      {testimonials.length > 0 && (
+        <div className="relative mt-14 flex w-full flex-col items-center gap-4 overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:44s] [--gap:1.25rem]">
+            {firstRow.map((t, i) => (
+              <TestimonialCard key={t.name} t={t} index={i} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:44s] [--gap:1.25rem]">
+            {secondRow.map((t, i) => (
+              <TestimonialCard key={t.name} t={t} index={i + firstRow.length} />
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-paper-deep to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-paper-deep to-transparent" />
+        </div>
+      )}
+
+      {/* "Built on" strip — its own beat, so it needs the same breathing room
+          as a section break rather than a paragraph gap. */}
+      <div className="relative mt-32 md:mt-44">
+        <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-muted">
           Built on technology you already trust
         </p>
-        <div className="mt-10 border-y border-accent/[0.07] py-8">
+        <div className="mt-10 border-y border-line py-8">
           <LogoMarquee />
         </div>
       </div>
