@@ -1,7 +1,7 @@
 import Container from "../Container";
 import SectionHeading from "../SectionHeading";
 import ScrollReveal from "../ScrollReveal";
-import LogoMarquee from "../LogoMarquee";
+import IntegrationNetwork from "../IntegrationNetwork";
 import Mark from "../Mark";
 import Marquee from "../ui/Marquee";
 import ShineBorder from "../ui/ShineBorder";
@@ -175,8 +175,8 @@ export default function Proof() {
         <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-muted">
           Built on technology you already trust
         </p>
-        <div className="mt-10 border-y border-line py-8">
-          <LogoMarquee />
+        <div className="mt-10 px-4 sm:px-6">
+          <IntegrationNetwork />
         </div>
       </div>
     </section>

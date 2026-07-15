@@ -31,6 +31,37 @@ const DONE = 4 + steps.length;
 const HOLD = 4;
 const TICK = 950;
 
+function MessengerIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden>
+      <defs>
+        <radialGradient
+          id="messenger-gradient"
+          cx="11.087"
+          cy="7.022"
+          r="47.612"
+          gradientTransform="matrix(1 0 0 -1 0 50)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0" stopColor="#1292ff" />
+          <stop offset="0.23" stopColor="#4e69ff" />
+          <stop offset="0.428" stopColor="#6d53ff" />
+          <stop offset="0.754" stopColor="#df47aa" />
+          <stop offset="0.946" stopColor="#ff6257" />
+        </radialGradient>
+      </defs>
+      <path
+        fill="url(#messenger-gradient)"
+        d="M44 23.5C44 34.27 35.05 43 24 43c-1.65 0-3.25-.19-4.78-.56-.47-.11-.95-.07-1.38.14l-4.38 2.19C12.33 45.34 11 44.51 11 43.25v-4.03c0-.57-.26-1.11-.68-1.5C6.43 34.17 4 29.11 4 23.5 4 12.73 12.95 4 24 4s20 8.73 20 19.5Z"
+      />
+      <path
+        fill="#fff"
+        d="m34.39 18.5-5.7 4.22c-.61.46-1.44.46-2.04.01l-3.97-2.99a3.7 3.7 0 0 0-5.19.94l-1.21 1.89-4.11 6.68c-.6.94.55 2.01 1.44 1.34l5.7-4.22c.61-.46 1.44-.46 2.04-.01l3.97 2.99a3.7 3.7 0 0 0 5.19-.94l1.21-1.89 4.11-6.68c.6-.94-.55-2.01-1.44-1.34Z"
+      />
+    </svg>
+  );
+}
+
 function StepIcon({ name }: { name: string }) {
   const p = {
     viewBox: "0 0 24 24",
@@ -85,15 +116,32 @@ export default function HeroConsole() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <div className="card-lift relative overflow-hidden p-5 sm:p-6">
-      {/* header */}
+    <div className="card-lift relative overflow-hidden">
+      {/* macOS-style Messenger window chrome */}
+      <div className="relative flex h-12 items-center border-b border-white/[0.08] bg-black/20 px-4">
+        <div className="flex items-center gap-2" aria-hidden>
+          <span className="h-3 w-3 rounded-full bg-[#ff5f57] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.25)]" />
+          <span className="h-3 w-3 rounded-full bg-[#febc2e] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.25)]" />
+          <span className="h-3 w-3 rounded-full bg-[#28c840] shadow-[inset_0_0_0_0.5px_rgba(0,0,0,0.25)]" />
+        </div>
+        <div className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
+          <MessengerIcon />
+          <span className="text-xs font-semibold text-ink">Messenger</span>
+        </div>
+      </div>
+
+      <div className="p-5 sm:p-6">
+      {/* conversation header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2 w-2 items-center justify-center">
-            <span className="absolute h-2.5 w-2.5 animate-[ping_2.6s_ease-out_infinite] rounded-full bg-brass/40" />
-            <span className="relative h-2 w-2 rounded-full bg-brass" />
+          <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+            <span className="absolute h-3 w-3 animate-[ping_2.6s_ease-out_infinite] rounded-full bg-[#31c85a]/40" />
+            <span className="relative h-2.5 w-2.5 rounded-full bg-[#31c85a]" />
           </span>
-          <p className="text-sm font-semibold text-ink">Inquiry control center</p>
+          <span>
+            <span className="block text-sm font-semibold text-ink">Avernek Assistant</span>
+            <span className="block text-[10px] font-medium text-muted">Active now</span>
+          </span>
         </div>
         <span className="rounded-full bg-brass-wash px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brass">
           Preview
@@ -103,13 +151,9 @@ export default function HeroConsole() {
       <div aria-hidden className="rule-fade my-5 h-px w-full" />
 
       {/* channel line */}
-      <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink text-paper">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden>
-            <path d="M12 2.5C6.7 2.5 2.5 6.5 2.5 11.4c0 2.7 1.3 5.1 3.4 6.7v3.4l3.1-1.7c.9.2 1.9.4 3 .4 5.3 0 9.5-4 9.5-8.8S17.3 2.5 12 2.5Zm1 11.4-2.4-2.6-4.7 2.6L11.6 9l2.5 2.6L18.7 9l-5.7 4.9Z" />
-          </svg>
-        </span>
-        Messenger · 8:42 PM
+      <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+        <span>New inquiry</span>
+        <span>8:42 PM</span>
       </div>
 
       {/* conversation */}
@@ -187,6 +231,7 @@ export default function HeroConsole() {
         <span className="font-semibold text-ink">0 leads missed</span> after hours — every
         conversation logged.
       </p>
+      </div>
     </div>
   );
 }

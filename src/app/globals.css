@@ -201,6 +201,14 @@
     animation-play-state: paused;
   }
 
+  /* Travelling signal used by the integration network. The underlying path
+     stays visible, so reduced-motion users still see every connection. */
+  .integration-beam {
+    stroke-dasharray: 0.12 0.88;
+    stroke-dashoffset: 1;
+    animation: integrationBeam 3.4s linear infinite;
+  }
+
   /* Avernek assistant — self-assembling line-art robot (QuickActions). */
   .ai-line {
     stroke-dasharray: 130;
@@ -247,6 +255,41 @@
   }
   to {
     transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes integrationBeam {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  height: 1px;
+  border-radius: 999px;
+  opacity: 0;
+  transform-origin: right center;
+  filter: drop-shadow(0 0 4px rgba(231, 207, 153, 0.75));
+  will-change: transform, opacity;
+  animation: shootingStar var(--shooting-duration) cubic-bezier(0.2, 0.65, 0.35, 1) both;
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--shooting-angle)) scaleX(0.25);
+  }
+  10% {
+    opacity: 0.9;
+  }
+  72% {
+    opacity: 0.72;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--shooting-x), var(--shooting-y), 0)
+      rotate(var(--shooting-angle)) scaleX(1);
   }
 }
 

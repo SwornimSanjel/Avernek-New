@@ -3,6 +3,7 @@ import Container from "../Container";
 import { LinkButton } from "../Button";
 import Mark from "../Mark";
 import StarField from "../StarField";
+import ShootingStars from "../ShootingStars";
 import ShineBorder from "../ui/ShineBorder";
 
 /* The core story in three nodes: marketing → Avernek → sales.
@@ -19,8 +20,9 @@ export default function Hero() {
       {/* blueprint graph paper + a living starfield / drifting aurora */}
       <div aria-hidden className="grid-paper grid-paper-fade absolute inset-0 -z-10" />
       <StarField className="-z-10" />
+      <ShootingStars className="z-0" />
 
-      <Container className="relative flex flex-col items-center pb-24 pt-36 text-center sm:pt-40 lg:pb-28 lg:pt-48">
+      <Container className="relative z-10 flex flex-col items-center pb-24 pt-36 text-center sm:pt-40 lg:pb-28 lg:pt-48">
         <span className="inline-flex animate-fade-up items-center gap-2.5 rounded-full border border-line bg-card px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-graphite shadow-card">
           <span className="relative flex h-2 w-2 items-center justify-center">
             <span className="absolute h-2.5 w-2.5 animate-[ping_2.4s_ease-out_infinite] rounded-full bg-brass/40" />

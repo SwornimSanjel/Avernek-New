@@ -1,10 +1,9 @@
 import Container from "../Container";
-import LogoMarquee from "../LogoMarquee";
+import IntegrationNetwork from "../IntegrationNetwork";
 
 /**
- * Quiet credibility band — an infinite marquee of the tools the system is built
- * on. (Not currently mounted in the page; kept in sync with the live band in
- * Proof.tsx for consistency.)
+ * Quiet credibility band showing the tools connected through Avernek. Not
+ * currently mounted in the page; kept in sync with the live band in Proof.tsx.
  */
 export default function Technology() {
   return (
@@ -13,7 +12,7 @@ export default function Technology() {
         <p className="mb-7 text-center text-xs font-medium uppercase tracking-[0.3em] text-slate/80">
           Built on technology you already trust
         </p>
-        <LogoMarquee />
+        <IntegrationNetwork />
       </Container>
     </section>
   );
