@@ -54,10 +54,6 @@ const avatarTints = [
   { bg: "#33241f", fg: "#dda183" },
 ];
 
-// Split across two counter-drifting marquee rows.
-const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
-const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
-
 function SignalMetricCard({ metric }: { metric: SignalMetric }) {
   return (
     <div className="card-lift h-full p-7 md:p-8">
@@ -156,14 +152,16 @@ export default function Proof() {
 
       {testimonials.length > 0 && (
         <div className="relative mt-14 flex w-full flex-col items-center gap-4 overflow-hidden">
+          {/* Top row: right to left. */}
           <Marquee pauseOnHover className="[--duration:44s] [--gap:1.25rem]">
-            {firstRow.map((t, i) => (
+            {testimonials.map((t, i) => (
               <TestimonialCard key={t.name} t={t} index={i} />
             ))}
           </Marquee>
+          {/* Bottom row: left to right. */}
           <Marquee reverse pauseOnHover className="[--duration:44s] [--gap:1.25rem]">
-            {secondRow.map((t, i) => (
-              <TestimonialCard key={t.name} t={t} index={i + firstRow.length} />
+            {testimonials.map((t, i) => (
+              <TestimonialCard key={t.name} t={t} index={i} />
             ))}
           </Marquee>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-paper-deep to-transparent" />

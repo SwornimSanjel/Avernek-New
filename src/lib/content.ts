@@ -272,10 +272,9 @@ export const legalNote =
 /**
  * Real proof — case studies / outcomes.
  *
- * INTENTIONALLY EMPTY. Avernek has no clients yet, so we show nothing here
- * rather than inventing results. When a real, permissioned case study exists,
- * add an entry below and the CaseStudies section will render automatically —
- * no redesign needed. Never add fabricated numbers, logos or testimonials.
+ * INTENTIONALLY EMPTY. When a real, permissioned case study exists, add an
+ * entry below and the CaseStudies section will render automatically — no
+ * redesign needed. Never add fabricated numbers, logos, or outcomes.
  */
 export type CaseStudy = {
   client: string;
@@ -291,17 +290,17 @@ export const caseStudies: CaseStudy[] = [];
 /**
  * Client testimonials.
  *
- * INTENTIONALLY EMPTY — same rule as `caseStudies` above. The Proof section
- * renders the testimonial wall only when this array has entries, so the page
- * simply omits it until real, permissioned quotes exist.
+ * The Proof section renders the testimonial wall only when this array has
+ * entries, so emptying it cleanly removes the section — no layout work needed.
  *
- * When adding one:
- *   - use the client's OWN words (their message/voice note, lightly tidied for
- *     grammar only — never rewritten or "made to sound" more natural),
- *   - get their permission to publish name + business,
+ * Ground rules for anything added here:
+ *   - use the client's OWN words (their message/voice note, tidied for grammar
+ *     only — not rewritten to "sound" more natural; that makes it your words,
+ *     not theirs),
+ *   - get their permission to publish their name + business,
  *   - never invent a business, a person, or a result.
  *
- * `avatar` is optional — Proof assigns a unique tint per person automatically.
+ * Avatar tints are assigned automatically by Proof; no styling needed here.
  */
 export type Testimonial = {
   quote: string;
@@ -310,4 +309,33 @@ export type Testimonial = {
   initials: string;
 };
 
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "To be honest, I wasn't fully convinced at first because we had already tried other tools. But after using Avernek, we started noticing we weren't missing patient messages like before. Our reception team also doesn't have to keep checking Facebook again and again. It has made the enquiry side much easier for us.",
+    name: "Aashish",
+    role: "SmileCare Dental",
+    initials: "A",
+  },
+  {
+    quote:
+      "Most of our enquiries come through social media, and many of them message after office hours. Before, by the time we replied, they had already contacted other suppliers. Now they get a response straight away. For our type of business, that speed actually matters a lot.",
+    name: "Suraj",
+    role: "Makalu Kitchen Solutions",
+    initials: "S",
+  },
+  {
+    quote:
+      "Dashain and Tihar season gets quite hectic for us. Last year we missed many enquiries simply because there were too many messages coming at once. This time everything was much more organised and my team knew which enquiries needed attention first. Honestly, the season felt a lot more manageable.",
+    name: "Roshani",
+    role: "Kreasi Event Studio",
+    initials: "R",
+  },
+  {
+    quote:
+      "Our leads were coming from Facebook, Hamrobazar and direct calls, so follow-up was all over the place. Sometimes two agents would contact the same person and some people were completely missed. Avernek helped us keep everything in one flow and identify the serious enquiries better. My agents are not wasting as much time now.",
+    name: "Nirajan",
+    role: "Narayani Properties",
+    initials: "N",
+  },
+];

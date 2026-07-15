@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type MarqueeProps = ComponentPropsWithoutRef<"div"> & {
   className?: string;
-  /** Scroll right-to-left instead of left-to-right. */
+  /** Reverse the default right-to-left motion so content moves left-to-right. */
   reverse?: boolean;
   pauseOnHover?: boolean;
   children: ReactNode;
